@@ -1,0 +1,112 @@
+sudo apt-get install git
+
+sudo yum install git
+
+git config --global user.email "youremail@emaildomain.com"
+
+git config --global user.name "your username"
+
+ git config -l
+ 
+ git init projectname
+ 
+ cd projectname 
+ 
+ touch helloworld.c
+  
+ git add .
+ 
+ 
+ git commit -m "First commit of project, just an empty file"
+ 
+ git add helloworld.c
+ 
+ git commit -m "added source code to helloworld.c"
+ 
+ git add .
+
+ git commit -m "initial commit"
+ 
+ git remote add origin https://gitlab.com/Parameswari/gitecommrepo.git
+ 
+ git push --force origin master
+ ==============================
+ docker login registry.gitlab.com
+
+ git remote add origin  https://github.com/eswaribala/rpsinteljenkinslab.git
+ 
+ git log
+ 
+ git clone project.url/projectname.git
+ 
+ 
+ git push
+ 
+ create branch
+ 
+ git branch docs #create branch
+  
+ git branch  #list branch
+ 
+ git branch -d docs  #delete branch
+ 
+ git branch -m <old_name> <new_name> #rename branch
+ 
+ git checkout docs
+ 
+ git add .
+ 
+ git commit -m "updated'
+ 
+ git push origin docs
+ 
+ git checkout master
+ 
+ git ls-files
+ 
+ git merge docs
+ 
+ git push origin master
+ 
+ #conflicts
+ git init user1
+ 
+ git init user2
+ 
+ cd user1
+ git pull repourl
+ modify file
+ git add .
+ git commit -m <message>
+ 
+ cd user2
+ git pull repoutl
+ modify
+ commit
+ git push
+ sudo apt-get update
+ sudo apt install kdiff3
+ git config --global --add merge.tool kdiff3
+  git config --global --add mergetool.kdiff3.path /user/bin/kdiff3
+git config --global --add mergetool.trustExitCode false
+
+or
+
+sudo apt install vim
+sudo nano ~/.gitconfig
+
+
+[user]
+        email = parameswaribala@gmail.com
+        name = eswaribala
+[merge]
+        tool = vim
+
+tool=vim
+
+git mergetool
+
+select the required code
+
+git commit -m "conclusion message"
+git push origin master
