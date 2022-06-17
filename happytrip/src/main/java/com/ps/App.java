@@ -7,11 +7,13 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class App {
+  static   String organizationName="PS";
   public static void main(String[] args) {
 
       for(String arg : args){
           System.out.println(arg);
       }
+      System.out.println("The Persons working for"+organizationName+"given below");
        for(Person person : generateData())
            System.out.println(person);
     }
@@ -25,12 +27,11 @@ public class App {
       for(int i=0;i<persons.length;i++){
           persons[i]=new Person(new Random().nextInt(100),"person"+i,
                   LocalDate.of(2000+new Random().nextInt(20),
-                          new Random().nextInt(10),
-                          new Random().nextInt(26)),true);
+                          1+new Random().nextInt(10),
+                          1+new Random().nextInt(26)),true);
      }
 
         return persons;
-
     }
 
 }
