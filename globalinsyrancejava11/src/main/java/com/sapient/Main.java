@@ -27,11 +27,11 @@ public class Main {
 
         System.out.println("After Sorting by claim date....");
 //lambda expression
-        Comparator<Claim> comparator=(o1,o2)->{
-            return o1.getClaimDate().compareTo(o2.getClaimDate());
-        };
+
 //interface with anonymous
-        Arrays.sort(claims,comparator);
+        Arrays.sort(claims,(o1,o2)->{
+            return o1.getClaimDate().compareTo(o2.getClaimDate());
+        });
         for(Claim claim : claims){
             System.out.println(claim);
         }

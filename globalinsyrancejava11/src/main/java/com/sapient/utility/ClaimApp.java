@@ -5,6 +5,7 @@ import com.sapient.models.Claim;
 import com.sapient.models.Vehicle;
 
 import java.time.LocalDate;
+import java.util.function.Function;
 
 public class ClaimApp {
 
@@ -22,5 +23,15 @@ public class ClaimApp {
         };
 
         claimFacade.addClaim(claim,new Vehicle("TN-82-1234","Honda"));
+
+        //inbuilt functional interface
+        Function<Claim,Boolean> function=(claimObj)->{
+            return claimObj.getClaimId()>1000;
+        };
+
+        System.out.println(function.apply(claim));
+
+
+
     }
 }
