@@ -58,7 +58,7 @@ public class ClaimApp {
         //consumer accepts the data
         Consumer<Claim[]> consumer=(claims)->{
            for(Claim claimObj : claims){
-              System.out.println(claims);
+              System.out.println(claimObj);
            }
         };
 
