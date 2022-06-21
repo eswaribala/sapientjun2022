@@ -1,1 +1,9 @@
+com\ps\models\Apparel.class
+com\ps\models\Product.class
+com\ps\utilities\GoodProductsApp.class
 com\ps\App.class
+com\ps\models\Electronics.class
+com\ps\models\Material.class
+com\ps\models\FoodItem.class
+com\ps\models\Person.class
+com\ps\models\Size.class
