@@ -1,5 +1,6 @@
 package com.sapient.utility;
 
+import com.sapient.Main;
 import com.sapient.facades.ClaimFacade;
 import com.sapient.facades.TriFunction;
 import com.sapient.models.Claim;
@@ -7,6 +8,7 @@ import com.sapient.models.Vehicle;
 
 import java.time.LocalDate;
 import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 public class ClaimApp {
@@ -52,5 +54,17 @@ public class ClaimApp {
                 new Claim(2384688,
                         4569466,1252345325,
                         LocalDate.now().minusMonths(4))));
+
+        //consumer accepts the data
+        Consumer<Claim[]> consumer=(claims)->{
+           for(Claim claimObj : claims){
+              System.out.println(claims);
+           }
+        };
+
+        consumer.accept(Main.createClaims());
+
+
+
     }
 }
