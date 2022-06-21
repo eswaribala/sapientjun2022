@@ -2,14 +2,14 @@ package com.sapient.utility;
 
 import com.sapient.Main;
 import com.sapient.facades.ClaimFacade;
+import com.sapient.facades.PaymentFacade;
+import com.sapient.facades.PaymentImpl;
 import com.sapient.facades.TriFunction;
 import com.sapient.models.Claim;
 import com.sapient.models.Vehicle;
 
 import java.time.LocalDate;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Function;
+import java.util.function.*;
 
 public class ClaimApp {
 
@@ -64,7 +64,21 @@ public class ClaimApp {
 
         consumer.accept(Main.createClaims());
 
+      //default impl
+        PaymentFacade paymentFacade=new PaymentImpl();
+        System.out.println(paymentFacade.processPayment());
 
+        //supplier
 
+        Supplier<Long> supplier= ClaimFacade::getOTP;
+        System.out.println(supplier.get());
+
+        Predicate<Claim> predicate=(claimObj)->{
+            return claimObj.getClaimId()>0;
+        };
+
+          predicate.test(new Claim(2384687,
+                  4569463,1252345325,
+                  LocalDate.now().minusMonths(3)));
     }
 }
