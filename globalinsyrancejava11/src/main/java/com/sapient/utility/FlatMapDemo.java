@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class FlatMapDemo {
 
@@ -26,7 +27,7 @@ public class FlatMapDemo {
         Owner owner1=new Owner();
         owner1.setName("Atul");
         owner1.setVehicles(vehicles);
-
+        cabs.add(owner1);
         vehicles=new HashSet<Vehicle>();
         //first vehicle
         vehicle=new Vehicle();
@@ -39,8 +40,15 @@ public class FlatMapDemo {
         vehicle.setModel("Lambogini");
         vehicles.add(vehicle);
         Owner owner2=new Owner();
-        owner2.setName("Saurauv");
+        owner2.setName("Saurav");
         owner2.setVehicles(vehicles);
+        cabs.add(owner2);
+        List<String> cars = cabs.stream().
+                map(d -> d.getVehicles()).
+                flatMap(v -> v.stream())
+                .map(m->m.getModel()).distinct().
+                collect(Collectors.toList());
+        System.out.println(cars);
 
 
     }
