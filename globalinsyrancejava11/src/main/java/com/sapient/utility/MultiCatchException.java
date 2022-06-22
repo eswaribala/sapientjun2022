@@ -7,12 +7,18 @@ public class MultiCatchException {
     public static  void main(String[] args){
 
         Claim[] claim=new Claim[5];
+      try {
+          try {
+              claim[0] = new Claim();
+              System.out.println(claim[0].getClaimAmount() / 0);
+          } catch (NullPointerException | ArithmeticException exception) {
+          }
+          System.out.println("outer block....");
+      }
+      catch(NegativeArraySizeException negativeArraySizeException){
 
-        try{
-            claim[0]=new Claim();
-            System.out.println(claim[0].getClaimAmount()/0);
-        }
-
+      }
+/*
         catch (NullPointerException nullPointerException){
 
             System.out.println(nullPointerException.getMessage());
@@ -34,7 +40,8 @@ public class MultiCatchException {
                 System.out.println(stackTraceElement.getMethodName());
                 System.out.println(stackTraceElement.getLineNumber());
 
-            }
-        }
+           }
+  */
+
     }
 }
