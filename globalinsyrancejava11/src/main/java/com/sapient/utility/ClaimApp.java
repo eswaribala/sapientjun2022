@@ -69,7 +69,7 @@ public class ClaimApp {
         System.out.println(paymentFacade.processPayment());
 
         //supplier
-
+        //static method ref
         Supplier<Long> supplier= ClaimFacade::getOTP;
         System.out.println(supplier.get());
 
@@ -77,8 +77,8 @@ public class ClaimApp {
             return claimObj.getClaimId()>0;
         };
 
-          predicate.test(new Claim(2384687,
+         System.out.println( predicate.test(new Claim(-2384687,
                   4569463,1252345325,
-                  LocalDate.now().minusMonths(3)));
+                  LocalDate.now().minusMonths(3))));
     }
 }
