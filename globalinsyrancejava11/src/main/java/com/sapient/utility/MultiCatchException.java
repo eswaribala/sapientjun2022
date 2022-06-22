@@ -1,6 +1,8 @@
 package com.sapient.utility;
 
+import com.sapient.exceptions.PasswordException;
 import com.sapient.models.Claim;
+import com.sapient.models.CustomerVO;
 
 public class MultiCatchException {
 
@@ -18,6 +20,22 @@ public class MultiCatchException {
       catch(NegativeArraySizeException negativeArraySizeException){
 
       }
+
+      //test password
+
+      CustomerVO customerVO=new CustomerVO();
+      customerVO.setUserName("parameswari");
+
+
+        try {
+            customerVO.setPassword("Test123");
+        } catch (PasswordException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        System.out.println("able to continue");
+
 /*
         catch (NullPointerException nullPointerException){
 

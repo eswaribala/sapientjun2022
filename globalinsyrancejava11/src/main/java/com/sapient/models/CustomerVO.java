@@ -21,7 +21,7 @@ public class CustomerVO {
     }
     //check business validations
 
-    public void setPassword(String password) {
+    public void setPassword(String password) throws PasswordException {
 
         String regex="^(?=.*[0-9])"
                    +"(?=.*[a-z])(?=.*[A-Z])"
