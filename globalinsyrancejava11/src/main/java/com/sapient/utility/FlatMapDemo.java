@@ -20,15 +20,27 @@ public class FlatMapDemo {
         vehicles.add(vehicle);
         //second vehicle
         vehicle=new Vehicle();
-        vehicle.setRegNo("A4258343");
+        vehicle.setRegNo("A4258344");
         vehicle.setModel("Mercedes");
         vehicles.add(vehicle);
         Owner owner1=new Owner();
         owner1.setName("Atul");
         owner1.setVehicles(vehicles);
 
-
-
+        vehicles=new HashSet<Vehicle>();
+        //first vehicle
+        vehicle=new Vehicle();
+        vehicle.setRegNo("A4258345");
+        vehicle.setModel("Honda");
+        vehicles.add(vehicle);
+        //second vehicle
+        vehicle=new Vehicle();
+        vehicle.setRegNo("A4258346");
+        vehicle.setModel("Lambogini");
+        vehicles.add(vehicle);
+        Owner owner2=new Owner();
+        owner2.setName("Saurauv");
+        owner2.setVehicles(vehicles);
 
 
     }
