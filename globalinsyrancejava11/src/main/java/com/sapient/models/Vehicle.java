@@ -13,7 +13,8 @@ public class Vehicle {
     private String regNo;
     private String model;
 
-    public void sendMessage() throws InterruptedException {
+    public void sendMessage(String regNo) throws InterruptedException {
+        System.out.print(regNo+"\t");
         new Bridge().bridgeMessage();
         new TollBooth().tollMessage();
     }

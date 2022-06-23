@@ -4,23 +4,25 @@ import com.sapient.models.Vehicle;
 
 public class VehicleSimulationThread implements Runnable{
     private Vehicle vehicle;
+    private String regNo;
 
     public VehicleSimulationThread(Vehicle vehicle,String threadName,String regNo) {
+
         this.vehicle=vehicle;
-        this.vehicle.setRegNo(regNo);
+        this.regNo=regNo;
         new Thread(this,threadName).start();
     }
 
     @Override
     public void run() {
 
-        synchronized (vehicle){
+        synchronized (this.vehicle){
 
             try {
 
                 System.out.print("\n"+Thread.currentThread().getName()+"\t");
-                System.out.print(vehicle.getRegNo()+"\t");
-                vehicle.sendMessage();
+
+                vehicle.sendMessage(regNo);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
