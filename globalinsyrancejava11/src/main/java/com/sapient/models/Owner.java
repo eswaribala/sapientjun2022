@@ -8,7 +8,8 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Owner {
+public class Owner{
     private String name;
     private Set<Vehicle> vehicles;
+
 }

@@ -19,6 +19,9 @@ public class FinallyDemo {
 
     public static  void main(String[] args) {
 
+        System.out.println(Thread.currentThread().getName());
+        System.out.println(Thread.currentThread().isDaemon());
+/*
         ClaimFacade claimFacade=new ClaimImpl("claims.csv");
         try {
             claimFacade.addClaim(new Claim(485685,34598459,
@@ -35,6 +38,8 @@ public class FinallyDemo {
         } catch (IOException e) {
 
         }
+
+ */
 
     }
 }

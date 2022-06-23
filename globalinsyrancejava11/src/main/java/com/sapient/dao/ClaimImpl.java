@@ -36,7 +36,7 @@ public class ClaimImpl implements ClaimFacade {
 
     private void writeData(Claim claim, File file, BufferedWriter bufferedWriter) throws IOException {
         try {
-            bufferedWriter =new BufferedWriter(new FileWriter(file));
+            bufferedWriter =new BufferedWriter(new FileWriter(file,true));
             bufferedWriter.write(claim.getClaimId()+",");
             bufferedWriter.write(claim.getPolicyNo()+",");
             bufferedWriter.write(claim.getClaimAmount()+",");
