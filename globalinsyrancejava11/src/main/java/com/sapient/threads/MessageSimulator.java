@@ -9,7 +9,7 @@ public class MessageSimulator implements Runnable{
 
     private List<Message> messages;
 
-    public MessageSimulator(List<Message> messages) {
+    public MessageSimulator() {
         this.messages=new ArrayList<>();
     }
 
@@ -17,9 +17,16 @@ public class MessageSimulator implements Runnable{
 
        while(true) {
            if (messages.size() == 0) {
+               System.out.println("Message Not found in List....");
                for (int i = 0; i < 100; i++) {
                    messages.add(new Message(i, "Message" + i));
                }
+               try {
+                   Thread.sleep(2000);
+               } catch (InterruptedException e) {
+                   throw new RuntimeException(e);
+               }
+
                notify();
            } else {
                try {
@@ -36,13 +43,19 @@ public class MessageSimulator implements Runnable{
 
         while(true) {
             if (this.messages.size() > 0) {
+
                 for (Message message : messages)
                     System.out.println(message);
-
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
                 messages.clear();
                 notify();
             } else {
                 try {
+                    System.out.println("Waiting for the message");
                     wait();
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
@@ -54,7 +67,7 @@ public class MessageSimulator implements Runnable{
 
     @Override
     public void run() {
-
+      // System.out.println(Thread.currentThread().getName());
         if(Thread.currentThread().getName().equals("Producer"))
             produceMessage();
         else
