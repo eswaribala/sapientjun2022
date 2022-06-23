@@ -18,21 +18,24 @@ public class MessageSimulator implements Runnable{
        while(true) {
            if (messages.size() == 0) {
                System.out.println("Message Not found in List....");
+               try {
                for (int i = 0; i < 100; i++) {
                    messages.add(new Message(i, "Message" + i));
                }
-               try {
+
                    Thread.sleep(2000);
+                   notify();
+
                } catch (InterruptedException e) {
-                   throw new RuntimeException(e);
+
                }
 
-               notify();
+
            } else {
                try {
                    wait();
                } catch (InterruptedException e) {
-                   throw new RuntimeException(e);
+
                }
            }
        }
@@ -43,22 +46,24 @@ public class MessageSimulator implements Runnable{
 
         while(true) {
             if (this.messages.size() > 0) {
-
+                System.out.println("Entering consumer......");
+                try {
                 for (Message message : messages)
                     System.out.println(message);
-                try {
+
                     Thread.sleep(2000);
+                    messages.clear();
+                    notify();
                 } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+
                 }
-                messages.clear();
-                notify();
+
             } else {
                 try {
                     System.out.println("Waiting for the message");
                     wait();
                 } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+
                 }
             }
         }
