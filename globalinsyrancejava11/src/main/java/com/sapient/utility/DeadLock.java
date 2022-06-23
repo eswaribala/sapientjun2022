@@ -1,6 +1,7 @@
 package com.sapient.utility;
 
 import com.sapient.models.Vehicle;
+import com.sapient.threads.VehicleDeadlockSimulationThread;
 
 public class DeadLock {
     public static void main(String[] args){
@@ -8,52 +9,15 @@ public class DeadLock {
         Vehicle[] vehicles=new Vehicle[2];
         vehicles[0]=new Vehicle();
         vehicles[1]=new Vehicle();
+        VehicleDeadlockSimulationThread[] vehicleDeadlockSimulationThreads=
+                new VehicleDeadlockSimulationThread[2];
 
-        Thread thread1=new Thread(){
-            @Override
-            public void run() {
-                synchronized (vehicles[0]){
-                    try {
-                        Thread.sleep(3000);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
 
-                }
-                synchronized (vehicles[1]){
-                    try {
-                        Thread.sleep(3000);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+            vehicleDeadlockSimulationThreads[0]=new
+                    VehicleDeadlockSimulationThread(vehicles[0],vehicles[1],"Thread"+0);
 
-                }
-            }
-        };
-        Thread thread2=new Thread(){
-            @Override
-            public void run() {
-                synchronized (vehicles[0]){
-                    try {
-                        Thread.sleep(3000);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-
-                }
-                synchronized (vehicles[1]){
-                    try {
-                        Thread.sleep(3000);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-
-                }
-            }
-        };
-
-        thread1.start();
-        thread2.start();
+        vehicleDeadlockSimulationThreads[1]=new
+                VehicleDeadlockSimulationThread(vehicles[1],vehicles[0],"Thread"+1);
 
     }
 }
