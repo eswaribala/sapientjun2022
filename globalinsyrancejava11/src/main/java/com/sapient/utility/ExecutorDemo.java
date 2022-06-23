@@ -11,8 +11,9 @@ public class ExecutorDemo {
 public static void main(String[] args){
     ExecutorService executorService= Executors
             .newFixedThreadPool(2);
+    //task assigned
     Future future=executorService.submit(new OTPGenerator());
-    if(future.isDone()){
+
         try {
             System.out.println(future.get());
         } catch (InterruptedException e) {
@@ -20,7 +21,8 @@ public static void main(String[] args){
         } catch (ExecutionException e) {
             throw new RuntimeException(e);
         }
-    }
+
+    executorService.shutdown();
 
 }
 }
