@@ -8,12 +8,13 @@ import com.sapient.facades.TriFunction;
 import com.sapient.models.Claim;
 import com.sapient.models.Vehicle;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.function.*;
 
 public class ClaimApp {
 
-    public static  void main(String[] args){
+    public static  void main(String[] args) throws IOException {
         //lambda expression
         Claim claim=new Claim(485685,34598459,
                 450000,
