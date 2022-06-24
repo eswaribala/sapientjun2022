@@ -2,6 +2,8 @@ package com.sapient;
 
 import com.sapient.models.Claim;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -10,7 +12,7 @@ import java.util.Random;
 
 
 public class Main {
-
+    private static final Logger logger = LoggerFactory.getLogger(Main.class);
     public static Claim[] createClaims(){
         Claim[] claims=new Claim[3];
         for(int i=0;i<3;i++){
@@ -32,12 +34,12 @@ public class Main {
 
 
 
-        System.out.println("Before Sorting....");
+        logger.info("Before Sorting....");
         for(Claim claim : createClaims()){
-            System.out.println(claim);
+            logger.info(claim.toString());
         }
 
-        System.out.println("After Sorting by claim date....");
+        logger.info("After Sorting by claim date....");
 //lambda expression
 
 //interface with anonymous
@@ -45,7 +47,7 @@ public class Main {
             return o1.getClaimDate().compareTo(o2.getClaimDate());
         });
         for(Claim claim : createClaims()){
-            System.out.println(claim);
+            logger.info(claim.toString());
         }
 
     }
