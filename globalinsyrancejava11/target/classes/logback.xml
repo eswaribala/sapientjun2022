@@ -24,7 +24,7 @@
     </logger>
 
 
-    <logger name="com.virtusa" level="debug" additivity="false">
+    <logger name="com.sapient" level="debug" additivity="false">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILE"/>
     </logger>
