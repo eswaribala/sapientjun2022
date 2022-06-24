@@ -1,11 +1,13 @@
 package com.sapient;
 
 import com.sapient.models.Claim;
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Random;
+
 
 public class Main {
 
@@ -13,14 +15,19 @@ public class Main {
         Claim[] claims=new Claim[3];
         for(int i=0;i<3;i++){
             claims[i]=new Claim();
-            claims[i].setClaimId(new Random().nextInt(10000));
-            claims[i].setPolicyNo(new Random().nextInt(10000));
-            claims[i].setClaimAmount(new Random().nextInt(100000));
-            claims[i].setClaimDate(LocalDate.of(2022,1+new Random().nextInt(10),
-                    1+new Random().nextInt(26)));
+            claims[i].setClaimId(getRandomNo(10000));
+            claims[i].setPolicyNo(getRandomNo(10000));
+            claims[i].setClaimAmount(getRandomNo(10000));
+            claims[i].setClaimDate(LocalDate.of(2022,1+getRandomNo(10),
+                    1+getRandomNo(26)));
         }
         return claims;
     }
+
+    private static int getRandomNo(int number) {
+        return new Random().nextInt(number);
+    }
+
     public static void main(String[] args) {
 
 
