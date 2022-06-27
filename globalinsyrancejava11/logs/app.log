@@ -1,0 +1,8 @@
+2022-06-24 15:49:37,912 INFO com.sapient.Main [main] Before Sorting....
+2022-06-24 15:49:37,946 INFO com.sapient.Main [main] Claim(claimId=1485, policyNo=8374, claimAmount=9279, claimDate=2022-05-06)
+2022-06-24 15:49:37,946 INFO com.sapient.Main [main] Claim(claimId=1454, policyNo=8094, claimAmount=5792, claimDate=2022-09-25)
+2022-06-24 15:49:37,946 INFO com.sapient.Main [main] Claim(claimId=1242, policyNo=8815, claimAmount=533, claimDate=2022-05-03)
+2022-06-24 15:49:37,946 INFO com.sapient.Main [main] After Sorting by claim date....
+2022-06-24 15:49:37,948 INFO com.sapient.Main [main] Claim(claimId=2265, policyNo=5404, claimAmount=7052, claimDate=2022-03-09)
+2022-06-24 15:49:37,948 INFO com.sapient.Main [main] Claim(claimId=4717, policyNo=993, claimAmount=5969, claimDate=2022-06-15)
+2022-06-24 15:49:37,949 INFO com.sapient.Main [main] Claim(claimId=134, policyNo=881, claimAmount=4175, claimDate=2022-07-25)
