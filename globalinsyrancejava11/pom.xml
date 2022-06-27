@@ -154,7 +154,7 @@
                     <trimStackTrace>false</trimStackTrace>
                 </configuration>
             </plugin>
-
+<!--jacoco:report checkstyle:checkstyle install -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
