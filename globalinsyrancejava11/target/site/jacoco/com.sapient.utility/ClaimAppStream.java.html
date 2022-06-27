@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ClaimAppStream.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">globalinsyrancejava11</a> &gt; <a href="index.source.html" class="el_package">com.sapient.utility</a> &gt; <span class="el_source">ClaimAppStream.java</span></div><h1>ClaimAppStream.java</h1><pre class="source lang-java linenums">package com.sapient.utility;
+
+import com.sapient.models.Claim;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+
+<span class="nc" id="L11">public class ClaimAppStream {</span>
+
+    public static List&lt;Claim&gt; createClaims(){
+<span class="nc" id="L14">        List&lt;Claim&gt; claimList=new ArrayList&lt;Claim&gt;();</span>
+<span class="nc" id="L15">        Claim claim=null;</span>
+<span class="nc bnc" id="L16" title="All 2 branches missed.">        for(int i=0;i&lt;100;i++){</span>
+<span class="nc" id="L17">            claim=new Claim();</span>
+<span class="nc" id="L18">            claim.setClaimId(new Random().nextInt(10000));</span>
+<span class="nc" id="L19">            claim.setPolicyNo(new Random().nextInt(10000));</span>
+<span class="nc" id="L20">            claim.setClaimAmount(new Random().nextInt(1000000));</span>
+<span class="nc" id="L21">            claim.setClaimDate(LocalDate.</span>
+<span class="nc" id="L22">                    of(1990+new Random().nextInt(20),</span>
+<span class="nc" id="L23">                            1+new Random().nextInt(11),</span>
+<span class="nc" id="L24">                            1+new Random().nextInt(26)));</span>
+<span class="nc" id="L25">            claimList.add(claim);</span>
+        }
+<span class="nc" id="L27">        return claimList;</span>
+    }
+    public static void main(String[] args){
+        //get the claims below 2 lakhs
+
+<span class="nc" id="L32">      List&lt;Claim&gt; filteredClaims=createClaims().stream()</span>
+<span class="nc bnc" id="L33" title="All 2 branches missed.">                .filter(c-&gt;(c.getClaimAmount()&lt;200000))</span>
+<span class="nc" id="L34">                .collect(Collectors.toList());</span>
+
+      //sort the filtered claim by id
+
+<span class="nc" id="L38">        filteredClaims.stream().sorted((c1,c2)-&gt; {</span>
+<span class="nc bnc" id="L39" title="All 2 branches missed.">            if(c1.getClaimId() &gt; c2.getClaimId())</span>
+<span class="nc" id="L40">                return 1;</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">            else if(c1.getClaimId()&lt;c2.getClaimId()) {</span>
+<span class="nc" id="L42">                return -1;</span>
+            }
+                else
+<span class="nc" id="L45">                    return 0;</span>
+        }
+<span class="nc" id="L47">        ).forEach(System.out::println);</span>
+
+
+<span class="nc" id="L50">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

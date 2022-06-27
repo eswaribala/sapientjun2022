@@ -28,7 +28,7 @@ public class ClaimTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {428578,3597349,3570837,0})
+    @ValueSource(ints = {428578,3597349,3570837,10})
     @Tag("dev")
     public void claimIdNotZeroTest(int data){
 
