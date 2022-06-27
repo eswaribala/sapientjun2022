@@ -1,11 +1,9 @@
 package com.sapient.models;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -24,12 +22,14 @@ public class ClaimTest {
 
     @Test
     @DisplayName("Claim Not Null Test")
+    @Tag("dev")
     public void claimNotNullTest(){
         assertNotNull(claim);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {428578,3597349,3570837,0})
+    @Tag("dev")
     public void claimIdNotZeroTest(int data){
 
         claim.setClaimId(data);
@@ -37,14 +37,16 @@ public class ClaimTest {
     }
     @ParameterizedTest
     @ValueSource(strings = {"2022-01-02","2022-03-04","2021-09-19"})
+    @Tag("prod")
     public void claimDateNotCurrentDateTest(String data){
 
          claim.setClaimDate(LocalDate.parse(data));
          assertTrue(LocalDate.now().isAfter(claim.getClaimDate()));
     }
     @ParameterizedTest
-    @Timeout(unit = TimeUnit.NANOSECONDS,value = 5)
-    @CsvFileSource(resources = "./claims.csv", numLinesToSkip = 1)
+    @Timeout(unit = TimeUnit.SECONDS,value = 500)
+    @CsvFileSource(resources = "claims.csv", numLinesToSkip = 1)
+    @Tag("prod")
     void testWithCsvFileSource(int claimId,int policyNo,long claimAmount,LocalDate claimDate) {
 
         claim.setClaimId(claimId);
@@ -52,7 +54,7 @@ public class ClaimTest {
         claim.setClaimAmount(claimAmount);
         claim.setClaimDate(claimDate);
         assertTrue(claim.getClaimAmount()>20000);
-        
+
     }
 
 
