@@ -65,6 +65,7 @@ public class ClaimMongoImplTest {
 
         assertNotNull(claimFacade.getClaimById(485685));
     }
+
     @AfterEach
     public void unLinkClaimInstances(){
         claim=null;

@@ -63,7 +63,9 @@ public class ClaimMongoImpl implements ClaimFacade {
     @Override
     public List<Object> getAllClaims() {
         ArrayList<Object> claims=new ArrayList<>();
-       try(MongoCursor<Document> cursor= mongoCollection.find().iterator()){
+       try(MongoCursor<Document> cursor= mongoCollection.find()
+               .sort(new Document("claimd",1)).limit(1)
+        .iterator()){
            while(cursor.hasNext()){
                var doc=cursor.next();
                claims.add(doc.values());
