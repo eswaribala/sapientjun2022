@@ -2,6 +2,8 @@ package com.sapient.dao;
 
 
 import com.google.gson.Gson;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBCursor;
 import com.mongodb.DocumentToDBRefTransformer;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
@@ -17,6 +19,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import static com.mongodb.client.model.Filters.eq;
 
 public class ClaimMongoImpl implements ClaimFacade {
 
@@ -73,8 +77,14 @@ public class ClaimMongoImpl implements ClaimFacade {
 
     @Override
     public boolean deleteClaimById(long claimId) {
-        mongoCollection.deleteOne(Filters.eq("claimId",claimId));
+        mongoCollection.deleteOne(eq("claimId",claimId));
         status=true;
         return status;
+    }
+
+    @Override
+    public Object getClaimById(long claimId) {
+       return ((Document)mongoCollection.find(eq("claimId", claimId)).first()).values();
+
     }
 }

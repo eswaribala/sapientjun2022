@@ -31,4 +31,8 @@ public interface ClaimFacade {
    default boolean deleteClaimById(long claimId){
        return false;
    }
+
+   default Object getClaimById(long claimId){
+       return null;
+   }
 }

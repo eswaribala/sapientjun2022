@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.collection.IsEmptyCollection.empty;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ClaimMongoImplTest {
@@ -57,6 +58,12 @@ public class ClaimMongoImplTest {
     public void deleteClaimByIdTest(){
 
        assertTrue(claimFacade.deleteClaimById(485685));
+    }
+    @Test
+    @Tag("dev")
+    public void findClaimByIdTest(){
+
+        assertNotNull(claimFacade.getClaimById(485685));
     }
     @AfterEach
     public void unLinkClaimInstances(){
