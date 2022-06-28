@@ -1,6 +1,7 @@
 package com.sapient.dao;
 
 
+import com.google.gson.Gson;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.sapient.facades.ClaimFacade;
@@ -17,6 +18,7 @@ public class ClaimMongoImpl implements ClaimFacade {
     private MongoCollection mongoCollection;
     private ResourceBundle resourceBundle;
     private boolean status;
+    private Gson gson;
     public ClaimMongoImpl() {
         resourceBundle=ResourceBundle.getBundle("db");
        mongoClient= MongoDBHelper.getConnection();
@@ -24,13 +26,15 @@ public class ClaimMongoImpl implements ClaimFacade {
        var database= mongoClient
                .getDatabase(resourceBundle.getString("dbname"));
        var collectionName=resourceBundle.getString("collectionName");
-       database.createCollection(collectionName);
+       if(database.getCollection(collectionName)==null)
+          database.createCollection(collectionName);
        mongoCollection= database.getCollection(collectionName);
+       gson=new Gson();
     }
 
     @Override
     public boolean addClaim(Claim claim){
-        mongoCollection.insertOne(claim);
+        mongoCollection.insertOne(gson.toJson(claim));
         status=true;
         return status;
     }
