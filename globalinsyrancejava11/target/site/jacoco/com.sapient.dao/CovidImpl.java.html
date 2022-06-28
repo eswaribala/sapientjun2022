@@ -6,41 +6,45 @@ import java.io.*;
 import java.util.ResourceBundle;
 
 <span class="nc" id="L8">public class CovidImpl implements CovidFacade {</span>
+
+
+
+
     @Override
     public void getAllData(String fileName) throws IOException {
-<span class="nc" id="L11">        ResourceBundle resourceBundle=ResourceBundle.getBundle(&quot;db&quot;);</span>
-<span class="nc" id="L12">        String path=resourceBundle.getString(&quot;path&quot;);</span>
-<span class="nc" id="L13">        File file=new File(path,fileName);</span>
-<span class="nc" id="L14">        BufferedReader bufferedReader=null;</span>
-<span class="nc" id="L15">        String[] fields=null;</span>
-<span class="nc" id="L16">        String line=null;</span>
-<span class="nc bnc" id="L17" title="All 2 branches missed.">        if(file.exists()){</span>
-<span class="nc" id="L18">            System.out.println(&quot;File Exists&quot;);</span>
+<span class="nc" id="L15">        ResourceBundle resourceBundle=ResourceBundle.getBundle(&quot;db&quot;);</span>
+<span class="nc" id="L16">        String path=resourceBundle.getString(&quot;path&quot;);</span>
+<span class="nc" id="L17">        File file=new File(path,fileName);</span>
+<span class="nc" id="L18">        BufferedReader bufferedReader=null;</span>
+<span class="nc" id="L19">        String[] fields=null;</span>
+<span class="nc" id="L20">        String line=null;</span>
+<span class="nc bnc" id="L21" title="All 2 branches missed.">        if(file.exists()){</span>
+<span class="nc" id="L22">            System.out.println(&quot;File Exists&quot;);</span>
             try {
-<span class="nc" id="L20">                bufferedReader=new BufferedReader(new FileReader(file));</span>
-<span class="nc bnc" id="L21" title="All 2 branches missed.">                while((line=bufferedReader.readLine())!=null){</span>
+<span class="nc" id="L24">                bufferedReader=new BufferedReader(new FileReader(file));</span>
+<span class="nc bnc" id="L25" title="All 2 branches missed.">                while((line=bufferedReader.readLine())!=null){</span>
                     // System.out.println(line);
-<span class="nc" id="L23">                    fields=line.split(&quot;,&quot;);</span>
-<span class="nc bnc" id="L24" title="All 2 branches missed.">                    for(String field :fields)</span>
-<span class="nc" id="L25">                        System.out.print(field+&quot; &quot;);</span>
-<span class="nc" id="L26">                    System.out.println(&quot;\n&quot;);</span>
+<span class="nc" id="L27">                    fields=line.split(&quot;,&quot;);</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">                    for(String field :fields)</span>
+<span class="nc" id="L29">                        System.out.print(field+&quot; &quot;);</span>
+<span class="nc" id="L30">                    System.out.println(&quot;\n&quot;);</span>
                 }
 
-<span class="nc" id="L29">            } catch (FileNotFoundException e) {</span>
+<span class="nc" id="L33">            } catch (FileNotFoundException e) {</span>
                 //rethrow concept
-<span class="nc" id="L31">                throw  e;</span>
-<span class="nc" id="L32">            } catch (IOException e) {</span>
+<span class="nc" id="L35">                throw  e;</span>
+<span class="nc" id="L36">            } catch (IOException e) {</span>
                 //rethrow concept
-<span class="nc" id="L34">                throw e;</span>
+<span class="nc" id="L38">                throw e;</span>
             }
             finally{
-<span class="nc" id="L37">                bufferedReader.close();</span>
+<span class="nc" id="L41">                bufferedReader.close();</span>
 
-<span class="nc" id="L39">            }</span>
+<span class="nc" id="L43">            }</span>
 
         }
         else
-<span class="nc" id="L43">            System.out.println(&quot;File Not found...&quot;);</span>
-<span class="nc" id="L44">    }</span>
+<span class="nc" id="L47">            System.out.println(&quot;File Not found...&quot;);</span>
+<span class="nc" id="L48">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

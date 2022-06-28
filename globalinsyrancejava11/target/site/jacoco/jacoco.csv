@@ -13,7 +13,7 @@ globalinsyrancejava11,com.sapient.utility,ClaimAppStream,120,0,8,0,25,0,9,0,5,0
 globalinsyrancejava11,com.sapient.utility,OwnerThreadApp,55,0,2,0,12,0,3,0,2,0
 globalinsyrancejava11,com.sapient.utility,VehicleSimulationApp,34,0,2,0,7,0,3,0,2,0
 globalinsyrancejava11,com.sapient.dao,CovidImpl,82,0,6,0,23,0,5,0,2,0
-globalinsyrancejava11,com.sapient.dao,ClaimImpl,72,0,2,0,19,0,4,0,3,0
+globalinsyrancejava11,com.sapient.dao,ClaimImpl,14,73,1,1,3,17,1,3,0,3
 globalinsyrancejava11,com.sapient,Main,122,0,6,0,21,0,9,0,6,0
 globalinsyrancejava11,com.sapient.vos,TollBooth,9,0,0,0,4,0,2,0,2,0
 globalinsyrancejava11,com.sapient.vos,Bridge,9,0,0,0,4,0,2,0,2,0
@@ -27,8 +27,8 @@ globalinsyrancejava11,com.sapient.facades,ClaimFacade,7,0,0,0,1,0,1,0,1,0
 globalinsyrancejava11,com.sapient.facades,PaymentImpl,3,0,0,0,1,0,1,0,1,0
 globalinsyrancejava11,com.sapient.facades,PaymentFacade,2,0,0,0,1,0,1,0,1,0
 globalinsyrancejava11,com.sapient.models,Message,107,0,16,0,5,0,18,0,10,0
-globalinsyrancejava11,com.sapient.models,Vehicle,137,0,22,0,9,0,22,0,11,0
+globalinsyrancejava11,com.sapient.models,Vehicle,134,3,22,0,8,1,21,1,10,1
 globalinsyrancejava11,com.sapient.models,Owner,124,0,22,0,5,0,21,0,10,0
-globalinsyrancejava11,com.sapient.models,Claim,155,28,20,0,2,5,16,8,6,8
+globalinsyrancejava11,com.sapient.models,Claim,156,27,20,0,2,5,19,5,9,5
 globalinsyrancejava11,com.sapient.models,CustomerVO,44,0,2,0,13,0,7,0,6,0
 globalinsyrancejava11,com.sapient.exceptions,PasswordException,4,0,0,0,2,0,1,0,1,0

@@ -9,45 +9,53 @@ import java.util.ResourceBundle;
 
 public class ClaimImpl implements ClaimFacade {
     private String fileName;
-<span class="nc" id="L12">    public ClaimImpl(String fileName) {</span>
-<span class="nc" id="L13">        this.fileName=fileName;</span>
-<span class="nc" id="L14">    }</span>
+    private String path;
+    private File file;
+    private boolean status;
+    private  ResourceBundle resourceBundle;
+    private BufferedWriter bufferedWriter;
+<span class="fc" id="L17">    public ClaimImpl(String fileName) {</span>
+<span class="fc" id="L18">        this.fileName=fileName;</span>
+<span class="fc" id="L19">       resourceBundle=ResourceBundle.getBundle(&quot;db&quot;);</span>
+<span class="fc" id="L20">        path=resourceBundle.getString(&quot;path&quot;);</span>
+<span class="fc" id="L21">        file=new File(path,fileName);</span>
+<span class="fc" id="L22">    }</span>
 
     @Override
     public boolean addClaim(Claim claim, Vehicle vehicle) throws IOException {
-<span class="nc" id="L18">        ResourceBundle resourceBundle=ResourceBundle.getBundle(&quot;db&quot;);</span>
-<span class="nc" id="L19">        String path=resourceBundle.getString(&quot;path&quot;);</span>
-<span class="nc" id="L20">        File file=new File(path,fileName);</span>
-<span class="nc" id="L21">        BufferedWriter bufferedWriter=null;</span>
-<span class="nc bnc" id="L22" title="All 2 branches missed.">        if(file.exists()){</span>
-<span class="nc" id="L23">            writeData(claim, file, bufferedWriter);</span>
+
+
+<span class="pc bpc" id="L28" title="1 of 2 branches missed.">        if(file.exists()){</span>
+<span class="fc" id="L29">            writeData(claim, file, bufferedWriter);</span>
+<span class="fc" id="L30">            status=true;</span>
         }
         else
         {
-<span class="nc" id="L27">            file.createNewFile();</span>
-<span class="nc" id="L28">            writeData(claim, file, bufferedWriter);</span>
+<span class="nc" id="L34">            file.createNewFile();</span>
+<span class="nc" id="L35">            writeData(claim, file, bufferedWriter);</span>
+<span class="nc" id="L36">            status=true;</span>
         }
 
 
 
 
-<span class="nc" id="L34">        return false;</span>
+<span class="fc" id="L42">        return status;</span>
     }
 
     private void writeData(Claim claim, File file, BufferedWriter bufferedWriter) throws IOException {
 
 
-<span class="nc" id="L40">        try (FileWriter fw = new FileWriter(file);</span>
-<span class="nc" id="L41">             BufferedWriter bw = new BufferedWriter(fw)) {</span>
+<span class="fc" id="L48">        try (FileWriter fw = new FileWriter(file);</span>
+<span class="fc" id="L49">             BufferedWriter bw = new BufferedWriter(fw)) {</span>
 
-<span class="nc" id="L43">            bw.write(claim.getClaimId() + &quot;,&quot;);</span>
-<span class="nc" id="L44">            bw.write(claim.getPolicyNo() + &quot;,&quot;);</span>
-<span class="nc" id="L45">            bw.write(claim.getClaimAmount() + &quot;,&quot;);</span>
-<span class="nc" id="L46">            bw.write(claim.getClaimDate() + &quot;\n&quot;);</span>
+<span class="fc" id="L51">            bw.write(claim.getClaimId() + &quot;,&quot;);</span>
+<span class="fc" id="L52">            bw.write(claim.getPolicyNo() + &quot;,&quot;);</span>
+<span class="fc" id="L53">            bw.write(claim.getClaimAmount() + &quot;,&quot;);</span>
+<span class="fc" id="L54">            bw.write(claim.getClaimDate() + &quot;\n&quot;);</span>
         }
 
 
 
-<span class="nc" id="L51">    }</span>
+<span class="fc" id="L59">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

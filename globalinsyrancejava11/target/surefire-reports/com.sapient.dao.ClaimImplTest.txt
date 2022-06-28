@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: com.sapient.models.ClaimTest
+Test set: com.sapient.dao.ClaimImplTest
 -------------------------------------------------------------------------------
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in com.sapient.models.ClaimTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.133 s - in com.sapient.dao.ClaimImplTest
