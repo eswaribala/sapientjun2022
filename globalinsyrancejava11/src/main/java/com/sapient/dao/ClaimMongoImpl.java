@@ -43,4 +43,12 @@ public class ClaimMongoImpl implements ClaimFacade {
         status=true;
         return status;
     }
+
+    @Override
+    public boolean updateClaim(long claimId, long claimAmount) {
+        mongoCollection.updateOne(new Document("claimId",claimId),
+               new Document("$set",new Document("claimAmount",claimAmount)));
+        status=true;
+        return status;
+    }
 }

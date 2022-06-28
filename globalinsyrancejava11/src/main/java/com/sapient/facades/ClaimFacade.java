@@ -19,6 +19,8 @@ public interface ClaimFacade {
         return new Random().nextInt(10000);
     }
 
-
+   default boolean updateClaim(long claimId,long claimAmount){
+       return false;
+   }
 
 }

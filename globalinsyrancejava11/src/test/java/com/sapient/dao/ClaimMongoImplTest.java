@@ -24,9 +24,9 @@ public class ClaimMongoImplTest {
     public void createClaimDaoInstance(){
         claimFacade=new ClaimMongoImpl();
 
-        claim=new Claim(485685,34598459,
-                450000,
-                LocalDate.of(2022,2,12));
+        claim=new Claim(485686,34598460,
+                50000,
+                LocalDate.of(2022,3,12));
 
     }
 
@@ -34,9 +34,13 @@ public class ClaimMongoImplTest {
     @Tag("dev")
     public void addClaimTest(){
 
+        assertTrue(claimFacade.addClaim(claim));
+    }
+    @Test
+    @Tag("dev")
+    public void updateClaimTest(){
 
-          assertTrue(claimFacade.addClaim(claim));
-
+        assertTrue(claimFacade.updateClaim( 485686,60000));
     }
 
     @AfterEach
