@@ -6,6 +6,7 @@ import com.mongodb.DocumentToDBRefTransformer;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
+import com.mongodb.client.model.Filters;
 import com.sapient.facades.ClaimFacade;
 import com.sapient.helpers.MongoDBHelper;
 import com.sapient.models.Claim;
@@ -67,4 +68,13 @@ public class ClaimMongoImpl implements ClaimFacade {
         return claims;
     }
 
+    //deletion
+
+
+    @Override
+    public boolean deleteClaimById(long claimId) {
+        mongoCollection.deleteOne(Filters.eq("claimId",claimId));
+        status=true;
+        return status;
+    }
 }

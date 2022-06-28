@@ -28,9 +28,9 @@ public class ClaimMongoImplTest {
     public void createClaimDaoInstance(){
         claimFacade=new ClaimMongoImpl();
 
-        claim=new Claim(485686,34598460,
-                50000,
-                LocalDate.of(2022,3,12));
+        claim=new Claim(485685,34598459,
+                40000,
+                LocalDate.of(2022,4,12));
 
     }
 
@@ -51,7 +51,12 @@ public class ClaimMongoImplTest {
     public void searchClaimsTest(){
 
          assertThat(claimFacade.getAllClaims(),not(empty()));
+    }
+    @Test
+    @Tag("dev")
+    public void deleteClaimByIdTest(){
 
+       assertTrue(claimFacade.deleteClaimById(485685));
     }
     @AfterEach
     public void unLinkClaimInstances(){
