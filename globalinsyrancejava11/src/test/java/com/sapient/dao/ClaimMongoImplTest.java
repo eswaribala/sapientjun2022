@@ -14,6 +14,7 @@ import java.time.LocalDate;
 
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.collection.IsEmptyCollection.empty;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -52,6 +53,12 @@ public class ClaimMongoImplTest {
     public void searchClaimsTest(){
 
          assertThat(claimFacade.getAllClaims(),not(empty()));
+    }
+    @Test
+    @Tag("dev")
+    public void limitClaimsTest(){
+
+        assertThat(claimFacade.getAllClaims(),hasSize(1));
     }
     @Test
     @Tag("dev")
