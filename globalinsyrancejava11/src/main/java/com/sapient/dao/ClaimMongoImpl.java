@@ -2,12 +2,14 @@ package com.sapient.dao;
 
 
 import com.google.gson.Gson;
+import com.mongodb.DocumentToDBRefTransformer;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.sapient.facades.ClaimFacade;
 import com.sapient.helpers.MongoDBHelper;
 import com.sapient.models.Claim;
 import com.sapient.models.Vehicle;
+import org.bson.Document;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
@@ -34,7 +36,10 @@ public class ClaimMongoImpl implements ClaimFacade {
 
     @Override
     public boolean addClaim(Claim claim){
-        mongoCollection.insertOne(gson.toJson(claim));
+        //java object to json
+        //json to bson document
+        Document document= Document.parse(gson.toJson(claim));
+        mongoCollection.insertOne(document);
         status=true;
         return status;
     }
