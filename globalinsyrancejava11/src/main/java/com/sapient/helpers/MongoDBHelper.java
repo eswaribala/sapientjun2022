@@ -7,11 +7,11 @@ import java.util.ResourceBundle;
 
 public class MongoDBHelper {
 
-   private ResourceBundle resourceBundle;
-   private String host;
-   private String port;
+   private static ResourceBundle resourceBundle;
+   private static String host;
+   private static String port;
 
-    public MongoClient getConnection()
+    public static MongoClient getConnection()
     {
         resourceBundle=ResourceBundle.getBundle("db");
         host=resourceBundle.getString("host");
