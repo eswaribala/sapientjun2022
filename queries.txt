@@ -1,0 +1,2053 @@
+CREATE ROLE admin WITH
+	LOGIN
+	SUPERUSER
+	CREATEDB
+	CREATEROLE
+	INHERIT
+	REPLICATION
+	CONNECTION LIMIT -1
+	PASSWORD 'xxxxxx';
+GRANT pem_admin, pem_agent, pem_agent_pool, pem_comp_audit_manager, pem_comp_auto_discovery, pem_comp_bart TO admin WITH ADMIN OPTION;
+=================================================================
+SELECT datname, oid FROM pg_database WHERE datname = 'testdb';
+================================================================
+SELECT relname, oid, relfilenode FROM pg_class WHERE relname = 'testdb';
+=================================================================
+create database mydb;
+SELECT * FROM pg_catalog.pg_namespace;
+====================================================
+access db
+\c mydb;
+
+list tables
+\dt
+
+============================================================
+CREATE TABLE products (
+product_no integer,
+name text,
+price numeric DEFAULT 9.99
+);
+===================================
+Code:
+
+CREATE TABLE educba(student_id SERIAL,name VARCHAR(100));
+
+Then internally, there are a bunch of commands being executed.
+
+Some of them are as follows:
+
+CREATE SEQUENCE educba_student_id_seq;
+
+CREATE TABLE educba (student_id integer NOT NULL DEFAULT nextval('educba_student_id_seq'), name VARCHAR(100));
+
+ALTER SEQUENCE educba_student_id_seq OWNED BY educba.student_id;
+=================================================
+
+
+=============================================================
+CREATE TABLE products (
+product_no integer,
+name text,
+price numeric CHECK (price > 0)
+);
+===========================================
+CREATE TABLE products (
+product_no integer,
+name text,
+price numeric CONSTRAINT positive_price CHECK (price > 0)
+);
+===============================================
+CREATE TABLE products (
+product_no integer,
+name text,
+price numeric CHECK (price > 0),
+discounted_price numeric CHECK (discounted_price > 0),
+CHECK (price > discounted_price)
+);
+==================================================
+CREATE TABLE products (
+product_no integer,
+name text,
+price numeric,
+CHECK (price > 0),
+discounted_price numeric,
+CHECK (discounted_price > 0),
+CONSTRAINT valid_discount CHECK (price > discounted_price)
+);
+========================================================
+CREATE TABLE products (
+product_no integer NOT NULL,
+name text NOT NULL,
+price numeric NOT NULL CHECK (price > 0)
+);
+==============================================
+CREATE TABLE products (
+product_no integer,
+name text,
+price numeric,
+UNIQUE (product_no));
+===========================================
+CREATE TABLE products (
+product_no integer PRIMARY KEY,
+name text,
+price numeric
+);
+==========================================
+CREATE TABLE orders (
+order_id integer PRIMARY KEY,
+product_no integer REFERENCES products (product_no),
+quantity integer
+);
+===============================================================
+CREATE TABLE weather(city varchar(80), temp_lo int,
+temp_hi int, -- high temperature prcp real, date date);
+==================================================================
+create table dummy_table(name varchar(20),address text,age int);
+=================================================================
+ insert into dummy_table values('XYZ','location-A',25);
+==================================================================
+ CREATE TABLE person (name text,current_mood mood);
+========================================================================
+
+CREATE TABLE t1 (
+a integer PRIMARY KEY,
+b integer,
+c integer,
+FOREIGN KEY (b, c) REFERENCES other_table (c1, c2)
+);
+===========================================================
+CREATE TABLE products (
+product_no integer PRIMARY KEY,
+name text,
+price numeric
+);
+CREATE TABLE orders (
+order_id integer PRIMARY KEY,
+shipping_address text,
+...
+);
+CREATE TABLE order_items (
+product_no integer REFERENCES products ON DELETE RESTRICT,
+order_id integer REFERENCES orders ON DELETE CASCADE,
+quantity integer,
+PRIMARY KEY (product_no, order_id)
+);
+==========================================================
+ALTER TABLE products ADD CHECK (name <> '');
+ALTER TABLE products ADD CONSTRAINT some_name UNIQUE (product_no);
+ALTER TABLE products ADD FOREIGN KEY (product_group_id) REFERENCES
+product_groups;
+======================================================
+ALTER TABLE products ALTER COLUMN product_no DROP NOT NULL;
+ALTER TABLE products DROP CONSTRAINT some_name;
+====================================================
+ALTER TABLE products ALTER COLUMN price TYPE numeric(10,2);
+===========================================================
+ALTER TABLE products RENAME COLUMN product_no TO product_number;
+===========================================================
+ALTER TABLE products RENAME TO items;
+=======================================================
+
+create table tstz(ts timestamp, tstz timestamptz);
+
+set timezone to 'Europe/Paris';
+SET TIMEZONE = 'Asia/Calcutta';  
+select now();
+SELECT CURRENT_TIMESTAMP;  
+SELECT timezone('America/New_York','2016-06-01 00:00'::timestamptz);  
+insert into tstz values(now(), now());
+
+set timezone to 'Pacific/Tahiti';
+select now();
+insert into tstz values(now(), now());
+
+set timezone to 'Europe/Paris';
+table tstz;
+
+set timezone to 'Pacific/Tahiti';
+table tstz;
+
+=========================================
+CREATE TABLE Purchase (  
+    Purchase_id serial NOT NULL PRIMARY KEY,  
+    Purchase_description json NOT NULL  
+);  
+INSERT INTO Purchase (Purchase_description)  
+VALUES('{ "purchaser": "Olivia Smith", "items": {"product": "iphone11 pro max","qty": 1}}');  
+INSERT INTO Purchase (Purchase_description)  
+VALUES('{ "purchaser": "Maria Rodriguez", "items": {"product": "Hair shampoo","qty": 2}}'),  
+('{ "purchaser": "Thomas Jones", "items": {"product": "Belgium chocolate ice cream","qty": 7}}'),  
+('{ "purchaser": "Margaret Davis", "items": {"product": "Barbie doll","qty": 3}}'),  
+ ('{ "purchaser": "Elizabeth Brown", "items": {"product": "puzzle set","qty": 10}}');  
+
+
+
+==============================================
+CREATE TABLE Movie (  
+    Movie_id serial primary key,  
+    Movie_name VARCHAR,  
+    Movie_Attr hstore  
+);
+
+NSERT INTO Movie (Movie_name, Movie_attr)  
+VALUES  
+(       'Avengers Endgame',  
+        '"rating" => "8.4",  
+       "movie_genres" => "Action/Sci-fi",  
+       "language" => "English",  
+       "release_year" => "2019",  
+        "running_time" => "181 Minutes"'   
+),    
+    (   'US',  
+        '"rating" => "6.9",  
+       "movie_genres" => "Horror/Thriller",  
+       "language"  => "English",  
+       "release_year" => "2019",  
+        "running_time"  => "116 Minutes"'  
+    ),  
+ (  'Dolittle',  
+        '"rating" => "5.6",  
+       "movie_genres" => "Adventure/Family ",  
+       "language" => "English",  
+       "release_year" => "2020",  
+        "running_time" => "101 Minutes"'  
+);  
+==============================================================
+  
+CREATE TABLE person_details (  
+    id serial PRIMARY KEY,  
+    person_name VARCHAR (200) ,  
+    mobile_numbers TEXT []  
+);  
+INSERT INTO person_details (person_name, mobile_number)  
+VALUES('Maria Smith',ARRAY [ '(444)-333-1234','(555)-333-5432' ]);  
+===================================================================
+
+
+
+
+
+
+
+
+===============================================
+CREATE FUNCTION clean_emp() RETURNS void AS '
+    DELETE FROM emp
+        WHERE salary < 0;
+' LANGUAGE SQL;
+
+SELECT clean_emp();
+
+ clean_emp
+-----------
+
+(1 row)
+=========================================================
+INSERT INTO mytable VALUES ($1);
+============================================
+CREATE FUNCTION one() RETURNS integer AS $$
+    SELECT 1 AS result;
+$$ LANGUAGE SQL;
+
+-- Alternative syntax for string literal:
+CREATE FUNCTION one() RETURNS integer AS '
+    SELECT 1 AS result;
+' LANGUAGE SQL;
+
+SELECT one();
+
+========================================================
+CREATE FUNCTION add_em(x integer, y integer) RETURNS integer AS $$
+    SELECT x + y;
+$$ LANGUAGE SQL;
+
+SELECT add_em(1, 2) AS answer;
+=================================================================
+CREATE FUNCTION add_em(integer, integer) RETURNS integer AS $$
+    SELECT $1 + $2;
+$$ LANGUAGE SQL;
+
+SELECT add_em(1, 2) AS answer;
+
+==========================================================
+CREATE FUNCTION tf1 (accountno integer, debit numeric) RETURNS integer AS $$
+    UPDATE bank
+        SET balance = balance - debit
+        WHERE accountno = tf1.accountno;
+    SELECT 1;
+$$ LANGUAGE SQL;
+=========================================================
+CREATE TABLE emp (
+    name        text,
+    salary      numeric,
+    age         integer,
+    cubicle     point
+);
+
+INSERT INTO emp VALUES ('Bill', 4200, 45, '(2,1)');
+
+CREATE FUNCTION double_salary(emp) RETURNS numeric AS $$
+    SELECT $1.salary * 2 AS salary;
+$$ LANGUAGE SQL;
+
+SELECT name, double_salary(emp.*) AS dream
+    FROM emp
+    WHERE emp.cubicle ~= point '(2,1)';
+===================================================
+CREATE FUNCTION foo(a int, b int DEFAULT 2, c int DEFAULT 3)
+RETURNS int
+LANGUAGE SQL
+AS $$
+    SELECT $1 + $2 + $3;
+$$;
+
+SELECT foo(10, 20, 30);
+ foo 
+-----
+  60
+(1 row)
+
+SELECT foo(10, 20);
+ foo 
+-----
+  33
+(1 row)
+
+SELECT foo(10);
+ foo 
+-----
+  15
+(1 row)
+===========================================
+CREATE TABLE foo (fooid int, foosubid int, fooname text);
+INSERT INTO foo VALUES (1, 1, 'Joe');
+INSERT INTO foo VALUES (1, 2, 'Ed');
+INSERT INTO foo VALUES (2, 1, 'Mary');
+
+CREATE FUNCTION getfoo(int) RETURNS foo AS $$
+    SELECT * FROM foo WHERE fooid = $1;
+$$ LANGUAGE SQL;
+
+SELECT *, upper(fooname) FROM getfoo(1) AS t1;
+============================================
+CREATE FUNCTION getfoo(int) RETURNS SETOF foo AS $$
+    SELECT * FROM foo WHERE fooid = $1;
+$$ LANGUAGE SQL;
+
+SELECT * FROM getfoo(1) AS t1;
+=====================================================
+CREATE FUNCTION anyleast (VARIADIC anyarray) RETURNS anyelement AS $$
+    SELECT min($1[i]) FROM generate_subscripts($1, 1) g(i);
+$$ LANGUAGE SQL;
+
+SELECT anyleast(10, -1, 5, 4);
+ anyleast 
+----------
+       -1
+(1 row)
+
+SELECT anyleast('abc'::text, 'def');
+ anyleast 
+----------
+ abc
+(1 row)
+
+CREATE FUNCTION concat_values(text, VARIADIC anyarray) RETURNS text AS $$
+    SELECT array_to_string($2, $1);
+$$ LANGUAGE SQL;
+
+SELECT concat_values('|', 1, 4, 2);
+ concat_values 
+---------------
+ 1|4|2
+(1 row)
+=====================================================
+PostgreSQL String Functions and Operators
+
+PostgreSQL concatenate operator
+
+The PostgreSQL concatenate operator ( || ) is used to concatenate two or more strings and non strings.
+
+Example : SELECT 'w'||3||'resource' AS "Concatenate Operator ( || )";
+
+Output : w3resource
+
+PostgreSQL bit_length() function
+
+The PostgreSQL bit_length function is used to count the number of bits from a string.
+
+Example : SELECT bit_length('w3resource') AS "bit_length";
+
+Output : 80
+
+char_length(),character_length()
+
+The PostgreSQL char_length function or character_length function is used to count the number of characters in a specified string .
+
+Example : SELECT char_length('w3resource') AS "Length of a String";
+
+Output : 10
+
+PostgreSQL lower() function
+
+The PostgreSQL lower function is used to convert a string from upper case to lower case.
+
+Example : SELECT lower('W3RESOURCE') AS "Upper to Lower" ;
+
+Output : w3resource
+
+PostgreSQL octet_length() function
+
+The PostgreSQL octet_length function is used to count the number of bytes in a specified string.
+
+Example : SELECT octet_length('w3resource') AS "octet_length";
+
+Output : 10
+
+PostgreSQL overlay() function
+
+The PostgreSQL overlay function is used to replace a specified text or string in place of a text or substring within a mother string.
+
+Syntax : overlay( placing from [ for ] )
+
+The replacement substring mentioned by the starting_position, from where the replacement substring will start and number_of_characters mentioned for replacement from the specified position.
+
+Example : SELECT overlay('w3333333rce' placing 'resou' from 3)
+
+Output : w3resou3rce
+
+Example : SELECT overlay('w3333333rce' placing 'resou' from 3 for 4)
+
+Output : w3resou33rce
+
+PostgreSQL position() function
+
+The PostgreSQL position function is used to find the location of substring within a specified string.
+
+Example : SELECT position('our' in 'w3resource');
+
+Output : 6
+
+PostgreSQL substring() function
+
+The PostgreSQL substring function is used to extract a string containing a specific number of characters from a particular position of a given string.
+
+Example : SELECT substring('w3resource' from 4 for 5);
+
+Output : esour
+
+PostgreSQL trim() function
+
+The PostgreSQL trim function is used to remove spaces or set of characters from the leading or trailing or both side from a string.
+
+Example : SELECT trim(from ' w3resource ');
+
+Output : w3resource
+
+Example : SELECT trim(trailing 'st' from 'tetew3resourcestst');
+
+Output : tetew3resource
+
+PostgreSQL upper() function
+
+The PostgreSQL upper function is used to convert a string from lower case to upper case.
+
+Example : SELECT upper('w3resource');
+
+Output : W3RESOURCE
+
+PostgreSQL ASCII() function
+
+The PostgreSQL ASCII function is used to get the code of the first character of a given string.
+
+Example : SELECT ascii('w3resource') AS "ASCII of first character";
+
+Output : 119
+
+PostgreSQL btrim() function
+
+The PostgreSQL btrim function is used to remove the longest string specified in the argument from the start and end of the given string. If no string for removing default space will be removed from leading and trailing side from the string.
+
+Example : SELECT btrim('settw3resourcesttes', 'test');
+
+Output : w3resourc
+
+PostgreSQL chr() function
+
+The PostgreSQL chr function is used to return the corresponding character against the given code within the argument.
+
+Example : SELECT chr(90) AS "CODE of chr(90)";
+
+Output : Z
+
+PostgreSQL concat() function
+
+The PostgreSQL concat function is used to concatenate all arguments except NULL, it will be ignored.
+
+Example1 : SELECT concat('w',3,'r', 'esource','.','com');
+
+Output : w3resource.com
+
+Example2 : SELECT concat('w',3,'r', 'esource',NULL,'.','com');
+
+Output : w3resource.com
+
+PostgreSQL initcap() function
+
+The PostgreSQL initcap function is used to convert the first letter of each word to uppercase and the remaining to lower case.
+
+Example : SELECT initcap('RABINDRANATH TAGORE')
+
+AS "First Character OR each word Capital";
+
+Output : Rabindranath Tagore
+
+PostgreSQL left() function
+
+The PostgreSQL left function is used to extract n number of characters specified in the argument from the left of a given string. When the value of n is negative, the extraction will be the last n characters.
+
+Example : SELECT left('w3resource',3)
+
+AS "Extract 3 characters from the left";
+
+Output : w3r
+
+PostgreSQL length() function
+
+The PostgreSQL length function is used to find the length of a string i.e. number of characters in the given string.
+
+Example : SELECT length('w3resource')
+
+AS "Length of a String";
+
+Output : 10
+
+PostgreSQL lpad() function
+
+The PostgreSQL lpad function is used to fill up a string of specific length by a substring. If the substring length is equal to the remaining main string length, it will fill up properly, but if less, the substring will repeat until it is not filling up, if longer than the remaining length or specified length it will be truncated on the right.
+
+Example : SELECT lpad('esource', 10, 'w3r');
+
+Output : w3resource
+
+Example2 : SELECT lpad('esource', 13, 'w3r');
+
+Output : w3rw3resource
+
+Example3 : SELECT lpad('w3esource', 8, 'lpad');
+
+Output : w3resour
+
+PostgreSQL ltrim() function
+
+The PostgreSQL ltrim function is used to remove spaces or set of characters which are matching with the trimming_text, from the start of a string.
+
+Example1 : SELECT ltrim('testltrim', 'best');
+
+Output : ltrim
+
+Example2 : SELECT ltrim(' ltrim');
+
+Output : ltrim
+
+PostgreSQL pg_client_encoding() function
+
+The PostgreSQL pg_client_encoding function is used to get the current client encoding name.
+
+Example : SELECT pg_client_encoding();
+
+Output : UTF8
+
+PostgreSQL quote_ident() function
+
+The PostgreSQL quote_ident function is used to make a given string with suitably double quoted, so as it can be used like an identifier in an sql statement string if required.
+
+Example : SELECT quote_ident('SELECT * FROM employee');
+
+Output : “ SELECT * FROM employee”
+
+PostgreSQL repeat() function
+
+The PostgreSQL repeat function is used to repeat a specified string to a specified number of times
+
+Example : SELECT repeat('test__', 5);
+
+Output : test_test_test_test_test_
+
+PostgreSQL replace() function
+
+The PostgreSQL replace function is used to replace all occurrences of matching_string in the string with the replace_with string.
+
+Example : SELECT replace('test string', 'st', '**');
+
+Output : te** **ring
+
+PostgreSQL rpad() function
+
+The PostgreSQL rpad function is used to -
+★ fill up a string of specific length by a substring.
+★ If the length of the substring is equal to the remaining length of main string it will fill up properly.
+★ if less than the remaining length, the substring will repeat until it is not filling up.
+★ if longer than the remaining length or specified length it will be truncated on the left.
+
+Example : SELECT rpad('w3r', 10, 'esource');
+
+Output : w3resource
+
+Example : SELECT rpad('w3r', 7, 'esource');
+
+Output : w3resou
+
+PostgreSQL rtrim() function
+
+The PostgreSQL rtrim function is used to remove spaces or set of characters which are matching with the trimming_text, from the end of a string.
+
+Example : SELECT rtrim('rtrimtest', 'best');
+
+Output : rtrim
+
+PostgreSQL split_part() function
+
+The PostgreSQL split_part function is used to split a given string based on delimiter and pick out the desire field from the string, start from left of the string.
+
+Example :SELECT split_part('ordno-#-orddt-#-ordamt', '-#-', 2);
+
+Output : orddt
+
+PostgreSQL strpos() function
+
+The PostgreSQL strpos() function is used to find the position, from where the substring is being matched within the string.
+
+Example : SELECT strpos('w3resource', 'so') AS "Position of substring";
+
+Output : 5
+
+PostgreSQL substr() function
+
+The PostgreSQL substr function is used to extract a specific number of characters from a particular position of a string.
+
+Example : SELECT substr('w3resource',2,3) AS "Extracting characters";
+
+Output : 3re
+
+PostgreSQL translate() function
+
+The PostgreSQL translate function is used to translate any character in the string by a character in the specified replace string, corresponding to the characters in matching string. The translate will happen when any character in the string matching with the character in the matching string.
+
+Example : SELECT translate('translate', 'rnlt', '123');
+
+Output : 1a2s3ae
+
+PostgreSQL right() function
+
+The PostgreSQL right function is used to extract n number of characters specified in the argument from the right of a given string. When the value of n is negative, the extraction will be the first n characters.
+
+Example : SELECT right('w3resource',5);
+
+Output : ource
+
+PostgreSQL reverse() function
+
+The PostgreSQL reverse function is used to arrange a string in reverse order.
+
+Example : SELECT reverse('w3resource');
+
+Output : ecruoser3w
+====================================================
+PostgreSQL : DateTime functions and operators
+
+age(timestamp, timestamp)
+
+The age() function subtract arguments, producing a "symbolic" result that uses years and months.
+
+Return Type : interval
+
+Example : SELECT age(timestamp '2003-05-15', timestamp '1973-07-19');
+
+Output :
+
+        age
+----------------------------------
+29 years 9 mons 27 days
+(1 row)
+age(timestamp)
+
+The age() function is used to subtract age from current_date (at midnight).
+
+Return Type : interval
+
+Example : SELECT age(timestamp '1973-07-19');
+
+Output :
+
+          age
+--------------------------------
+41 years 1 mon 4 days
+(1 row)
+clock_timestamp()
+
+The clock_timestamp() function shows current date and time (changes during statement execution).
+
+Return Type : timestamp with time zone.
+
+Example : SELECT clock_timestamp();
+
+Output :
+
+           clock_timestamp
+-------------------------------------------
+2014-08-27 17:25:03.121+05:30
+(1 row)
+N.B. The outputs depending upon the current date and time.
+
+current_date()
+
+The current_date() function returns the current date.
+
+Return Type : date
+
+Example : SELECT current_date;
+
+Output :
+
+      date
+-----------------
+2014-08-27
+(1 row)
+N.B. The outputs depending upon the current date and time.
+
+current_time()
+
+The current_time() function returns the current time.
+
+Return Type : time with time zone
+
+Example : SELECT current_time;
+
+Output :
+
+    timetz
+---------------------------
+17:38:47.982+05:30
+(1 row)
+N.B. The outputs depending upon the current time zone.
+
+current_timestamp
+
+The current_timestamp function returns the current date and time according to the timestamp.
+
+Return Type : timestamp with time zone
+
+Example : SELECT current_timestamp;
+
+Output :
+
+            now
+-------------------------------------------
+2014-08-27 17:39:22.139+05:30
+(1 row)
+N.B. The outputs depending upon the current date and time.
+
+date_part(text, timestamp)
+
+The date_part() function is used to get subfield (equivalent to extract).
+
+Return Type : double precision
+
+Example : SELECT date_part('hour', timestamp '2002-09-17 19:27:45');
+
+Output :
+
+date_part
+-----------------
+19
+(1 row)
+date_part(text, interval)
+
+The date_part() function is used to get subfield (equivalent to extract).
+
+Return Type : double precision
+
+Example : SELECT date_part('month', interval '3 years 7 months');
+
+Output :
+
+   date_part
+----------------
+7
+(1 row)
+date_trunc(text, timestamp)
+
+The date_trunc() function is used to truncate to specified precision;
+
+Return Type : timestamp
+
+Example : SELECT date_trunc('hour', timestamp '2002-09-17 19:27:45');
+
+Output :
+
+     date_trunc
+-----------------------------
+2002-09-17 19:00:00
+(1 row)
+extract(field from timestamp)
+
+The date_trunc() function is used to get subfield.
+
+Return Type : double precision
+
+Example : SELECT extract(hour from timestamp '2002-09-17 19:27:45');
+
+Output :
+
+date_part
+-----------------
+19
+(1 row)
+extract(field from interval)
+
+The date_trunc() function is used to get subfield.
+
+Return Type : double precision
+
+Example : SELECT extract(month from interval '3 years 7 months');
+
+Output :
+
+date_part
+---------------
+7
+(1 row)
+isfinite(date)
+
+The isfinite() function is used to get test for finite date (not +/-infinity).
+
+Return Type : boolean
+
+Example : SELECT isfinite(date '2002-09-17');
+
+Output :
+
+isfinite
+----------
+t
+(1 row)
+isfinite(timestamp)
+
+The isfinite() function is used to get test for finite date (not +/-infinity).
+
+Return Type : boolean
+
+Example : SELECT isfinite(timestamp '2002-09-17 19:27:45');
+
+Output :
+
+isfinite
+--------------
+t
+(1 row)
+isfinite(interval)
+
+This function is used to test for finite interval.
+
+Return Type : boolean
+
+Example : SELECT isfinite(interval '7 hours');
+
+Output :
+
+isfinite
+----------
+t
+(1 row)
+justify_days(interval)
+
+This function is used to adjust interval so 30-day time periods are represented as months.
+
+Return Type : interval
+
+Example : SELECT justify_days(interval '47 days');
+
+Output :
+
+justify_days
+----------------------
+1 mon 17 days
+(1 row)
+justify_hours(interval)
+
+This function is used to adjust interval so 24-hour time periods are represented as days.
+
+Return Type : interval
+
+Example : SELECT justify_hours(interval '32 hours');
+
+Output :
+
+justify_hours
+----------------------
+1 day 08:00:00
+(1 row)
+justify_interval(interval)
+
+This function is used to adjust interval using justify_days and justify_hours, with additional sign adjustments.
+
+Return Type : interval
+
+Example : SELECT justify_interval(interval '1 mon -1 hour');
+
+Output :
+
+justify_interval
+-------------------------
+29 days 23:00:00
+(1 row)
+localtime
+
+This function is used to get current time of day.
+
+Return Type : time
+
+Example : SELECT localtime;
+
+Output :
+
+time
+---------------------------
+17:45:55.808
+(1 row)
+N.B. The outputs depending upon the current time.
+
+localtimestamp
+
+This function is used to get current date and time (start of current transaction).
+
+Return Type : timestamp
+
+Example : SELECT localtimestamp;
+
+Output :
+
+timestamp
+-------------------------------------
+2014-08-27 17:46:28.295
+(1 row)
+N.B. The outputs depending upon the current date and time.
+
+now()
+
+This function is used to get current date and time (start of current transaction).
+
+Return Type : timestamp with time zone
+
+Example : SELECT now();
+
+Output :
+
+                 now
+----------------------------------------------
+2014-08-27 17:47:04.447+05:30
+(1 row)
+N.B. The outputs depending upon the current date and time.
+
+statement_timestamp()
+
+This function is used to get current date and time (start of current transaction).
+
+Return Type : timestamp with time zone
+
+Example : SELECT statement_timestamp();
+
+Output :
+
+        statement_timestamp
+------------------------------------------------
+2014-08-27 17:48:42.232+05:30
+(1 row)
+N.B. The outputs depending upon the current date.
+
+timeofday()
+
+This function is used to get current date and time (like clock_timestamp, but as a text string).
+
+Return Type : text
+
+Example : SELECT timeofday();
+
+Output :
+
+timeofday
+-----------------------------------------------------
+Wed Aug 27 17:49:11.447000 2014 IST
+(1 row)
+N.B. The outputs depending upon the current date.
+
+transaction_timestamp()
+
+This function is used to get current date and time (start of current transaction
+
+Return Type : timestamp with time zone
+
+Example : SELECT transaction_timestamp();
+
+Output :
+
+transaction_timestamp
+-----------------------------------------------
+2014-08-27 17:49:45.895+05:30
+(1 row)
+================================================================
+
+3.5.8 Date/Time Functions and Operators
+Table 3‑3‑28 shows the available functions for date/time value processing, with details appearing in the following subsections. Table 3‑3‑27 illustrates the behaviors of the basic arithmetic operators (+, -). For formatting functions, refer to Section 3.5.7. You should be familiar with the background information on date/time data types from Section 3.2.4.
+Table 3‑3‑27 Date/Time Operators
+Operator
+Example
+Result
++
+DATE '2001-09-28' + 7
+05-OCT-01 00:00:00
++
+TIMESTAMP '2001-09-28 13:30:00' + 3
+01-OCT-01 13:30:00
+-
+DATE '2001-10-01' – 7
+24-SEP-01 00:00:00
+-
+TIMESTAMP '2001-09-28 13:30:00' - 3
+25-SEP-01 13:30:00
+-
+TIMESTAMP '2001-09-29 03:00:00' - TIMESTAMP '2001-09-27 12:00:00'
+@ 1 day 15 hours
+In the date/time functions of Table 3‑3‑28 the use of the DATE and TIMESTAMP data types are interchangeable.
+Table 3‑3‑28 Date/Time Functions
+ 
+ 
+Function
+Return Type
+Description
+Example
+Result
+ADD_MONTHS(DATE, NUMBER)
+DATE
+Add months to a date; see Section 3.5.8.1
+ADD_MONTHS('28-FEB-97', 3.8)
+31-MAY-97 00:00:00
+CURRENT_DATE
+DATE
+Current date; see Section 3.5.8.8
+CURRENT_DATE
+04-JUL-07
+CURRENT_TIMESTAMP
+TIMESTAMP
+Returns the current date and time; see Section 3.5.8.8
+CURRENT_TIMESTAMP
+04-JUL-07 15:33:23.484
+EXTRACT(field FROM TIMESTAMP)
+DOUBLE PRECISION
+Get subfield; see Section 3.5.8.2
+EXTRACT(hour FROM TIMESTAMP '2001-02-16 20:38:40')
+20
+LAST_DAY(DATE)
+DATE
+Returns the last day of the month represented by the given date. If the given date contains a time portion, it is carried forward to the result unchanged.
+LAST_DAY('14-APR-98')
+30-APR-98 00:00:00
+LOCALTIMESTAMP [ (precision) ]
+TIMESTAMP
+Current date and time (start of current transaction); see Section 3.5.8.8
+LOCALTIMESTAMP
+04-JUL-07 15:33:23.484
+MONTHS_BETWEEN(DATE, DATE)
+NUMBER
+Number of months between two dates; see Section 3.5.8.3
+MONTHS_BETWEEN('28-FEB-07', '30-NOV-06')
+3
+NEXT_DAY(DATE, dayofweek)
+DATE
+Date falling on dayofweek following specified date; see Section 3.5.8.4
+NEXT_DAY('16-APR-07','FRI')
+20-APR-07 00:00:00
+NEW_TIME(DATE, VARCHAR, VARCHAR)
+DATE
+Converts a date and time to an alternate time zone
+NEW_TIME(TO_DATE '2005/05/29 01:45', 'AST', 'PST')
+2005/05/29
+21:45:00
+NUMTODSINTERVAL(NUMBER, INTERVAL)
+INTERVAL
+Converts a number to a specified day or second interval; see Section 3.5.8.9.
+SELECT numtodsinterval(100, ‘hour’);
+4 days 04:00:00
+NUMTOYMINTERVAL(NUMBER, INTERVAL)
+INTERVAL
+Converts a number to a specified year or month interval; see Section 3.5.8.10.
+SELECT numtoyminterval(100, ‘month’);
+8 years 4 mons
+ROUND(DATE [, format ])
+DATE
+Date rounded according to format; see Section 3.5.8.6
+ROUND(TO_DATE('29-MAY-05'),'MON')
+01-JUN-05 00:00:00
+SYS_EXTRACT_UTC(TIMESTAMP WITH TIME ZONE)
+TIMESTAMP
+Returns Coordinated Universal Time
+SYS_EXTRACT_UTC(CAST('24-MAR-11 12:30:00PM -04:00' AS TIMESTAMP WITH TIME ZONE))
+24-MAR-11 16:30:00
+SYSDATE
+DATE
+Returns current date and time
+SYSDATE
+01-AUG-12 11:12:34
+SYSTIMESTAMP()
+TIMESTAMP
+Returns current date and time
+SYSTIMESTAMP
+01-AUG-12 11:11:23.665229 -07:00
+TRUNC(DATE [format])
+DATE
+Truncate according to format; see Section 3.5.8.7
+TRUNC(TO_DATE('29-MAY-05'), 'MON')
+01-MAY-05
+00:00:00
+ 
+3.5.8.1 ADD_MONTHS
+The ADD_MONTHS functions adds (or subtracts if the second parameter is negative) the specified number of months to the given date. The resulting day of the month is the same as the day of the month of the given date except when the day is the last day of the month in which case the resulting date always falls on the last day of the month.
+Any fractional portion of the number of months parameter is truncated before performing the calculation.
+If the given date contains a time portion, it is carried forward to the result unchanged.
+The following are examples of the ADD_MONTHS function.
+SELECT ADD_MONTHS('13-JUN-07',4) FROM DUAL;
+ 
+     add_months
+--------------------
+ 13-OCT-07 00:00:00
+(1 row)
+ 
+SELECT ADD_MONTHS('31-DEC-06',2) FROM DUAL;
+ 
+     add_months
+--------------------
+ 28-FEB-07 00:00:00
+(1 row)
+ 
+SELECT ADD_MONTHS('31-MAY-04',-3) FROM DUAL;
+ 
+     add_months
+--------------------
+ 29-FEB-04 00:00:00
+(1 row)
+ 
+3.5.8.2 EXTRACT
+The EXTRACT function retrieves subfields such as year or hour from date/time values. The EXTRACT function returns values of type DOUBLE PRECISION. The following are valid field names:
+YEAR
+The year field
+SELECT EXTRACT(YEAR FROM TIMESTAMP '2001-02-16 20:38:40') FROM DUAL;
+ 
+ date_part
+-----------
+      2001
+(1 row)
+MONTH
+The number of the month within the year (1 - 12)
+SELECT EXTRACT(MONTH FROM TIMESTAMP '2001-02-16 20:38:40') FROM DUAL;
+ 
+ date_part
+-----------
+         2
+(1 row)
+DAY
+The day (of the month) field (1 - 31)
+SELECT EXTRACT(DAY FROM TIMESTAMP '2001-02-16 20:38:40') FROM DUAL;
+ 
+ date_part
+-----------
+        16
+(1 row)
+HOUR
+The hour field (0 - 23)
+SELECT EXTRACT(HOUR FROM TIMESTAMP '2001-02-16 20:38:40') FROM DUAL;
+ 
+ date_part
+-----------
+        20
+(1 row)
+MINUTE
+The minutes field (0 - 59)
+SELECT EXTRACT(MINUTE FROM TIMESTAMP '2001-02-16 20:38:40') FROM DUAL;
+ 
+ date_part
+-----------
+        38
+(1 row)
+SECOND
+The seconds field, including fractional parts (0 - 59)
+SELECT EXTRACT(SECOND FROM TIMESTAMP '2001-02-16 20:38:40') FROM DUAL;
+ 
+ date_part
+-----------
+        40
+(1 row)
+ 
+3.5.8.3 MONTHS_BETWEEN
+The MONTHS_BETWEEN function returns the number of months between two dates. The result is a numeric value which is positive if the first date is greater than the second date or negative if the first date is less than the second date.
+The result is always a whole number of months if the day of the month of both date parameters is the same, or both date parameters fall on the last day of their respective months.
+The following are some examples of the MONTHS_BETWEEN function.
+SELECT MONTHS_BETWEEN('15-DEC-06','15-OCT-06') FROM DUAL;
+ 
+ months_between
+----------------
+              2
+(1 row)
+ 
+SELECT MONTHS_BETWEEN('15-OCT-06','15-DEC-06') FROM DUAL;
+ 
+ months_between
+----------------
+             -2
+(1 row)
+ 
+SELECT MONTHS_BETWEEN('31-JUL-00','01-JUL-00') FROM DUAL;
+ 
+ months_between
+----------------
+    0.967741935
+(1 row)
+ 
+SELECT MONTHS_BETWEEN('01-JAN-07','01-JAN-06') FROM DUAL;
+ 
+ months_between
+----------------
+             12
+(1 row)
+ 
+3.5.8.4 NEXT_DAY
+The NEXT_DAY function returns the first occurrence of the given weekday strictly greater than the given date. At least the first three letters of the weekday must be specified - e.g., SAT. If the given date contains a time portion, it is carried forward to the result unchanged.
+The following are examples of the NEXT_DAY function.
+SELECT NEXT_DAY(TO_DATE('13-AUG-07','DD-MON-YY'),'SUNDAY') FROM DUAL;
+ 
+      next_day
+--------------------
+ 19-AUG-07 00:00:00
+(1 row)
+ 
+SELECT NEXT_DAY(TO_DATE('13-AUG-07','DD-MON-YY'),'MON') FROM DUAL;
+ 
+      next_day
+--------------------
+ 20-AUG-07 00:00:00
+(1 row)
+ 
+3.5.8.5 NEW_TIME
+The NEW_TIME function converts a date and time from one time zone to another. NEW_TIME returns a value of type DATE. The syntax is:
+NEW_TIME(DATE, time_zone1, time_zone2)
+time_zone1 and time_zone2 must be string values from the Time Zone column of the following table:
+Time Zone
+Offset from UTC
+Description
+AST
+UTC+4
+Atlantic Standard Time
+ADT
+UTC+3
+Atlantic Daylight Time
+BST
+UTC+11
+Bering Standard Time
+BDT
+UTC+10
+Bering Daylight Time
+CST
+UTC+6
+Central Standard Time
+CDT
+UTC+5
+Central Daylight Time
+EST
+UTC+5
+Eastern Standard Time
+EDT
+UTC+4
+Eastern Daylight Time
+GMT
+UTC
+Greenwich Mean Time
+HST
+UTC+10
+Alaska-Hawaii Standard Time
+HDT
+UTC+9
+Alaska-Hawaii Daylight Time
+MST
+UTC+7
+Mountain Standard Time
+MDT
+UTC+6
+Mountain Daylight Time
+NST
+UTC+3:30
+Newfoundland Standard Time
+PST
+UTC+8
+Pacific Standard Time
+PDT
+UTC+7
+Pacific Daylight Time
+YST
+UTC+9
+Yukon Standard Time
+YDT
+UTC+8
+Yukon Daylight Time
+Following is an example of the NEW_TIME function.
+SELECT NEW_TIME(TO_DATE('08-13-07 10:35:15','MM-DD-YY HH24:MI:SS'),'AST', 'PST') "Pacific Standard Time" FROM DUAL;
+ 
+Pacific Standard Time
+---------------------  
+ 13-AUG-07 06:35:15
+(1 row)
+ 
+ 
+3.5.8.6 ROUND
+The ROUND function returns a date rounded according to a specified template pattern. If the template pattern is omitted, the date is rounded to the nearest day. The following table shows the template patterns for the ROUND function.
+Table 3‑3‑29 Template Date Patterns for the ROUND Function
+Pattern
+Description
+CC, SCC
+Returns January 1, cc01 where cc is first 2 digits of the given year if last 2 digits <= 50, or 1 greater than the first 2 digits of the given year if last 2 digits > 50; (for AD years)
+SYYY, YYYY, YEAR, SYEAR, YYY, YY, Y
+Returns January 1, yyyy where yyyy is rounded to the nearest year; rounds down on June 30, rounds up on July 1
+IYYY, IYY, IY, I
+Rounds to the beginning of the ISO year which is determined by rounding down if the month and day is on or before June 30th, or by rounding up if the month and day is July 1st or later
+Q
+Returns the first day of the quarter determined by rounding down if the month and day is on or before the 15th of the second month of the quarter, or by rounding up if the month and day is on the 16th of the second month or later of the quarter
+MONTH, MON, MM, RM
+Returns the first day of the specified month if the day of the month is on or prior to the 15th; returns the first day of the following month if the day of the month is on the 16th or later
+WW
+Round to the nearest date that corresponds to the same day of the week as the first day of the year
+IW
+Round to the nearest date that corresponds to the same day of the week as the first day of the ISO year
+W
+Round to the nearest date that corresponds to the same day of the week as the first day of the month
+DDD, DD, J
+Rounds to the start of the nearest day; 11:59:59 AM or earlier rounds to the start of the same day; 12:00:00 PM or later rounds to the start of the next day
+DAY, DY, D
+Rounds to the nearest Sunday
+HH, HH12, HH24
+Round to the nearest hour
+MI
+Round to the nearest minute
+Following are examples of usage of the ROUND function.
+The following examples round to the nearest hundred years.
+SELECT TO_CHAR(ROUND(TO_DATE('1950','YYYY'),'CC'),'DD-MON-YYYY') "Century" FROM DUAL;
+ 
+   Century
+-------------
+ 01-JAN-1901
+(1 row)
+ 
+SELECT TO_CHAR(ROUND(TO_DATE('1951','YYYY'),'CC'),'DD-MON-YYYY') "Century" FROM DUAL;
+ 
+   Century
+-------------
+ 01-JAN-2001
+(1 row)
+The following examples round to the nearest year.
+SELECT TO_CHAR(ROUND(TO_DATE('30-JUN-1999','DD-MON-YYYY'),'Y'),'DD-MON-YYYY') "Year" FROM DUAL;
+ 
+    Year
+-------------
+ 01-JAN-1999
+(1 row)
+ 
+SELECT TO_CHAR(ROUND(TO_DATE('01-JUL-1999','DD-MON-YYYY'),'Y'),'DD-MON-YYYY') "Year" FROM DUAL;
+ 
+    Year
+-------------
+ 01-JAN-2000
+(1 row)
+The following examples round to the nearest ISO year. The first example rounds to 2004 and the ISO year for 2004 begins on December 29th of 2003. The second example rounds to 2005 and the ISO year for 2005 begins on January 3rd of that same year.
+(An ISO year begins on the first Monday from which a 7 day span, Monday thru Sunday, contains at least 4 days of the new year. Thus, it is possible for the beginning of an ISO year to start in December of the prior year.)
+SELECT TO_CHAR(ROUND(TO_DATE('30-JUN-2004','DD-MON-YYYY'),'IYYY'),'DD-MON-YYYY') "ISO Year" FROM DUAL;
+ 
+  ISO Year
+-------------
+ 29-DEC-2003
+(1 row)
+ 
+SELECT TO_CHAR(ROUND(TO_DATE('01-JUL-2004','DD-MON-YYYY'),'IYYY'),'DD-MON-YYYY') "ISO Year" FROM DUAL;
+ 
+  ISO Year
+-------------
+ 03-JAN-2005
+(1 row)
+The following examples round to the nearest quarter.
+SELECT ROUND(TO_DATE('15-FEB-07','DD-MON-YY'),'Q') "Quarter" FROM DUAL;
+ 
+      Quarter
+--------------------
+ 01-JAN-07 00:00:00
+(1 row)
+ 
+SELECT ROUND(TO_DATE('16-FEB-07','DD-MON-YY'),'Q') "Quarter" FROM DUAL;
+ 
+      Quarter
+--------------------
+ 01-APR-07 00:00:00
+(1 row)
+The following examples round to the nearest month.
+SELECT ROUND(TO_DATE('15-DEC-07','DD-MON-YY'),'MONTH') "Month" FROM DUAL;
+ 
+       Month
+--------------------
+ 01-DEC-07 00:00:00
+(1 row)
+ 
+SELECT ROUND(TO_DATE('16-DEC-07','DD-MON-YY'),'MONTH') "Month" FROM DUAL;
+ 
+       Month
+--------------------
+ 01-JAN-08 00:00:00
+(1 row)
+The following examples round to the nearest week. The first day of 2007 lands on a Monday so in the first example, January 18th is closest to the Monday that lands on January 15th. In the second example, January 19th is closer to the Monday that falls on January 22nd.
+SELECT ROUND(TO_DATE('18-JAN-07','DD-MON-YY'),'WW') "Week" FROM DUAL;
+ 
+        Week
+--------------------
+ 15-JAN-07 00:00:00
+(1 row)
+ 
+SELECT ROUND(TO_DATE('19-JAN-07','DD-MON-YY'),'WW') "Week" FROM DUAL;
+ 
+        Week
+--------------------
+ 22-JAN-07 00:00:00
+(1 row)
+The following examples round to the nearest ISO week. An ISO week begins on a Monday. In the first example, January 1, 2004 is closest to the Monday that lands on December 29, 2003. In the second example, January 2, 2004 is closer to the Monday that lands on January 5, 2004.
+SELECT ROUND(TO_DATE('01-JAN-04','DD-MON-YY'),'IW') "ISO Week" FROM DUAL;
+ 
+      ISO Week
+--------------------
+ 29-DEC-03 00:00:00
+(1 row)
+ 
+SELECT ROUND(TO_DATE('02-JAN-04','DD-MON-YY'),'IW') "ISO Week" FROM DUAL;
+ 
+      ISO Week
+--------------------
+ 05-JAN-04 00:00:00
+(1 row)
+The following examples round to the nearest week where a week is considered to start on the same day as the first day of the month.
+SELECT ROUND(TO_DATE('05-MAR-07','DD-MON-YY'),'W') "Week" FROM DUAL;
+ 
+        Week
+--------------------
+ 08-MAR-07 00:00:00
+(1 row)
+ 
+SELECT ROUND(TO_DATE('04-MAR-07','DD-MON-YY'),'W') "Week" FROM DUAL;
+ 
+        Week
+--------------------
+ 01-MAR-07 00:00:00
+(1 row)
+The following examples round to the nearest day.
+SELECT ROUND(TO_DATE('04-AUG-07 11:59:59 AM','DD-MON-YY HH:MI:SS AM'),'J') "Day" FROM DUAL;
+ 
+        Day
+--------------------
+ 04-AUG-07 00:00:00
+(1 row)
+ 
+SELECT ROUND(TO_DATE('04-AUG-07 12:00:00 PM','DD-MON-YY HH:MI:SS AM'),'J') "Day" FROM DUAL;
+ 
+        Day
+--------------------
+ 05-AUG-07 00:00:00
+(1 row)
+The following examples round to the start of the nearest day of the week (Sunday).
+SELECT ROUND(TO_DATE('08-AUG-07','DD-MON-YY'),'DAY') "Day of Week" FROM DUAL;
+ 
+    Day of Week
+--------------------
+ 05-AUG-07 00:00:00
+(1 row)
+ 
+SELECT ROUND(TO_DATE('09-AUG-07','DD-MON-YY'),'DAY') "Day of Week" FROM DUAL;
+ 
+    Day of Week
+--------------------
+ 12-AUG-07 00:00:00
+(1 row)
+The following examples round to the nearest hour.
+SELECT TO_CHAR(ROUND(TO_DATE('09-AUG-07 08:29','DD-MON-YY HH:MI'),'HH'),'DD-MON-YY HH24:MI:SS') "Hour" FROM DUAL;
+ 
+        Hour
+--------------------
+ 09-AUG-07 08:00:00
+(1 row)
+ 
+SELECT TO_CHAR(ROUND(TO_DATE('09-AUG-07 08:30','DD-MON-YY HH:MI'),'HH'),'DD-MON-YY HH24:MI:SS') "Hour" FROM DUAL;
+ 
+        Hour
+--------------------
+ 09-AUG-07 09:00:00
+(1 row)
+The following examples round to the nearest minute.
+SELECT TO_CHAR(ROUND(TO_DATE('09-AUG-07 08:30:29','DD-MON-YY HH:MI:SS'),'MI'),'DD-MON-YY HH24:MI:SS') "Minute" FROM DUAL;
+ 
+       Minute
+--------------------
+ 09-AUG-07 08:30:00
+(1 row)
+ 
+SELECT TO_CHAR(ROUND(TO_DATE('09-AUG-07 08:30:30','DD-MON-YY HH:MI:SS'),'MI'),'DD-MON-YY HH24:MI:SS') "Minute" FROM DUAL;
+ 
+       Minute
+--------------------
+ 09-AUG-07 08:31:00
+(1 row)
+ 
+3.5.8.7 TRUNC
+The TRUNC function returns a date truncated according to a specified template pattern. If the template pattern is omitted, the date is truncated to the nearest day. The following table shows the template patterns for the TRUNC function.
+Table 3‑3‑30 Template Date Patterns for the TRUNC Function
+Pattern
+Description
+CC, SCC
+Returns January 1, cc01 where cc is first 2 digits of the given year
+SYYY, YYYY, YEAR, SYEAR, YYY, YY, Y
+Returns January 1, yyyy where yyyy is the given year
+IYYY, IYY, IY, I
+Returns the start date of the ISO year containing the given date
+Q
+Returns the first day of the quarter containing the given date
+MONTH, MON, MM, RM
+Returns the first day of the specified month
+WW
+Returns the largest date just prior to, or the same as the given date that corresponds to the same day of the week as the first day of the year
+IW
+Returns the start of the ISO week containing the given date
+W
+Returns the largest date just prior to, or the same as the given date that corresponds to the same day of the week as the first day of the month
+DDD, DD, J
+Returns the start of the day for the given date
+DAY, DY, D
+Returns the start of the week (Sunday) containing the given date
+HH, HH12, HH24
+Returns the start of the hour
+MI
+Returns the start of the minute
+Following are examples of usage of the TRUNC function.
+The following example truncates down to the hundred years unit.
+SELECT TO_CHAR(TRUNC(TO_DATE('1951','YYYY'),'CC'),'DD-MON-YYYY') "Century" FROM DUAL;
+ 
+   Century
+-------------
+ 01-JAN-1901
+(1 row)
+The following example truncates down to the year.
+SELECT TO_CHAR(TRUNC(TO_DATE('01-JUL-1999','DD-MON-YYYY'),'Y'),'DD-MON-YYYY') "Year" FROM DUAL;
+ 
+    Year
+-------------
+ 01-JAN-1999
+(1 row)
+The following example truncates down to the beginning of the ISO year.
+SELECT TO_CHAR(TRUNC(TO_DATE('01-JUL-2004','DD-MON-YYYY'),'IYYY'),'DD-MON-YYYY') "ISO Year" FROM DUAL;
+ 
+  ISO Year
+-------------
+ 29-DEC-2003
+(1 row)
+The following example truncates down to the start date of the quarter.
+SELECT TRUNC(TO_DATE('16-FEB-07','DD-MON-YY'),'Q') "Quarter" FROM DUAL;
+ 
+      Quarter
+--------------------
+ 01-JAN-07 00:00:00
+(1 row)
+The following example truncates to the start of the month.
+SELECT TRUNC(TO_DATE('16-DEC-07','DD-MON-YY'),'MONTH') "Month" FROM DUAL;
+ 
+       Month
+--------------------
+ 01-DEC-07 00:00:00
+(1 row)
+The following example truncates down to the start of the week determined by the first day of the year. The first day of 2007 lands on a Monday so the Monday just prior to January 19th is January 15th.
+SELECT TRUNC(TO_DATE('19-JAN-07','DD-MON-YY'),'WW') "Week" FROM DUAL;
+ 
+        Week
+--------------------
+ 15-JAN-07 00:00:00
+(1 row)
+The following example truncates to the start of an ISO week. An ISO week begins on a Monday. January 2, 2004 falls in the ISO week that starts on Monday, December 29, 2003.
+SELECT TRUNC(TO_DATE('02-JAN-04','DD-MON-YY'),'IW') "ISO Week" FROM DUAL;
+ 
+      ISO Week
+--------------------
+ 29-DEC-03 00:00:00
+(1 row)
+The following example truncates to the start of the week where a week is considered to start on the same day as the first day of the month.
+SELECT TRUNC(TO_DATE('21-MAR-07','DD-MON-YY'),'W') "Week" FROM DUAL;
+ 
+        Week
+--------------------
+ 15-MAR-07 00:00:00
+(1 row)
+The following example truncates to the start of the day.
+SELECT TRUNC(TO_DATE('04-AUG-07 12:00:00 PM','DD-MON-YY HH:MI:SS AM'),'J') "Day" FROM DUAL;
+ 
+        Day
+--------------------
+ 04-AUG-07 00:00:00
+(1 row)
+The following example truncates to the start of the week (Sunday).
+SELECT TRUNC(TO_DATE('09-AUG-07','DD-MON-YY'),'DAY') "Day of Week" FROM DUAL;
+ 
+    Day of Week
+--------------------
+ 05-AUG-07 00:00:00
+(1 row)
+The following example truncates to the start of the hour.
+SELECT TO_CHAR(TRUNC(TO_DATE('09-AUG-07 08:30','DD-MON-YY HH:MI'),'HH'),'DD-MON-YY HH24:MI:SS') "Hour" FROM DUAL;
+ 
+        Hour
+--------------------
+ 09-AUG-07 08:00:00
+(1 row)
+The following example truncates to the minute.
+SELECT TO_CHAR(TRUNC(TO_DATE('09-AUG-07 08:30:30','DD-MON-YY HH:MI:SS'),'MI'),'DD-MON-YY HH24:MI:SS') "Minute" FROM DUAL;
+ 
+       Minute
+--------------------
+ 09-AUG-07 08:30:00
+(1 row)
+ 
+3.5.8.8 CURRENT DATE/TIME
+Advanced Server provides a number of functions that return values related to the current date and time. These functions all return values based on the start time of the current transaction.
+•
+CURRENT_DATE
+•
+CURRENT_TIMESTAMP
+•
+LOCALTIMESTAMP
+•
+LOCALTIMESTAMP(precision)
+CURRENT_DATE returns the current date and time based on the start time of the current transaction. The value of CURRENT_DATE will not change if called multiple times within a transaction.
+SELECT CURRENT_DATE FROM DUAL;
+ 
+   date
+-----------
+ 06-AUG-07
+ 
+CURRENT_TIMESTAMP returns the current date and time. When called from a single SQL statement, it will return the same value for each occurrence within the statement. If called from multiple statements within a transaction, may return different values for each occurrence. If called from a function, may return a different value than the value returned by current_timestamp in the caller.
+SELECT CURRENT_TIMESTAMP, CURRENT_TIMESTAMP FROM DUAL;
+ 
+                current_timestamp | current_timestamp 
+----------------------------------+----------------------------------
+ 02-SEP-13 17:52:29.261473 +05:00 | 02-SEP-13 17:52:29.261474 +05:00 
+LOCALTIMESTAMP can optionally be given a precision parameter which causes the result to be rounded to that many fractional digits in the seconds field. Without a precision parameter, the result is given to the full available precision.
+SELECT LOCALTIMESTAMP FROM DUAL;
+ 
+       timestamp
+------------------------
+ 06-AUG-07 16:11:35.973
+(1 row)
+ 
+SELECT LOCALTIMESTAMP(2) FROM DUAL;
+ 
+       timestamp
+-----------------------
+ 06-AUG-07 16:11:44.58
+(1 row)
+Since these functions return the start time of the current transaction, their values do not change during the transaction. This is considered a feature: the intent is to allow a single transaction to have a consistent notion of the “current” time, so that multiple modifications within the same transaction bear the same time stamp. Other database systems may advance these values more frequently.
+3.5.8.9 NUMTODSINTERVAL
+The NUMTODSINTERVAL function converts a numeric value to a time interval that includes day through second interval units. When calling the function, specify the smallest fractional interval type to be included in the result set. The valid interval types are DAY, HOUR, MINUTE, and SECOND.
+The following example converts a numeric value to a time interval that includes days and hours:
+SELECT numtodsinterval(100, ‘hour’);
+numtodsinterval
+---------------
+4 days 04:00:00
+(1 row)
+The following example converts a numeric value to a time interval that includes minutes and seconds:
+SELECT numtodsinterval(100, ‘second’);
+numtodsinterval
+---------------
+1 min 40 secs
+(1 row)
+3.5.8.10 NUMTOYMINTERVAL
+The NUMTOYMINTERVAL function converts a numeric value to a time interval that includes year through month interval units. When calling the function, specify the smallest fractional interval type to be included in the result set. The valid interval types are YEAR and MONTH.
+The following example converts a numeric value to a time interval that includes years and months:
+SELECT numtoyminterval(100, ‘month’);
+numtoyminterval
+---------------
+8 years 4 mons
+(1 row)
+ 
+The following example converts a numeric value to a time interval that includes years only:
+SELECT numtoyminterval(100, ‘year’);
+numtoyminterval
+---------------
+100 years
+(1 row)
+=========================================================
+DateTime functions and operators
+There are various DateTime functions as well as operators available in PostgreSQL. All the functions and operators described below that take time or timestamp inputs actually come in two variants: one that takes time with time zone or timestamp with time zone, and one that takes time without time zone or timestamp without time zone.
+
+Date/Time Operators
+
+Operator	Example	Result
++	date '2001-09-28' + integer '7'	date '2001-10-05'
++	date '2001-09-28' + interval '1 hour'	timestamp '2001-09-28 01:00:00'
++	date '2001-09-28' + time '03:00'	timestamp '2001-09-28 03:00:00'
++	interval '1 day' + interval '1 hour'	interval '1 day 01:00:00'
++	timestamp '2001-09-28 01:00' + interval '23 hours'	timestamp '2001-09-29 00:00:00'
++	time '01:00' + interval '3 hours'	time '04:00:00'
+-	- interval '23 hours'	interval '-23:00:00'
+-	date '2001-10-01' - date '2001-09-28'	integer '3' (days)
+-	date '2001-10-01' - integer '7'	date '2001-09-24'
+-	date '2001-09-28' - interval '1 hour'	timestamp '2001-09-27 23:00:00'
+-	time '05:00' - time '03:00'	interval '02:00:00'
+-	time '05:00' - interval '2 hours'	time '03:00:00'
+-	timestamp '2001-09-28 23:00' - interval '23 hours'	timestamp '2001-09-28 00:00:00'
+-	interval '1 day' - interval '1 hour'	interval '1 day -01:00:00'
+-	timestamp '2001-09-29 03:00' - timestamp '2001-09-27 12:00'	interval '1 day 15:00:00'
+*	900 * interval '1 second'	interval '00:15:00'
+*	21 * interval '1 day'	interval '21 days'
+*	double precision '3.5' * interval '1 hour'	interval '03:30:00'
+/	interval '1 hour' / double precision '1.5'	interval '00:40:00'
+DateTime functions
+age(timestamp, timestamp)
+
+The age() function subtract arguments, producing a "symbolic" result that uses years and months.
+
+Return Type: interval
+
+Example:
+
+postgres=# SELECT age(timestamp '2003-05-15', timestamp '1973-07-19');
+           age
+-------------------------
+ 29 years 9 mons 27 days
+(1 row)
+
+age(timestamp)
+
+The age() function is used to subtract age from current_date (at midnight).
+
+Return Type : interval
+
+Example:
+
+postgres=# SELECT age(timestamp '1973-07-19');
+          age
+-----------------------
+ 41 years 1 mon 4 days
+(1 row)
+
+clock_timestamp()
+
+The clock_timestamp() function shows current date and time (changes during statement execution).
+
+Return Type: timestamp with time zone.
+
+Example:
+
+postgres=# SELECT clock_timestamp();
+        clock_timestamp
+-------------------------------
+ 2014-08-23 15:53:12.021+05:30
+(1 row)
+
+N.B. - The outputs depending upon the current date and time.
+
+current_date()
+
+Return Type: date
+
+Example:
+
+postgres=# SELECT current_date;
+    date
+------------
+ 2014-08-23
+(1 row)
+
+N.B. - The outputs depending upon the current date.
+
+current_time()
+
+Return Type: time with time zone
+
+Example:
+
+postgres=# SELECT current_time;
+       timetz
+--------------------
+ 15:57:42.588+05:30
+(1 row)
+
+N.B. - The outputs depending upon the current time.
+
+current_timestamp
+
+Return Type: timestamp with time zone
+
+Example:
+
+postgres=# SELECT current_timestamp;
+              now
+-------------------------------
+ 2014-08-23 15:58:45.345+05:30
+(1 row)
+
+N.B. - The outputs depending upon the current date and time.
+
+date_part(text, timestamp)
+
+The date_part() function is used to get subfield (equivalent to extract).
+
+Return Type: double precision
+
+Example:
+
+postgres=# SELECT date_part('hour', timestamp '2002-09-17 19:27:45');
+ date_part
+-----------
+        19
+(1 row)
+
+date_part(text, interval)
+
+The date_part() function is used to get subfield (equivalent to extract).
+
+Return Type: double precision
+
+Example:
+
+postgres=# SELECT date_part('month', interval '3 years 7 months');
+ date_part
+-----------
+         7
+(1 row)
+
+date_trunc(text, timestamp)
+
+The date_trunc() function is used to truncate to specified precision;
+
+Return Type: timestamp
+
+Example:
+
+postgres=# SELECT date_trunc('hour', timestamp '2002-09-17 19:27:45');
+     date_trunc
+---------------------
+ 2002-09-17 19:00:00
+(1 row)
+
+extract(field from timestamp)
+
+The date_trunc() function is used to get subfield.
+
+Return Type : double precision
+
+Example:
+
+postgres=# SELECT extract(hour from timestamp '2002-09-17 19:27:45');
+ date_part
+-----------
+        19
+(1 row)
+
+extract(field from interval)
+
+The date_trunc() function is used to get subfield.
+
+Return Type: double precision
+
+Example:
+
+postgres=# SELECT extract(month from interval '3 years 7 months');
+ date_part
+-----------
+         7
+(1 row)
+
+isfinite(date)
+
+The isfinite() function is used to get test for finite date (not +/-infinity).
+
+Return Type: boolean
+
+Example:
+
+postgres=# SELECT isfinite(date '2002-09-17');
+ isfinite
+----------
+ t
+(1 row)
+
+isfinite(timestamp)
+
+The isfinite() function is used to get test for finite date (not +/-infinity).
+
+Return Type: boolean
+
+Example:
+
+postgres=# SELECT isfinite(timestamp '2002-09-17 19:27:45');
+ isfinite
+----------
+ t
+(1 row)
+
+isfinite(interval)
+
+This function is used to test for finite interval.
+
+Return Type: boolean
+
+Example:
+
+postgres=# SELECT isfinite(interval '7 hours');
+ isfinite
+----------
+ t
+(1 row)
+
+justify_days(interval)
+
+This function is used to adjust interval so 30-day time periods are represented as months
+
+Return Type: interval
+
+Example:
+
+postgres=# SELECT justify_days(interval '47 days');
+ justify_days
+---------------
+ 1 mon 17 days
+(1 row)
+
+justify_hours(interval)
+
+This function is used to adjust interval so 24-hour time periods are represented as days
+
+Return Type: interval
+
+Example:
+
+postgres=# SELECT justify_hours(interval '32 hours');
+ justify_hours
+----------------
+ 1 day 08:00:00
+(1 row)
+
+justify_interval(interval)
+
+This function is used to adjust interval using justify_days and justify_hours, with additional sign adjustments.
+
+Return Type: interval
+
+Example:
+
+postgres=# SELECT justify_interval(interval '1 mon -1 hour');
+ justify_interval
+------------------
+ 29 days 23:00:00
+(1 row)
+
+localtime
+
+This function is used to get current time of day.
+
+Return Type: time
+
+Example:
+
+postgres=# SELECT localtime;
+     time
+--------------
+ 16:20:44.502
+(1 row)
+
+N.B. - The outputs depending upon the current time.
+
+localtimestamp
+
+This function is used to get current date and time (start of current transaction).
+
+Return Type: timestamp
+
+Example:
+
+postgres=# SELECT localtimestamp;
+        timestamp
+-------------------------
+ 2014-08-23 16:21:17.182
+(1 row)
+
+N.B. - The outputs depending upon the current date and time.
+
+now()
+
+This function is used to get current date and time (start of current transaction).
+
+Return Type: timestamp with time zone
+
+Example:
+
+postgres=# SELECT now();
+              now
+-------------------------------
+ 2014-08-23 16:21:55.715+05:30
+(1 row)
+
+N.B. - The outputs depending upon the current date and time.
+
+statement_timestamp()
+
+This function is used to get current date and time (start of current transaction).
+
+Return Type: timestamp with time zone
+
+Example:
+
+postgres=# SELECT statement_timestamp();
+      statement_timestamp
+-------------------------------
+ 2014-08-23 16:22:43.525+05:30
+(1 row)
+
+N.B. - The outputs depending upon the current date.
+
+timeofday()
+
+This function is used to get current date and time (like clock_timestamp, but as a text string).
+
+Return Type: text
+
+Example:
+
+postgres=# SELECT timeofday();
+              timeofday
+-------------------------------------
+ Sat Aug 23 16:23:25.427000 2014 IST
+(1 row)
+
+N.B. - The outputs depending upon the current date.
+
+transaction_timestamp()
+
+This function is used to get current date and time (start of current transaction)
+
+Return Type: timestamp with time zone
+
+Example:
+
+postgres=# SELECT transaction_timestamp();
+     transaction_timestamp
+-------------------------------
+ 2014-08-23 16:24:06.382+05:30
+(1 row)
+============================================================
