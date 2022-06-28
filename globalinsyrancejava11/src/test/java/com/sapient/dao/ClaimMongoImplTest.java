@@ -12,6 +12,10 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.time.LocalDate;
 
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.collection.IsEmptyCollection.empty;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ClaimMongoImplTest {
@@ -42,7 +46,13 @@ public class ClaimMongoImplTest {
 
         assertTrue(claimFacade.updateClaim( 485686,60000));
     }
+    @Test
+    @Tag("dev")
+    public void searchClaimsTest(){
 
+         assertThat(claimFacade.getAllClaims(),not(empty()));
+
+    }
     @AfterEach
     public void unLinkClaimInstances(){
         claim=null;

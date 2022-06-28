@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.mongodb.DocumentToDBRefTransformer;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.sapient.facades.ClaimFacade;
 import com.sapient.helpers.MongoDBHelper;
 import com.sapient.models.Claim;
@@ -12,6 +13,8 @@ import com.sapient.models.Vehicle;
 import org.bson.Document;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ClaimMongoImpl implements ClaimFacade {
@@ -51,4 +54,17 @@ public class ClaimMongoImpl implements ClaimFacade {
         status=true;
         return status;
     }
+
+    @Override
+    public List<Object> getAllClaims() {
+        ArrayList<Object> claims=new ArrayList<>();
+       try(MongoCursor<Document> cursor= mongoCollection.find().iterator()){
+           while(cursor.hasNext()){
+               var doc=cursor.next();
+               claims.add(doc.values());
+           }
+       }
+        return claims;
+    }
+
 }
