@@ -11,6 +11,7 @@ public class ClaimImpl implements ClaimFacade {
     private String fileName;
     private String path;
     private File file;
+    private boolean status;
     private  ResourceBundle resourceBundle;
     private BufferedWriter bufferedWriter;
     public ClaimImpl(String fileName) {
@@ -26,17 +27,19 @@ public class ClaimImpl implements ClaimFacade {
 
         if(file.exists()){
             writeData(claim, file, bufferedWriter);
+            status=true;
         }
         else
         {
             file.createNewFile();
             writeData(claim, file, bufferedWriter);
+            status=true;
         }
 
 
 
 
-        return false;
+        return status;
     }
 
     private void writeData(Claim claim, File file, BufferedWriter bufferedWriter) throws IOException {
