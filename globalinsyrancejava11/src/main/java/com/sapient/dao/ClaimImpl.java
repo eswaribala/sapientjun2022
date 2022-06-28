@@ -9,16 +9,21 @@ import java.util.ResourceBundle;
 
 public class ClaimImpl implements ClaimFacade {
     private String fileName;
+    private String path;
+    private File file;
+    private  ResourceBundle resourceBundle;
+    private BufferedWriter bufferedWriter;
     public ClaimImpl(String fileName) {
         this.fileName=fileName;
+       resourceBundle=ResourceBundle.getBundle("db");
+        path=resourceBundle.getString("path");
+        file=new File(path,fileName);
     }
 
     @Override
     public boolean addClaim(Claim claim, Vehicle vehicle) throws IOException {
-        ResourceBundle resourceBundle=ResourceBundle.getBundle("db");
-        String path=resourceBundle.getString("path");
-        File file=new File(path,fileName);
-        BufferedWriter bufferedWriter=null;
+
+
         if(file.exists()){
             writeData(claim, file, bufferedWriter);
         }

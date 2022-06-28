@@ -9,27 +9,46 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.io.*;
 import java.time.LocalDate;
+import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
 public class ClaimTest {
 
-    private static Claim claim;
-
+    private Claim claim;
+    private static  BufferedReader bufferedReader;
+    private static ResourceBundle resourceBundle;
+    private static String path;
+    private static File file;
     @BeforeAll
     public static void createClaimInstance(){
+      resourceBundle=ResourceBundle.getBundle("db");
+      path=resourceBundle.getString("path");
+      file=new File(path,"country_wise_latest.csv");
+        try {
+            bufferedReader=new BufferedReader(new FileReader(file));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @BeforeEach
+    public void beforeEachTest(){
         claim=new Claim();
     }
 
-    @Test
+   // @Test
+
+    @Order(1)
     @RepeatedTest(5)
-   // @DisabledOnOs(OS.WINDOWS)
+      // @DisabledOnOs(OS.WINDOWS)
     @DisplayName("Claim Not Null Test")
     @Tag("dev")
     public void claimNotNullTest(){
         assertNotNull(claim);
     }
-
+    @Order(3)
     @ParameterizedTest
     @ValueSource(ints = {428578,3597349,3570837,10})
     @Tag("dev")
@@ -38,7 +57,9 @@ public class ClaimTest {
         claim.setClaimId(data);
         assertTrue(claim.getClaimId()>0);
     }
+    @Order(2)
     @ParameterizedTest
+
     @ValueSource(strings = {"2022-01-02","2022-03-04","2021-09-19"})
     @Tag("prod")
     public void claimDateNotCurrentDateTest(String data){
@@ -46,7 +67,9 @@ public class ClaimTest {
          claim.setClaimDate(LocalDate.parse(data));
          assertTrue(LocalDate.now().isAfter(claim.getClaimDate()));
     }
+    @Order(4)
     @ParameterizedTest
+
     @Timeout(unit = TimeUnit.SECONDS,value = 500)
     @CsvFileSource(resources = "claims.csv", numLinesToSkip = 1)
     @Tag("prod")
@@ -60,6 +83,21 @@ public class ClaimTest {
 
     }
 
+    @AfterEach
+    public void afterEachTest(){
+      claim=null;
+    }
+
+
+    @AfterAll
+    public void afterAllTests(){
+        try {
+            bufferedReader.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+/*
     @Test
     @EnabledOnOs(OS.MAC)
     void testOnMacOs() {
@@ -129,6 +167,6 @@ public class ClaimTest {
     boolean customConditionalFunction() {
         return true;
     }
-
+*/
 
 }

@@ -6,6 +6,10 @@ import java.io.*;
 import java.util.ResourceBundle;
 
 public class CovidImpl implements CovidFacade {
+
+
+
+
     @Override
     public void getAllData(String fileName) throws IOException {
         ResourceBundle resourceBundle=ResourceBundle.getBundle("db");

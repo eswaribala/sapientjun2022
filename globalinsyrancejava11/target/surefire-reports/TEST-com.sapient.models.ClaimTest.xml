@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.sapient.models.ClaimTest" time="0.509" tests="11" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.sapient.models.ClaimTest" time="0.507" tests="27" errors="0" skipped="8" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -17,7 +17,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IN"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-11.0.15\bin"/>
-    <property name="sun.java.command" value="C:\Users\Balasubramaniam\AppData\Local\Temp\surefire14828571438453168172\surefirebooter4689448614106075570.jar C:\Users\Balasubramaniam\AppData\Local\Temp\surefire14828571438453168172 2022-06-28T08-39-43_981-jvmRun1 surefire10145049118874677851tmp surefire_0387373936915969468tmp"/>
+    <property name="sun.java.command" value="C:\Users\Balasubramaniam\AppData\Local\Temp\surefire16211587973134842624\surefirebooter9081125691772736225.jar C:\Users\Balasubramaniam\AppData\Local\Temp\surefire16211587973134842624 2022-06-28T09-55-53_413-jvmRun1 surefire6193191179469750289tmp surefire_010455368921215267979tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="F:\sapientws2022\globalinsyrancejava11\target\test-classes;F:\sapientws2022\globalinsyrancejava11\target\classes;C:\Users\Balasubramaniam\.m2\repository\org\projectlombok\lombok\1.18.24\lombok-1.18.24.jar;C:\Users\Balasubramaniam\.m2\repository\ch\qos\logback\logback-core\1.2.11\logback-core-1.2.11.jar;C:\Users\Balasubramaniam\.m2\repository\ch\qos\logback\logback-classic\1.2.11\logback-classic-1.2.11.jar;C:\Users\Balasubramaniam\.m2\repository\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar;C:\Users\Balasubramaniam\.m2\repository\org\junit\jupiter\junit-jupiter\5.8.2\junit-jupiter-5.8.2.jar;C:\Users\Balasubramaniam\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.2\junit-jupiter-engine-5.8.2.jar;C:\Users\Balasubramaniam\.m2\repository\org\junit\platform\junit-platform-engine\1.8.2\junit-platform-engine-1.8.2.jar;C:\Users\Balasubramaniam\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.2\junit-jupiter-api-5.8.2.jar;C:\Users\Balasubramaniam\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Balasubramaniam\.m2\repository\org\junit\platform\junit-platform-commons\1.8.2\junit-platform-commons-1.8.2.jar;C:\Users\Balasubramaniam\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Balasubramaniam\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.8.2\junit-jupiter-params-5.8.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -33,7 +33,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\Balasubramaniam\AppData\Local\Temp\surefire14828571438453168172\surefirebooter4689448614106075570.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Balasubramaniam\AppData\Local\Temp\surefire16211587973134842624\surefirebooter9081125691772736225.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="11.0.15+8-LTS-149"/>
@@ -60,15 +60,52 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="claimNotNullTest" classname="com.sapient.models.ClaimTest" time="0.068"/>
-  <testcase name="claimIdNotZeroTest(int)[1]" classname="com.sapient.models.ClaimTest" time="0.064"/>
+  <testcase name="testOnMacOs" classname="com.sapient.models.ClaimTest" time="0">
+    <skipped message="Disabled on operating system: Windows 11"/>
+    <system-err><![CDATA[Jun 28, 2022 9:55:56 AM org.junit.jupiter.engine.discovery.MethodSelectorResolver resolve
+WARNING: Possible configuration error: method [public void com.sapient.models.ClaimTest.claimNotNullTest()] resulted in multiple TestDescriptors [org.junit.jupiter.engine.descriptor.TestTemplateTestDescriptor, org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor]. This is typically the result of annotating a method with multiple competing annotations such as @Test, @RepeatedTest, @ParameterizedTest, @TestFactory, etc.
+Jun 28, 2022 9:55:56 AM org.junit.jupiter.engine.discovery.MethodSelectorResolver resolve
+WARNING: Possible configuration error: method [public void com.sapient.models.ClaimTest.claimNotNullTest()] resulted in multiple TestDescriptors [org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor, org.junit.jupiter.engine.descriptor.TestTemplateTestDescriptor]. This is typically the result of annotating a method with multiple competing annotations such as @Test, @RepeatedTest, @ParameterizedTest, @TestFactory, etc.
+]]></system-err>
+  </testcase>
+  <testcase name="onlyIfPropertyValueIsFound" classname="com.sapient.models.ClaimTest" time="0">
+    <skipped message="System property [any.system.property] does not exist"/>
+  </testcase>
+  <testcase name="enabled" classname="com.sapient.models.ClaimTest" time="0.028"/>
+  <testcase name="notFromJava8to11" classname="com.sapient.models.ClaimTest" time="0">
+    <skipped message="Disabled on JRE version: 11.0.15"/>
+  </testcase>
+  <testcase name="doNotTestOnWindows" classname="com.sapient.models.ClaimTest" time="0">
+    <skipped message="Disabled on operating system: Windows 11"/>
+  </testcase>
+  <testcase name="executeOnlyInDevEnvironment" classname="com.sapient.models.ClaimTest" time="0">
+    <skipped message="Environment variable [ENV] does not exist"/>
+  </testcase>
+  <testcase name="claimNotNullTest" classname="com.sapient.models.ClaimTest" time="0.003"/>
+  <testcase name="claimNotNullTest" classname="com.sapient.models.ClaimTest" time="0.002"/>
+  <testcase name="claimNotNullTest" classname="com.sapient.models.ClaimTest" time="0.002"/>
+  <testcase name="claimNotNullTest" classname="com.sapient.models.ClaimTest" time="0.001"/>
+  <testcase name="claimNotNullTest" classname="com.sapient.models.ClaimTest" time="0.002"/>
+  <testcase name="claimNotNullTest" classname="com.sapient.models.ClaimTest" time="0.002"/>
+  <testcase name="fromJava12to18" classname="com.sapient.models.ClaimTest" time="0">
+    <skipped message="Disabled on JRE version: 11.0.15"/>
+  </testcase>
+  <testcase name="disabledOnProdEnvironment" classname="com.sapient.models.ClaimTest" time="0.001"/>
+  <testcase name="disabled" classname="com.sapient.models.ClaimTest" time="0">
+    <skipped message="Condition provided in @DisabledIf evaluates to true"/>
+  </testcase>
+  <testcase name="claimIdNotZeroTest(int)[1]" classname="com.sapient.models.ClaimTest" time="0.039"/>
   <testcase name="claimIdNotZeroTest(int)[2]" classname="com.sapient.models.ClaimTest" time="0.002"/>
-  <testcase name="claimIdNotZeroTest(int)[3]" classname="com.sapient.models.ClaimTest" time="0.001"/>
-  <testcase name="claimIdNotZeroTest(int)[4]" classname="com.sapient.models.ClaimTest" time="0.002"/>
-  <testcase name="testWithCsvFileSource(int, int, long,LocalDate)" classname="com.sapient.models.ClaimTest" time="0.031"/>
-  <testcase name="testWithCsvFileSource(int, int, long,LocalDate)" classname="com.sapient.models.ClaimTest" time="0.004"/>
+  <testcase name="claimIdNotZeroTest(int)[3]" classname="com.sapient.models.ClaimTest" time="0.002"/>
+  <testcase name="claimIdNotZeroTest(int)[4]" classname="com.sapient.models.ClaimTest" time="0.001"/>
+  <testcase name="onlyOnJava8" classname="com.sapient.models.ClaimTest" time="0.002"/>
+  <testcase name="testWithCsvFileSource(int, int, long,LocalDate)" classname="com.sapient.models.ClaimTest" time="0.035"/>
   <testcase name="testWithCsvFileSource(int, int, long,LocalDate)" classname="com.sapient.models.ClaimTest" time="0.002"/>
-  <testcase name="claimDateNotCurrentDateTest(String)[1]" classname="com.sapient.models.ClaimTest" time="0.008"/>
-  <testcase name="claimDateNotCurrentDateTest(String)[2]" classname="com.sapient.models.ClaimTest" time="0.001"/>
-  <testcase name="claimDateNotCurrentDateTest(String)[3]" classname="com.sapient.models.ClaimTest" time="0.003"/>
+  <testcase name="testWithCsvFileSource(int, int, long,LocalDate)" classname="com.sapient.models.ClaimTest" time="0.002"/>
+  <testcase name="onJava17Or18" classname="com.sapient.models.ClaimTest" time="0">
+    <skipped message="Disabled on JRE version: 11.0.15"/>
+  </testcase>
+  <testcase name="claimDateNotCurrentDateTest(String)[1]" classname="com.sapient.models.ClaimTest" time="0.001"/>
+  <testcase name="claimDateNotCurrentDateTest(String)[2]" classname="com.sapient.models.ClaimTest" time="0.002"/>
+  <testcase name="claimDateNotCurrentDateTest(String)[3]" classname="com.sapient.models.ClaimTest" time="0.001"/>
 </testsuite>
