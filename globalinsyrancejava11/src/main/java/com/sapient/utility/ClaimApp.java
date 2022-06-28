@@ -20,14 +20,15 @@ public class ClaimApp {
                 450000,
                 LocalDate.of(2022,2,12));
 
+       /*
         ClaimFacade claimFacade=(claimObj,vehicleObj)->{
             if(vehicleObj.getModel().startsWith("H"))
               return claimObj.getClaimDate().isBefore(LocalDate.now());
             else
                 return false;
         };
-
-        claimFacade.addClaim(claim,new Vehicle("TN-82-1234","Honda"));
+*/
+       // claimFacade.addClaim(claim,new Vehicle("TN-82-1234","Honda"));
 
         //inbuilt functional interface
         Function<Claim,Boolean> function=(claimObj)->{

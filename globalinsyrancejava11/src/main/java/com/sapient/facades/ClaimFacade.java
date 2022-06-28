@@ -6,11 +6,15 @@ import com.sapient.models.Vehicle;
 import java.io.IOException;
 import java.util.Random;
 
-@FunctionalInterface
+
 public interface ClaimFacade {
 
-    boolean addClaim(Claim claim, Vehicle vehicle) throws IOException;
-
+   default boolean addClaim(Claim claim, Vehicle vehicle) throws IOException{
+       return false;
+   }
+    default boolean addClaim(Claim claim){
+        return false;
+    }
     static long getOTP(){
         return new Random().nextInt(10000);
     }

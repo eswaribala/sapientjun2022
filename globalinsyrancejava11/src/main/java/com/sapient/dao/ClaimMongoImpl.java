@@ -16,9 +16,9 @@ public class ClaimMongoImpl implements ClaimFacade {
     private MongoClient mongoClient;
     private MongoCollection mongoCollection;
     private ResourceBundle resourceBundle;
+    private boolean status;
     public ClaimMongoImpl() {
         resourceBundle=ResourceBundle.getBundle("db");
-
        mongoClient= MongoDBHelper.getConnection();
        //creating db
        var database= mongoClient
@@ -29,7 +29,9 @@ public class ClaimMongoImpl implements ClaimFacade {
     }
 
     @Override
-    public boolean addClaim(Claim claim, Vehicle vehicle) throws IOException {
-        return false;
+    public boolean addClaim(Claim claim){
+        mongoCollection.insertOne(claim);
+        status=true;
+        return status;
     }
 }
