@@ -9,6 +9,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Indexes;
 import com.sapient.facades.ClaimFacade;
 import com.sapient.helpers.MongoDBHelper;
 import com.sapient.models.Claim;
@@ -36,9 +37,12 @@ public class ClaimMongoImpl implements ClaimFacade {
        var database= mongoClient
                .getDatabase(resourceBundle.getString("dbname"));
        var collectionName=resourceBundle.getString("collectionName");
-       if(database.getCollection(collectionName)==null)
-          database.createCollection(collectionName);
+       if(database.getCollection(collectionName)==null) {
+           database.createCollection(collectionName);
+       }
        mongoCollection= database.getCollection(collectionName);
+       //compound index
+       mongoCollection.createIndex(Indexes.ascending("claimId","policyNo"));
        gson=new Gson();
     }
 
