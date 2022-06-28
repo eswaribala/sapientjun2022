@@ -21,6 +21,7 @@ public class ClaimTest {
     private static ResourceBundle resourceBundle;
     private static String path;
     private static File file;
+    private Vehicle vehicle;
     @BeforeAll
     public static void createClaimInstance(){
       resourceBundle=ResourceBundle.getBundle("db");
@@ -82,6 +83,11 @@ public class ClaimTest {
         assertTrue(claim.getClaimAmount()>20000);
 
     }
+    @Test
+    public void vehicleNullPointerExceptionNegativeTest(){
+        assertThrows(NullPointerException.class,()->vehicle.getModel());
+
+    }
 
     @AfterEach
     public void afterEachTest(){
@@ -90,7 +96,7 @@ public class ClaimTest {
 
 
     @AfterAll
-    public void afterAllTests(){
+    public static void afterAllTests(){
         try {
             bufferedReader.close();
         } catch (IOException e) {

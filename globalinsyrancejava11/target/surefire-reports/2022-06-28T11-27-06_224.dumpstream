@@ -1,4 +1,4 @@
-# Created at 2022-06-28T11:17:45.226
+# Created at 2022-06-28T11:27:07.322
 Boot Manifest-JAR contains absolute paths in classpath 'F:\sapientws2022\globalinsyrancejava11\target\test-classes'
 Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
 

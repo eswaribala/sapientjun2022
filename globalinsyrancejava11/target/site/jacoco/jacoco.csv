@@ -29,6 +29,6 @@ globalinsyrancejava11,com.sapient.facades,PaymentFacade,2,0,0,0,1,0,1,0,1,0
 globalinsyrancejava11,com.sapient.models,Message,107,0,16,0,5,0,18,0,10,0
 globalinsyrancejava11,com.sapient.models,Vehicle,134,3,22,0,8,1,21,1,10,1
 globalinsyrancejava11,com.sapient.models,Owner,124,0,22,0,5,0,21,0,10,0
-globalinsyrancejava11,com.sapient.models,Claim,156,27,20,0,2,5,19,5,9,5
+globalinsyrancejava11,com.sapient.models,Claim,137,46,20,0,0,7,14,10,4,10
 globalinsyrancejava11,com.sapient.models,CustomerVO,44,0,2,0,13,0,7,0,6,0
 globalinsyrancejava11,com.sapient.exceptions,PasswordException,4,0,0,0,2,0,1,0,1,0
