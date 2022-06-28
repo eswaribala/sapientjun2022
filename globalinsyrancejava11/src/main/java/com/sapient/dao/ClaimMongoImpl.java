@@ -9,17 +9,23 @@ import com.sapient.models.Claim;
 import com.sapient.models.Vehicle;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class ClaimMongoImpl implements ClaimFacade {
 
     private MongoClient mongoClient;
     private MongoCollection mongoCollection;
+    private ResourceBundle resourceBundle;
     public ClaimMongoImpl() {
+        resourceBundle=ResourceBundle.getBundle("db");
+
        mongoClient= MongoDBHelper.getConnection();
        //creating db
-       var database= mongoClient.getDatabase("globalinsurancedb");
-       database.createCollection("claims");
-       mongoCollection= database.getCollection("claims");
+       var database= mongoClient
+               .getDatabase(resourceBundle.getString("dbname"));
+       var collectionName=resourceBundle.getString("collectionName");
+       database.createCollection(collectionName);
+       mongoCollection= database.getCollection(collectionName);
     }
 
     @Override
