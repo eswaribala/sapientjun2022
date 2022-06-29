@@ -26,3 +26,12 @@
     height: 100px;
     padding-left: 100px;
 }
+
+.article{
+    display: block;
+    background-color: aqua;
+    width:200px;
+    height:200px;
+    padding:10px;
+}
+
