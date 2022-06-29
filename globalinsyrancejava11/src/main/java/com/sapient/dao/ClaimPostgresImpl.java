@@ -70,12 +70,36 @@ public class ClaimPostgresImpl implements ClaimFacade {
     }
 
     @Override
-    public boolean deleteClaimById(long claimId) {
-        return ClaimFacade.super.deleteClaimById(claimId);
+    public boolean deletePostgresClaimById(long claimId) throws SQLException {
+
+
+        query=resourceBundle.getString("deleteClaimById");
+        preparedStatement=connection.prepareStatement(query);
+        preparedStatement.setLong(1,claimId);
+        int rows =preparedStatement.executeUpdate();
+        if (rows>0)
+            status=true;
+        return status;
+
     }
 
     @Override
-    public Object getClaimById(long claimId) {
-        return ClaimFacade.super.getClaimById(claimId);
+    public Claim getPostgresClaimById(long claimId) throws SQLException {
+
+        query=resourceBundle.getString("selectClaimById");
+        preparedStatement=connection.prepareStatement(query);
+        preparedStatement.setLong(1,claimId);
+        resultSet=preparedStatement.executeQuery();
+        Claim claim=null;
+
+        while(resultSet.next()){
+            claim=new Claim();
+            claim.setClaimId( resultSet.getLong(1));
+            claim.setClaimAmount(resultSet.getLong(2));
+            claim.setPolicyNo(resultSet.getLong(3));
+            claim.setClaimDate(LocalDate.parse(resultSet.getDate(4).toString()));
+
+        }
+        return claim;
     }
 }

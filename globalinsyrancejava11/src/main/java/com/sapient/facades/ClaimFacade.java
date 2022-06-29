@@ -40,13 +40,13 @@ public interface ClaimFacade {
    default boolean deleteClaimById(long claimId){
        return false;
    }
-    default boolean deletePostgresClaimById(long claimId){
+    default boolean deletePostgresClaimById(long claimId) throws SQLException {
         return false;
     }
    default Object getClaimById(long claimId){
        return null;
    }
-    default Object getPostgresClaimById(long claimId){
+    default Claim getPostgresClaimById(long claimId) throws SQLException {
         return null;
     }
 }

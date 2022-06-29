@@ -82,13 +82,21 @@ public class ClaimPostgresImplTest {
     @Tag("dev")
     public void deleteClaimByIdTest(){
 
-       assertTrue(claimFacade.deleteClaimById(485685));
+        try {
+            assertTrue(claimFacade.deletePostgresClaimById(485685));
+        } catch (SQLException e) {
+            logger.info(e.getMessage());
+        }
     }
     @Test
     @Tag("dev")
     public void findClaimByIdTest(){
 
-        assertNotNull(claimFacade.getClaimById(485685));
+        try {
+            assertNotNull(claimFacade.getPostgresClaimById(485685));
+        } catch (SQLException e) {
+           logger.info(e.getMessage());
+        }
     }
 
     @AfterEach
