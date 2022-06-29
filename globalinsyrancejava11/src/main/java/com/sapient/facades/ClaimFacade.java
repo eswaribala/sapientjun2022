@@ -4,6 +4,7 @@ import com.sapient.models.Claim;
 import com.sapient.models.Vehicle;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Random;
 
@@ -13,7 +14,10 @@ public interface ClaimFacade {
    default boolean addClaim(Claim claim, Vehicle vehicle) throws IOException{
        return false;
    }
-    default boolean addClaim(Claim claim){
+    default boolean addClaim(Claim claim) {
+        return false;
+    }
+    default boolean addPostgresClaim(Claim claim) throws SQLException {
         return false;
     }
     static long getOTP(){
