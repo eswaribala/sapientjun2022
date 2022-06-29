@@ -28,15 +28,25 @@ public interface ClaimFacade {
        return false;
    }
 
+    default boolean updatePostgresClaim(long claimId,long claimAmount) throws SQLException {
+        return false;
+    }
    default List<Object> getAllClaims(){
        return null;
    }
-
+    default List<Object> getPostgresAllClaims(){
+        return null;
+    }
    default boolean deleteClaimById(long claimId){
        return false;
    }
-
+    default boolean deletePostgresClaimById(long claimId){
+        return false;
+    }
    default Object getClaimById(long claimId){
        return null;
    }
+    default Object getPostgresClaimById(long claimId){
+        return null;
+    }
 }

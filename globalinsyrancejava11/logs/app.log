@@ -8,3 +8,9 @@
 2022-06-24 15:49:37,949 INFO com.sapient.Main [main] Claim(claimId=134, policyNo=881, claimAmount=4175, claimDate=2022-07-25)
 2022-06-29 10:18:13,832 INFO com.sapient.dao.ClaimPostgresImplTest [main] ERROR: column "claim_id" of relation "Claim" does not exist
   Position: 27
+2022-06-29 10:38:14,134 INFO com.sapient.dao.ClaimPostgresImplTest [main] No suitable driver found for jdbc:postgresql://localhost:5432/globalinsdb
+2022-06-29 11:15:56,974 INFO com.sapient.dao.ClaimPostgresImplTest [main] ERROR: column "claim_id" does not exist
+  Hint: Perhaps you meant to reference the column "Claim.Claim_Id".
+  Position: 48
+2022-06-29 11:16:51,444 INFO com.sapient.dao.ClaimPostgresImplTest [main] ERROR: missing FROM-clause entry for table "claim"
+  Position: 54

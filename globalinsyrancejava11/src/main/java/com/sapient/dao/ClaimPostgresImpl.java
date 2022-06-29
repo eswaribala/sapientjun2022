@@ -38,8 +38,15 @@ public class ClaimPostgresImpl implements ClaimFacade {
     }
 
     @Override
-    public boolean updateClaim(long claimId, long claimAmount) {
-        return ClaimFacade.super.updateClaim(claimId, claimAmount);
+    public boolean updatePostgresClaim(long claimId, long claimAmount) throws SQLException {
+        query=resourceBundle.getString("updateClaimAmountQuery");
+        preparedStatement=connection.prepareStatement(query);
+        preparedStatement.setLong(2,claimId);
+        preparedStatement.setLong(1,claimAmount);
+        int rows=preparedStatement.executeUpdate();
+        if (rows>0)
+            status=true;
+        return status;
     }
 
     @Override

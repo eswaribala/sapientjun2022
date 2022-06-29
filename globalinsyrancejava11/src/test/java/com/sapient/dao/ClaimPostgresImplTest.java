@@ -28,9 +28,9 @@ public class ClaimPostgresImplTest {
 
     @BeforeEach
     public void createClaimDaoInstance(){
-        claim=new Claim(485685,34598459,
-                40000,
-                LocalDate.of(2022,4,12));
+        claim=new Claim(485687,34598461,
+                60000,
+                LocalDate.of(2022,6,16));
         try {
             claimFacade=new ClaimPostgresImpl();
 
@@ -56,7 +56,11 @@ public class ClaimPostgresImplTest {
     @Tag("dev")
     public void updateClaimTest(){
 
-        assertTrue(claimFacade.updateClaim( 485686,60000));
+        try {
+            assertTrue(claimFacade.updatePostgresClaim(485686,90000));
+        } catch (SQLException e) {
+            logger.info(e.getMessage());
+        }
     }
     @Test
     @Tag("dev")
