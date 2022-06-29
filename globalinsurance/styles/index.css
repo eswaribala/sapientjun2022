@@ -7,14 +7,10 @@
 
 }
 
-h4{
-    color: goldenrod;
 
-}
 .multicolortext {
     background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
     -webkit-background-clip: text;
-
     color: transparent;
     font-family: "Lucida Calligraphy"
 }
