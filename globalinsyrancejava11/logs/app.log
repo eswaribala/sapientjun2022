@@ -6,3 +6,5 @@
 2022-06-24 15:49:37,948 INFO com.sapient.Main [main] Claim(claimId=2265, policyNo=5404, claimAmount=7052, claimDate=2022-03-09)
 2022-06-24 15:49:37,948 INFO com.sapient.Main [main] Claim(claimId=4717, policyNo=993, claimAmount=5969, claimDate=2022-06-15)
 2022-06-24 15:49:37,949 INFO com.sapient.Main [main] Claim(claimId=134, policyNo=881, claimAmount=4175, claimDate=2022-07-25)
+2022-06-29 10:18:13,832 INFO com.sapient.dao.ClaimPostgresImplTest [main] ERROR: column "claim_id" of relation "Claim" does not exist
+  Position: 27

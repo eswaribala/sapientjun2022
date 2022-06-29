@@ -18,7 +18,7 @@ public class ClaimPostgresImpl implements ClaimFacade {
     private boolean status;
     private String query;
 
-    public ClaimPostgresImpl(ResourceBundle resourceBundle) throws SQLException {
+    public ClaimPostgresImpl() throws SQLException {
         this.resourceBundle = ResourceBundle.getBundle("db");
         this.connection= PostgresHelper.getConnection();
     }
