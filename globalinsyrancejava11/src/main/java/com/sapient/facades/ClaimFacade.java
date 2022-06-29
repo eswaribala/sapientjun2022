@@ -34,7 +34,7 @@ public interface ClaimFacade {
    default List<Object> getAllClaims(){
        return null;
    }
-    default List<Object> getPostgresAllClaims(){
+    default List<Claim> getAllPostgresClaims() throws SQLException {
         return null;
     }
    default boolean deleteClaimById(long claimId){

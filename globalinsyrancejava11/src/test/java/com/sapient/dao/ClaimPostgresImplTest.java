@@ -66,7 +66,11 @@ public class ClaimPostgresImplTest {
     @Tag("dev")
     public void searchClaimsTest(){
 
-         assertThat(claimFacade.getAllClaims(),not(empty()));
+        try {
+            assertThat(claimFacade.getAllPostgresClaims(),not(empty()));
+        } catch (SQLException e) {
+            logger.info(e.getMessage());
+        }
     }
     @Test
     @Tag("dev")

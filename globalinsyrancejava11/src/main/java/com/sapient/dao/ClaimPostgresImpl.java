@@ -5,6 +5,8 @@ import com.sapient.helpers.PostgresHelper;
 import com.sapient.models.Claim;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -50,8 +52,21 @@ public class ClaimPostgresImpl implements ClaimFacade {
     }
 
     @Override
-    public List<Object> getAllClaims() {
-        return ClaimFacade.super.getAllClaims();
+    public List<Claim> getAllPostgresClaims() throws SQLException {
+        query=resourceBundle.getString("selectAllClaims");
+        statement=connection.createStatement();
+        resultSet=statement.executeQuery(query);
+        Claim claim=null;
+        List<Claim> claims=new ArrayList<>();
+        while(resultSet.next()){
+           claim=new Claim();
+           claim.setClaimId( resultSet.getLong(1));
+           claim.setClaimAmount(resultSet.getLong(2));
+           claim.setPolicyNo(resultSet.getLong(3));
+           claim.setClaimDate(LocalDate.parse(resultSet.getDate(4).toString()));
+           claims.add(claim);
+        }
+      return claims;
     }
 
     @Override

@@ -14,3 +14,5 @@
   Position: 48
 2022-06-29 11:16:51,444 INFO com.sapient.dao.ClaimPostgresImplTest [main] ERROR: missing FROM-clause entry for table "claim"
   Position: 54
+2022-06-29 11:34:21,529 INFO com.sapient.dao.ClaimPostgresImplTest [main] The column name 1 was not found in this ResultSet.
+2022-06-29 11:35:55,557 INFO com.sapient.dao.ClaimPostgresImplTest [main] The column name 4 was not found in this ResultSet.
