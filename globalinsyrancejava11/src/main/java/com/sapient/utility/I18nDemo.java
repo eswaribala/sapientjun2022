@@ -15,6 +15,9 @@ public class I18nDemo {
                 .getBundle("message", tamilLocale);
         System.out.println(rb.getString("greeting"));
 
-
+        Locale frenchLocale = new Locale("fr", "FR");
+         rb = ResourceBundle
+                .getBundle("message", frenchLocale);
+        System.out.println(rb.getString("greeting"));
     }
 }
