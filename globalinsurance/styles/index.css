@@ -54,13 +54,17 @@
     background-color: black;
 }
 #root nav ul li a {
+    color: goldenrod;
     text-decoration: none;
+}
+#root nav ul li a:hover {
+    color:black;
+    background-color: goldenrod;
 }
 #root nav ul li:hover {
     color:black;
     background-color: goldenrod;
 }
-
 .title{
   padding:75px;
   font-weight: bold;
