@@ -34,7 +34,11 @@
     height:200px;
     margin-left: 35%;
     padding:10px;
+
 }
+
+
+
 #root nav {
     margin-left: 25%;
 }
@@ -54,3 +58,11 @@
     color:black;
     background-color: goldenrod;
 }
+
+.title{
+  padding:75px;
+  font-weight: bold;
+
+}
+
+

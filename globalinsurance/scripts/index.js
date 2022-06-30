@@ -5,17 +5,24 @@ window.addEventListener('load',function (){
         COLORS.push(`rgb(${rand(0,255)},${rand(0,255)},${rand(0,255)})`);
     }
     console.log(COLORS);
+    var BlockTitles=["View Policy","Apply Claim","Surveyor Report",
+    "FIR Report","Refund Status","Gallery"]
     let k=0;
     var element=document.querySelector("#root");
     var table=document.createElement("table");
-    for(let i=0;i<10;i++){
+    for(let i=0;i<2;i++){
         var tr=document.createElement("tr");
         for(let j=0;j<3;j++){
             var td=document.createElement("td");
             var article = document.createElement("article");
             article.className = "article";
             article.style.backgroundColor=COLORS[k];
+            var title=document.createElement("h4");
+            var text=document.createTextNode(BlockTitles[k]);
             k++;
+            title.className="title"
+            title.appendChild(text);
+            article.appendChild(title);
             td.appendChild(article);
             tr.appendChild(td);
         }
