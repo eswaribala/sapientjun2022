@@ -35,7 +35,10 @@ window.addEventListener('load',function(){
         text=document.createTextNode(claimObject.driverName);
         td.appendChild(text);
         tr.appendChild(td);
-
+        td=document.createElement("td");
+        text=document.createTextNode(claimObject.address);
+        td.appendChild(text);
+        tr.appendChild(td);
     }
     table.appendChild(tr);
 

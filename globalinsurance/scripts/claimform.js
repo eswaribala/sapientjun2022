@@ -10,7 +10,7 @@ window.addEventListener('load',function(){
        mobileNo=document.querySelector("#mobileNo").value;
        driverType=document.querySelector("#driverType").value;
        driverName=document.querySelector("#driverName").value;
-
+       address=document.querySelector("#address").value;
        //create json object
         claimObject={
             "claimId":claimId,
@@ -19,7 +19,8 @@ window.addEventListener('load',function(){
             "email":email,
             "claimDate":claimDate,
             "driverType":driverType,
-            "driverName":driverName
+            "driverName":driverName,
+            "address":address
         }
 
         console.log(claimObject);

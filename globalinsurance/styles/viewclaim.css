@@ -47,3 +47,6 @@ table tr:nth-child(2n+1){
     background-color: white;
     color: blue;
 }
+h4{
+    text-align: center;
+}
