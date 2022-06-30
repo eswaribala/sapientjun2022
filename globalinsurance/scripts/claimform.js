@@ -12,12 +12,13 @@ window.addEventListener('load',function(){
        driverName=document.querySelector("#driverName").value;
        address=document.querySelector("#address").value;
        //read the image
-        fileType=/image.*/
-        docRef=document.querySelector("#doc");
-        for(let i=0;i<docRef.files.length;i++){
+        var fileType=/image.*/
+       var photoRef=document.querySelector("#photo");
+        for(let i=0;i<photoRef.files.length;i++){
 
-            if(docRef.files[i].type.match(fileType)){
-                storeFile("doc"+i,docRef.files[i]);
+            if(photoRef.files[i].type.match(fileType)){
+                console.log("file type matching"+photoRef.files[i].name);
+                storeFile("photo"+i,photoRef.files[i]);
             }
 
         }
@@ -47,7 +48,7 @@ window.addEventListener('load',function(){
 
 function storeFile(key,file){
 
-    fileReader=new FileReader();
+    var fileReader=new FileReader();
     fileReader.readAsDataURL(file);
     fileReader.onload=function() {
         window.localStorage.setItem(key, fileReader.result);
