@@ -5,7 +5,7 @@ window.addEventListener('load',function (){
         COLORS.push(`rgb(${rand(0,255)},${rand(0,255)},${rand(0,255)})`);
     }
     console.log(COLORS);
-    var BlockTitles=["View Policy","Apply Claim","Surveyor Report",
+    var BlockTitles=["View Claim","Apply Claim","Surveyor Report",
     "FIR Report","Refund Status","Gallery"]
     let k=0;
     var element=document.querySelector("#root");
@@ -38,7 +38,9 @@ window.addEventListener('load',function (){
           if(this.innerText == 'Apply Claim'){
               window.location.href="claimform.html";
           }
-
+            if(this.innerText == 'View Claim'){
+                window.location.href="viewclaim.html";
+            }
         })
     }
 
