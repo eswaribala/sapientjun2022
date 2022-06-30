@@ -19,7 +19,7 @@
         </figure>
 
     </header>
-<form>
+<form onsubmit="return false">
     <fieldset>
         <legend>Apply Claim</legend>
         <input id="claimId" type="number" required  placeholder="Claim Id">
@@ -30,7 +30,7 @@
         <input id="driverType" list="type" required>
         <input id="driverName" type="text" required pattern="^[a-zA-Z]{5,25}$" placeholder="Driver Name">
         <input id="email" type="email" multiple placeholder="sample@gmail.com">
-        <button id="claimBtn">Submit</button>
+        <input id="claimBtn" type="submit">Submit</input>
 
     </fieldset>
     <datalist id="type">
