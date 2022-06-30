@@ -23,7 +23,7 @@ window.addEventListener('load',function(){
         }
 
         console.log(claimObject);
-        window.localStorage.setItem("claim",claimObject);
+        window.localStorage.setItem("claim",JSON.stringify(claimObject));
 
         return false;
     })
