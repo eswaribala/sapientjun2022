@@ -33,3 +33,17 @@ input[type=submit]{
     font-weight: bold;
     width:100%;
 }
+table {
+    width:80%;
+    margin-left: 5%;
+    margin-top: 5%;
+    border: 4px solid black;
+}
+table tr{
+    background-color: blue;
+    color: white;
+}
+table tr:nth-child(2n+1){
+    background-color: white;
+    color: blue;
+}
