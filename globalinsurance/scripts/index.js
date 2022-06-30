@@ -17,18 +17,28 @@ window.addEventListener('load',function (){
             var article = document.createElement("article");
             article.className = "article";
             article.style.backgroundColor=COLORS[k];
+            article.setAttribute("id","article"+k);
             var title=document.createElement("h4");
             var text=document.createTextNode(BlockTitles[k]);
             k++;
             title.className="title"
             title.appendChild(text);
             article.appendChild(title);
+
             td.appendChild(article);
             tr.appendChild(td);
         }
         table.appendChild(tr);
     }
     element.appendChild(table);
+
+    for(let i=0;i<6;i++) {
+        article = document.querySelector("#article"+i);
+        article.addEventListener('click', function () {
+            alert("clicked.....");
+        })
+    }
+
 })
 
 function rand(from,to){

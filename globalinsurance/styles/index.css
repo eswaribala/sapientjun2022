@@ -36,7 +36,9 @@
     padding:10px;
 
 }
-
+.article:hover{
+    cursor: pointer;
+}
 
 
 #root nav {
