@@ -35,7 +35,10 @@ window.addEventListener('load',function (){
     for(let i=0;i<6;i++) {
         article = document.querySelector("#article"+i);
         article.addEventListener('click', function () {
-            alert("clicked.....");
+          if(this.innerText == 'Apply Claim'){
+              window.location.href="claimform.html";
+          }
+
         })
     }
 
