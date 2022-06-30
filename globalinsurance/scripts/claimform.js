@@ -1,8 +1,12 @@
 window.addEventListener('load',function(){
 
     form=document.querySelector("form");
+    btnRef=document.querySelector("#claimBtn");
     form.addEventListener('submit',function(){
        console.log("form submitted");
+       btnRef.className="disabled";
+       btnRef.disabled=true;
+
        claimId=document.querySelector("#claimId").value;
        policyNo=document.querySelector("#policyNo").value;
        claimDate=document.querySelector("#claimDate").value;
