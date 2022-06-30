@@ -13,19 +13,15 @@ window.addEventListener('load',function(){
        address=document.querySelector("#address").value;
        //read the image
         var fileType=/image.*/
-       var photoRef=document.querySelector("#photo");
-        for(let i=0;i<photoRef.files.length;i++){
+       var docRef=document.querySelector("#doc");
+        for(let i=0;i<docRef.files.length;i++){
 
-            if(photoRef.files[i].type.match(fileType)){
-                console.log("file type matching"+photoRef.files[i].name);
-                storeFile("photo"+i,photoRef.files[i]);
+            if(docRef.files[i].type.match(fileType)){
+                console.log("file type matching"+docRef.files[i].name);
+                storeFile("doc"+i,docRef.files[i]);
             }
 
         }
-
-
-
-
        //create json object
         claimObject={
             "claimId":claimId,
