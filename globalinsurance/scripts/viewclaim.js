@@ -41,6 +41,28 @@ window.addEventListener('load',function(){
         tr.appendChild(td);
     }
     table.appendChild(tr);
+    var docsRef=document.querySelector("#docs");
 
+    for(let i=0;i<window.localStorage.length;i++)
+    {
+        if (window.localStorage.getItem("doc"+i) != undefined) {
+
+
+            retrieveData(docsRef,window.localStorage.getItem("doc"+i));
+
+
+        }
+    }
 
 })
+
+function  retrieveData(docsRef,file){
+
+
+    var img =new Image();
+    img.width=100;
+    img.height=100;
+    img.src=file;
+    docsRef.appendChild(img);
+
+}
