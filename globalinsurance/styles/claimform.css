@@ -1,0 +1,16 @@
+form{
+    width:25%;
+    margin-top: 5%;
+    margin-left: 25%;
+    background-color: aliceblue;
+}
+fieldset{
+    text-align: center;
+}
+
+input{
+    display: block;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
