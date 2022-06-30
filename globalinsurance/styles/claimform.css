@@ -1,7 +1,7 @@
 form{
     width:30%;
     margin-top: 5%;
-    margin-left: 25%;
+    margin-left: 35%;
     background-color: aliceblue;
 }
 fieldset{
@@ -11,7 +11,19 @@ fieldset{
 input{
     display: block;
     margin-bottom: 5px;
-    width: 100%;
+    width: 96%;
+}
+input[type=file]{
+    width:97%;
+}
+input[type=date]{
+    width:97%;
+}
+input:invalid{
+    border: 4px solid red;
+}
+input:valid{
+    border: 4px solid green;
 }
 
 button{

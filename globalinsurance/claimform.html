@@ -5,6 +5,7 @@
     <title>Title</title>
     <link type="text/css" rel="stylesheet" href="styles/header.css">
     <link type="text/css" rel="stylesheet" href="styles/claimform.css">
+    <script type="text/javascript" src="scripts/claimform.js"></script>
 </head>
 <body>
 <section>
@@ -24,12 +25,12 @@
         <input id="claimId" type="number" required  placeholder="Claim Id">
         <input id="policyNo" type="number" required placeholder="Policy No">
         <input id="claimDate" type="date" required placeholder="Application Date">
-        <input id="mobileNo" type="number" required pattern="\d{10}" placeholder="Phone No">
+        <input id="mobileNo" type="text" required pattern="^[0-9]{10}$" placeholder="Phone No">
         <input id="firCopy" type="file" required>
         <input id="driverType" list="type" required>
-        <input id="driverName" type="text" required pattern="[a-zA-Z]{5,25}" placeholder="Driver Name">
+        <input id="driverName" type="text" required pattern="^[a-zA-Z]{5,25}$" placeholder="Driver Name">
         <input id="email" type="email" multiple placeholder="sample@gmail.com">
-        <button>Submit</button>
+        <button id="claimBtn">Submit</button>
 
     </fieldset>
     <datalist id="type">
