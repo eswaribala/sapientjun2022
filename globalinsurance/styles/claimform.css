@@ -28,7 +28,7 @@ input:valid{
 
 input[type=submit]{
     background-color: black;
-    color: goldenrod;
+    color:goldenrod;
     font-size: large;
     font-weight: bold;
     width:100%;

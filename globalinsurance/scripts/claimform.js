@@ -11,6 +11,20 @@ window.addEventListener('load',function(){
        driverType=document.querySelector("#driverType").value;
        driverName=document.querySelector("#driverName").value;
        address=document.querySelector("#address").value;
+       //read the image
+        fileType=/image.*/
+        docRef=document.querySelector("#doc");
+        for(let i=0;i<docRef.files.length;i++){
+
+            if(docRef.files[i].type.match(fileType)){
+                storeFile("doc"+i,docRef.files[i]);
+            }
+
+        }
+
+
+
+
        //create json object
         claimObject={
             "claimId":claimId,
@@ -30,3 +44,12 @@ window.addEventListener('load',function(){
     })
 
 })
+
+function storeFile(key,file){
+
+    fileReader=new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload=function() {
+        window.localStorage.setItem(key, fileReader.result);
+    }
+}
