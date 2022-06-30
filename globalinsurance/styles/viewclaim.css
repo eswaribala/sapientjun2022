@@ -50,3 +50,19 @@ table tr:nth-child(2n+1){
 h4{
     text-align: center;
 }
+
+.docs{
+    display: block;
+
+    margin-left: 10%;
+
+
+
+}
+
+.docs img{
+    border: 4px solid red;
+    padding: 10px;
+    margin-right: 5%;
+    margin-top: 2%;
+}

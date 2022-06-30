@@ -58,7 +58,6 @@ window.addEventListener('load',function(){
 
 function  retrieveData(docsRef,file){
 
-
     var img =new Image();
     img.width=100;
     img.height=100;
