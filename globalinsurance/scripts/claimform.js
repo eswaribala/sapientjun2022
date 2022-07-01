@@ -91,12 +91,17 @@ function ajaxFunction(){
         }
     }
    //checking the response
+    var datalist=document.querySelector("#countryList");
     ajaxRequest.onreadystatechange = function(){
         if(ajaxRequest.readyState == 4 && ajaxRequest.status == 200){
              var countries=ajaxRequest.responseText;
-             countriesArray=JSON.parse(countries);
+             var countriesArray=JSON.parse(countries);
              countriesArray.forEach(country=>{
                  console.log(country.name);
+                 var option=document.createElement("option");
+                 var textNode=document.createTextNode(country.name);
+                 option.appendChild(textNode);
+                 datalist.appendChild(option);
              })
 
         }
