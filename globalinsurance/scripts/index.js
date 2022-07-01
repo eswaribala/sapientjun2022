@@ -18,12 +18,16 @@ window.addEventListener('load',function (){
             article.className = "article";
             article.style.backgroundColor=COLORS[k];
             article.setAttribute("id","article"+k);
+            var anchor=document.createElement("a");
+            anchor.setAttribute("href","#");
             var title=document.createElement("h4");
             var text=document.createTextNode(BlockTitles[k]);
             k++;
             title.className="title"
             title.appendChild(text);
-            article.appendChild(title);
+
+            anchor.appendChild(title);
+            article.appendChild(anchor);
 
             td.appendChild(article);
             tr.appendChild(td);
@@ -36,10 +40,11 @@ window.addEventListener('load',function (){
         article = document.querySelector("#article"+i);
         article.addEventListener('click', function () {
           if(this.innerText == 'Apply Claim'){
-              window.location.href="claimform.html";
+            this.childNodes[0].setAttribute("href","claimform.html");
+
           }
             if(this.innerText == 'View Claim'){
-                window.location.href="viewclaim.html";
+                this.childNodes[0].setAttribute("href","viewclaim.html");
             }
         })
     }

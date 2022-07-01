@@ -1,12 +1,20 @@
 window.addEventListener('load',function(){
 
-    form=document.querySelector("form");
+    var form=document.querySelector("form");
+
     btnRef=document.querySelector("#claimBtn");
     form.addEventListener('submit',function(){
        console.log("form submitted");
        btnRef.className="disabled";
        btnRef.disabled=true;
-
+        var elements=form.elements;
+        var claimObject={};
+        for(let i=0;i<elements.length;i++){
+            var item=elements.item(i);
+            claimObject[item.name]=item.value;
+        }
+        console.log(claimObject);
+/*
        claimId=document.querySelector("#claimId").value;
        policyNo=document.querySelector("#policyNo").value;
        claimDate=document.querySelector("#claimDate").value;
@@ -15,8 +23,10 @@ window.addEventListener('load',function(){
        driverType=document.querySelector("#driverType").value;
        driverName=document.querySelector("#driverName").value;
        address=document.querySelector("#address").value;
+*/
        //read the image
         var fileType=/image.*/
+
        var docRef=document.querySelector("#doc");
         for(let i=0;i<docRef.files.length;i++){
 
@@ -26,7 +36,9 @@ window.addEventListener('load',function(){
             }
 
         }
+
        //create json object
+        /*
         claimObject={
             "claimId":claimId,
             "policyNo":policyNo,
@@ -37,8 +49,8 @@ window.addEventListener('load',function(){
             "driverName":driverName,
             "address":address
         }
+*/
 
-        console.log(claimObject);
         window.localStorage.setItem("claim",JSON.stringify(claimObject));
 
         return false;
