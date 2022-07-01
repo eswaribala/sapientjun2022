@@ -97,6 +97,7 @@ function ajaxFunction(){
     }
 
     ajaxRequest.open("GET", "https://restcountries.com/v2/all", true);
+    ajaxRequest.send();
     //xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;");
     //xmlhttp.send("FirstName=krishna&LastName=Kumar");
 }
