@@ -51,9 +51,14 @@ function Person(adharCardNo,firstName,lastName){
     }
 }
 
-function Customer(adharCardNo,firstName,lastName,customerId, userName, password){
+Person.prototype.setAdharCardNo=function(adharCardNo){
+    this.adharCardNo=adharCardNo;
+}
+
+//function Customer(adharCardNo,firstName,lastName,customerId, userName, password){
     //super()
     //Person.call(this,adharCardNo,firstName,lastName);
+function Customer(customerId, userName, password){
     this.customerId=customerId;
     this.userName=userName;
     this.password=password;
@@ -67,7 +72,10 @@ Customer.prototype=Object.create(Person.prototype);
 
 //var person=new Person("A324865846","parameswari",
  //   "bala");
-var customer=new Customer("A324865846","parameswari",
-    "bala","2745325","user1","test@123");
-console.log(customer);
+//var customer=new Customer("A324865846","parameswari",
+//    "bala","2745325","user1","test@123");
+
+customer=new Customer("2745325","user1","test@123");
+customer.setAdharCardNo("A2875874");
+console.log(customer.adharCardNo);
 
