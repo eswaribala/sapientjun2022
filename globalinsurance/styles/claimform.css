@@ -42,3 +42,8 @@ input[type=submit]{
     background-color: gray;
 
 }
+
+#countryList{
+    width:97%;
+    border-radius: 50px 50px 50px 50px;
+}

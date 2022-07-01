@@ -2,6 +2,21 @@ window.addEventListener('load',function(){
 
     var form=document.querySelector("form");
 
+    var myHeaders = new Headers();
+    myHeaders.append("apikey", "Fplo51GdLJDIqKeLZE7b7qroLYC86aJS");
+
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow',
+        headers: myHeaders
+    };
+
+    fetch("https://api.apilayer.com/currency_data/list", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
+
     ajaxFunction();
 
 
