@@ -91,7 +91,7 @@ function ajaxFunction(){
         }
     }
    //checking the response
-    var datalist=document.querySelector("#countryList");
+    var selectList=document.querySelector("#countryList");
     ajaxRequest.onreadystatechange = function(){
         if(ajaxRequest.readyState == 4 && ajaxRequest.status == 200){
              var countries=ajaxRequest.responseText;
@@ -101,7 +101,7 @@ function ajaxFunction(){
                  var option=document.createElement("option");
                  var textNode=document.createTextNode(country.name);
                  option.appendChild(textNode);
-                 datalist.appendChild(option);
+                 selectList.appendChild(option);
              })
 
         }
