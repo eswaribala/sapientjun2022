@@ -1,3 +1,7 @@
+//globalscope
+var country='India';
+
+
 //object
 
 var bank=new Object;
@@ -79,3 +83,19 @@ customer=new Customer("2745325","user1","test@123");
 customer.setAdharCardNo("A2875874");
 console.log(customer.adharCardNo);
 
+//typeof
+console.log(typeof customer);
+
+//immediate invocation of function
+//function expression
+var setCountry=function (countryName) {
+    //local scope
+    var country = countryName;
+    console.log(country);
+//}('USA');
+}
+
+setCountry('Singapore');
+
+//global scope
+console.log(country);
