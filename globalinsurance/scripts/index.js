@@ -9,11 +9,11 @@ window.addEventListener('load',function (){
     "FIR Report","Refund Status","Gallery"]
     let k=0;
     var element=document.querySelector("#root");
-    var table=document.createElement("table");
+    //var table=document.createElement("table");
     for(let i=0;i<2;i++){
-        var tr=document.createElement("tr");
+        //var tr=document.createElement("tr");
         for(let j=0;j<3;j++){
-            var td=document.createElement("td");
+           // var td=document.createElement("td");
             var article = document.createElement("article");
             article.className = "article";
             article.style.backgroundColor=COLORS[k];
@@ -29,12 +29,13 @@ window.addEventListener('load',function (){
             anchor.appendChild(title);
             article.appendChild(anchor);
 
-            td.appendChild(article);
-            tr.appendChild(td);
+          //  td.appendChild(article);
+          //  tr.appendChild(td);
+            element.appendChild(article);
         }
-        table.appendChild(tr);
+     //   table.appendChild(tr);
     }
-    element.appendChild(table);
+
 
     for(let i=0;i<6;i++) {
         article = document.querySelector("#article"+i);
