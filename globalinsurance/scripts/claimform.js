@@ -78,6 +78,7 @@ function storeFile(key,file){
 function ajaxFunction(){
     var ajaxRequest;
     try{
+        //creating ajax object
         ajaxRequest = new XMLHttpRequest();
     } catch (e){
         try{
@@ -89,13 +90,18 @@ function ajaxFunction(){
             return false;
         }
     }
-
+   //checking the response
     ajaxRequest.onreadystatechange = function(){
         if(ajaxRequest.readyState == 4 && ajaxRequest.status == 200){
-            console.log( ajaxRequest.responseText);
+             var countries=ajaxRequest.responseText;
+             countriesArray=JSON.parse(countries);
+             countriesArray.forEach(country=>{
+                 console.log(country.name);
+             })
+
         }
     }
-
+     //accessing api
     ajaxRequest.open("GET", "https://restcountries.com/v2/all", true);
     ajaxRequest.send();
     //xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;");
