@@ -1,4 +1,5 @@
 //object
+
 var bank=new Object;
 bank.bankId=39569;
 bank.bankName='SBI';
@@ -38,4 +39,26 @@ var country={
 }
 
 console.log(country);
+
+
+
+function Person(adharCardNo,firstName,lastName){
+    this.adharCardNo=adharCardNo;
+    this.firstName=firstName;
+    this.lastName=lastName;
+}
+
+function Customer(adharCardNo,firstName,lastName,customerId, userName, password){
+    //super()
+    Person.call(this,adharCardNo,firstName,lastName);
+    this.customerId=customerId;
+    this.userName=userName;
+    this.password=password;
+}
+//inheritance
+Customer.prototype=new Person();
+
+var customer=new Customer("A324865846","parameswari",
+    "bala","2745325","user1","test@123");
+console.log(customer);
 
