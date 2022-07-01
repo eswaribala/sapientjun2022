@@ -2,6 +2,10 @@ window.addEventListener('load',function(){
 
     var form=document.querySelector("form");
 
+    ajaxFunction();
+
+
+
     btnRef=document.querySelector("#claimBtn");
     form.addEventListener('submit',function(){
        console.log("form submitted");
@@ -56,6 +60,10 @@ window.addEventListener('load',function(){
         return false;
     })
 
+
+
+
+
 })
 
 function storeFile(key,file){
@@ -65,4 +73,30 @@ function storeFile(key,file){
     fileReader.onload=function() {
         window.localStorage.setItem(key, fileReader.result);
     }
+}
+
+function ajaxFunction(){
+    var ajaxRequest;
+    try{
+        ajaxRequest = new XMLHttpRequest();
+    } catch (e){
+        try{
+            //ie 7.0
+            ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP3.0");
+        }
+        catch (e){
+            alert("Your browser broke!");
+            return false;
+        }
+    }
+
+    ajaxRequest.onreadystatechange = function(){
+        if(ajaxRequest.readyState == 4 && ajaxRequest.status == 200){
+            console.log( ajaxRequest.responseText);
+        }
+    }
+
+    ajaxRequest.open("GET", "https://restcountries.com/v2/all", true);
+    //xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;");
+    //xmlhttp.send("FirstName=krishna&LastName=Kumar");
 }
