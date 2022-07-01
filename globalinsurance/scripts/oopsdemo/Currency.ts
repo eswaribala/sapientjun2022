@@ -49,16 +49,20 @@ var currency=new Currency("INR","Rupees",
     78,true);
 console.log(currency.currencyCode,currency.currencyName,currency.currencyValue);
 
+enum Gender{MALE,FEMALE}
+
 //inheritance
 class Person{
     private _adharCardNo:string;
     private _firstName:string;
     private _lastName:string;
+    private _gender:Gender;
 
-    constructor(adharCardNo: string, firstName: string, lastName: string) {
+    constructor(adharCardNo: string, firstName: string, lastName: string,gender:Gender) {
         this._adharCardNo = adharCardNo;
         this._firstName = firstName;
         this._lastName = lastName;
+        this._gender=gender;
     }
 
 
@@ -92,8 +96,9 @@ class Customer extends Person{
     private _userName:string;
     private _password:string;
 
-    constructor(adharCardNo: string, firstName: string, lastName: string, customerId: number, userName: string, password: string) {
-        super(adharCardNo, firstName, lastName);
+    constructor(adharCardNo: string, firstName: string, lastName: string,
+                customerId: number, userName: string, password: string,gender:Gender) {
+        super(adharCardNo, firstName, lastName,gender);
         this._customerId = customerId;
         this._userName = userName;
         this._password = password;
@@ -126,5 +131,5 @@ class Customer extends Person{
 }
 
 var customer=new Customer("A3467934","Parameswari",
-    "Bala",346934,"user1","test@123");
+    "Bala",346934,"user1","test@123",Gender.FEMALE);
 console.log(customer.adharCardNo,customer.userName);
