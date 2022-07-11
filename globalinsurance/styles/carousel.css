@@ -1,6 +1,6 @@
 .gallery{
     width:25%;
-    margin-left: 25%;
+    margin-left: 35%;
 }
 
 .gallery div img{
@@ -8,4 +8,11 @@
     height:auto;
     margin-bottom: 5%;
     border: 4px solid blue;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: all 2.0s ease;
+}
+
+.gallery div img:hover{
+    -webkit-transform: rotateZ(45deg);
+    -webkit-box-shadow: -5px 5px 5px #aaa;
 }
