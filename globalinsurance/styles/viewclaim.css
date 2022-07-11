@@ -66,3 +66,21 @@ h4{
     margin-right: 5%;
     margin-top: 2%;
 }
+
+#maparea
+{
+    position:relative;
+    width:500px;
+    height:300px;
+    margin-top: 20px;
+    border: 2px solid red;
+}
+
+#geoinfo
+{
+    position:relative;
+    width:500px;
+    height:200px;
+    margin-top: 20px;
+    border: 2px solid red;
+}

@@ -1,5 +1,15 @@
 window.addEventListener('load',function(){
 
+    if(navigator.geolocation) {
+        console.log("Geo API supported");
+        navigator.geolocation.getCurrentPosition(success,failure);
+
+    }
+    else
+        console.log("Geo API not supported");
+
+
+
     var table=document.querySelector("#claimtbl");
 
     tr=document.createElement("tr");
@@ -64,4 +74,29 @@ function  retrieveData(docsRef,file){
     img.src=file;
     docsRef.appendChild(img);
 
+}
+
+
+function success(position) {
+    console.log(position.coords.latitude);
+    console.log(position.coords.longitude);
+    console.log(position.coords.altitude);
+    console.log(position.coords.accuracy);
+    console.log(position.coords.altitudeAccuracy);
+    console.log(position.coords.speed);
+    var sectionref = document.getElementById("geoinfo");
+    sectionref.innerHTML =
+        "<p> Latitude=<mark>" + position.coords.latitude + "</mark></p><br/>" +
+        "<p> Longitude=<mark>" + position.coords.longitude + "</mark></p>";
+
+
+
+    
+    // alert("done");
+
+}
+
+function failure(msg)
+{
+    console.log(msg);
 }
