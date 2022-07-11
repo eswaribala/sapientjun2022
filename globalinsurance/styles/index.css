@@ -2,7 +2,10 @@
 /*and (orientation: landscape) and (resolution: 96dpi) and (max-width: 512px)*/
 {
     body{
-        background-color: aqua;
+        background: url("../images/logo.jpg");
+        background-repeat: no-repeat;
+        background-origin: content-box;
+        background-size: cover;
     }
 
     .article{

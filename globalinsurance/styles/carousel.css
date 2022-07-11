@@ -1,5 +1,5 @@
-.gallery{
-    width:100%;
+.gallery {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -31,9 +31,7 @@
     width:200px;
     height:auto;
 
-    border: 4px solid blue;
-    -webkit-transform-style: preserve-3d;
-    -webkit-transition: all 2.0s ease;
+
 }
 
 .zoomgallery div img:hover{
@@ -99,12 +97,16 @@
     width:400px;
     height:auto;
 
-    border: 4px solid blue;
-    -webkit-transform-style: preserve-3d;
-    -webkit-transition: all 2.0s ease;
 }
 
 .animategallery div img:hover{
-    -webkit-transform: translateY(-200px);
-    -webkit-box-shadow: -5px 5px 5px #aaa;
+    -webkit-transform: scale(1,2);
+    -webkit-box-shadow: -15px 15px 15px blueviolet;
+}
+#borderimg {
+    border: 10px solid transparent;
+    padding: 15px;
+    -webkit-border-image: url('../images/borderimages.jpg') 30 round; /* Safari 3.1-5 */
+    -o-border-image: url('../images/borderimages.jpg') 30 round; /* Opera 11-12.1 */
+    border-image: url('../images/borderimages.jpg') 30 round;
 }
