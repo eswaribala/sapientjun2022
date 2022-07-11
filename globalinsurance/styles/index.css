@@ -1,4 +1,6 @@
-@media screen and (min-width: 900px)  {
+@media screen and (min-width: 900px)
+/*and (orientation: landscape) and (resolution: 96dpi) and (max-width: 512px)*/
+{
     body{
         background-color: aqua;
     }
