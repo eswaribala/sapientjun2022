@@ -1,6 +1,11 @@
 //globalscope
 var country='India';
 
+//parsing the text to int
+var netSalary="247567"
+//calculate the bonus
+bonus=parseInt(netSalary)*.15;
+console.log(bonus);
 
 //object
 

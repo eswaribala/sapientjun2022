@@ -1,8 +1,9 @@
 window.addEventListener('load',function (){
 
-  let data=  prompt("Enter h4 text");
-  if(data!=null){
-      $('#title').append(data);
+  //let data=  prompt("Enter h4 text");
+  let confirm = window.confirm("Do you want to append text");
+    if(confirm){
+      $('#title').append("Hi");
   }
     var COLORS = [];
     while(COLORS.length < 100){
