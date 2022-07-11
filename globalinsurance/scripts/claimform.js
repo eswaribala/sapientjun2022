@@ -1,5 +1,6 @@
 window.addEventListener('load',function(){
 
+
     var form=document.querySelector("form");
 
     var myHeaders = new Headers();

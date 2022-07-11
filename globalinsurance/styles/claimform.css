@@ -92,4 +92,26 @@ input[type=submit]{
     border-radius: 50px 50px 50px 50px;
 }
 
+.progress
+{
+    width: 310px;
 
+}
+
+#progressbar-bg
+{
+    width: 310px;
+    background: gray;
+    border-radius: 3px;
+}
+#progressbar
+{
+    height: 20px;
+
+    color: #fff;
+    padding: 5px;
+    background-color: blue;
+
+    border-radius: 3px;
+    text-shadow: 1px 1px 1px red;
+}
