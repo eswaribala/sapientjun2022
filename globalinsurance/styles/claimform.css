@@ -4,18 +4,19 @@
 aside{
     width:25%;
     height: 400px;
-    border: 2px solid red;
+  border: 4px dotted green;
+
     float: left;
 }
 
 .article aside marquee{
-
+ text-align: justify;
 }
 
 .article form{
     width:30%;
     margin-left: 40%;
-    border:2px solid green;
+
 
 
     background-color: aliceblue;
