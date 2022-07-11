@@ -1,7 +1,23 @@
-form{
+.article{
+    width:100%;
+}
+aside{
+    width:25%;
+    height: 400px;
+    border: 2px solid red;
+    float: left;
+}
+
+.article aside marquee{
+
+}
+
+.article form{
     width:30%;
-    margin-top: 5%;
-    margin-left: 35%;
+    margin-left: 40%;
+    border:2px solid green;
+
+
     background-color: aliceblue;
 }
 fieldset{
@@ -47,3 +63,5 @@ input[type=submit]{
     width:97%;
     border-radius: 50px 50px 50px 50px;
 }
+
+
