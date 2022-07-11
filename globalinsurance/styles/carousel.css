@@ -110,3 +110,16 @@
     -o-border-image: url('../images/borderimages.jpg') 30 round; /* Opera 11-12.1 */
     border-image: url('../images/borderimages.jpg') 30 round;
 }
+.curtain
+{
+
+    float:left;
+    width:500px;
+    height:500px;
+    border:1px solid black;
+    text-align:center;
+    margin:10px;
+    background-color:orange;
+
+
+}

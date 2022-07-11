@@ -51,6 +51,9 @@ window.addEventListener('load',function (){
             if(this.innerText == 'Gallery'){
                 this.childNodes[0].setAttribute("href","Carousel.html");
             }
+            if(this.innerText == 'Surveyor Report'){
+                this.childNodes[0].setAttribute("href","survey.html");
+            }
         })
     }
 
