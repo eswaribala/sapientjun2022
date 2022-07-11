@@ -1,12 +1,15 @@
 .gallery{
-    width:25%;
-    margin-left: 35%;
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 5%;
 }
 
 .gallery div img{
     width:200px;
     height:auto;
-    margin-bottom: 5%;
+
     border: 4px solid blue;
     -webkit-transform-style: preserve-3d;
     -webkit-transition: all 2.0s ease;
@@ -14,5 +17,47 @@
 
 .gallery div img:hover{
     -webkit-transform: rotateZ(45deg);
+    -webkit-box-shadow: -5px 5px 5px #aaa;
+}
+.zoomgallery{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 5%;
+}
+
+.zoomgallery div img{
+    width:200px;
+    height:auto;
+
+    border: 4px solid blue;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: all 2.0s ease;
+}
+
+.zoomgallery div img:hover{
+    -webkit-transform: scale(2,2);
+    -webkit-box-shadow: -5px 5px 5px #aaa;
+}
+.movegallery{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 5%;
+}
+
+.movegallery div img{
+    width:200px;
+    height:auto;
+
+    border: 4px solid blue;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: all 2.0s ease;
+}
+
+.movegallery div img:hover{
+    -webkit-transform: translateY(200px);
     -webkit-box-shadow: -5px 5px 5px #aaa;
 }
