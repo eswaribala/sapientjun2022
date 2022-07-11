@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <link type="text/css" rel="stylesheet" href="styles/header.css">
     <link type="text/css" rel="stylesheet" href="styles/claimform.css">
     <script type="text/javascript" src="scripts/claimform.js"></script>
@@ -43,6 +45,27 @@
     </aside>
 
 <form onsubmit="return false" autocomplete="on" novalidate >
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                <input type="number" class="form-control" name="claimId" type="number" required   placeholder="Claim Id">
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                <input type="text" class="form-control" placeholder="Username">
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                <input type="text" class="form-control" placeholder="Username">
+            </div>
+        </div>
+    </div>
+    <!--
     <fieldset>
         <legend>Apply Claim</legend>
         <input name="claimId" type="number" required   placeholder="Claim Id">
@@ -71,7 +94,7 @@
         <option>Driver</option>
         <option>Owner</option>
     </datalist>
-
+  -->
 </form>
     </article>
     <section class="progress">
