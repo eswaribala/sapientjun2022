@@ -1,0 +1,11 @@
+.gallery{
+    width:25%;
+    margin-left: 25%;
+}
+
+.gallery div img{
+    width:200px;
+    height:auto;
+    margin-bottom: 5%;
+    border: 4px solid blue;
+}
