@@ -14,6 +14,12 @@ aside{
 .article aside marquee{
  text-align: justify;
 }
+.para{
+    -webkit-column-count:2;
+    -webkit-column-gap: 25px;
+    -webkit-column-rule:4px dotted goldenrod;
+
+}
 
 .para:first-letter{
     font-size: xxx-large;
@@ -22,7 +28,7 @@ aside{
 
 .para:first-line{
     font-size: large;
-    color: cornflowerblue;
+    color: blue;
 }
 
 .article form{
