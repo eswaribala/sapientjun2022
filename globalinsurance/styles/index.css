@@ -1,47 +1,110 @@
-.article{
-    display: flex;
-    background-color: aqua;
-    width:300px;
-    height:200px;
-   float:left;
-    margin-left: 7%;
-    margin-bottom: 2%;
-    padding:10px;
+@media screen and (min-width: 900px)  {
+    body{
+        background-color: aqua;
+    }
 
-}
-.article:hover{
-    cursor: pointer;
-}
+    .article{
+        display: flex;
+        background-color: aqua;
+        width:300px;
+        height:200px;
+        float:left;
+        margin-left: 7%;
+        margin-bottom: 2%;
+        padding:10px;
 
-
-#root nav {
-    margin-left: 25%;
-}
-
-#root nav ul li {
-    display: inline-block;
-    list-style: none;
-    color:goldenrod;
-    padding: 25px;
-    font-size: x-large;
-    background-color: black;
-}
-#root nav ul li a {
-    color: goldenrod;
-    text-decoration: none;
-}
-#root nav ul li a:hover {
-    color:black;
-    background-color: goldenrod;
-}
-#root nav ul li:hover {
-    color:black;
-    background-color: goldenrod;
-}
-.title{
-  padding:75px;
-  font-weight: bold;
-
-}
+    }
+    .article:hover{
+        cursor: pointer;
+    }
 
 
+    #root nav {
+        margin-left: 25%;
+    }
+
+    #root nav ul li {
+        display: inline-block;
+        list-style: none;
+        color:goldenrod;
+        padding: 25px;
+        font-size: x-large;
+        background-color: black;
+    }
+    #root nav ul li a {
+        color: goldenrod;
+        text-decoration: none;
+    }
+    #root nav ul li a:hover {
+        color:black;
+        background-color: goldenrod;
+    }
+    #root nav ul li:hover {
+        color:black;
+        background-color: goldenrod;
+    }
+    .title{
+        padding:75px;
+        font-weight: bold;
+
+    }
+
+
+
+
+}
+@media screen and (min-width: 400px)  and (max-width:900px)   {
+    body{
+        background-color: yellow;
+    }
+
+    .article{
+        display: flex;
+        background-color: aqua;
+        width:300px;
+        height:200px;
+        float:left;
+        margin-left: 7%;
+        margin-bottom: 2%;
+        padding:10px;
+
+    }
+    .article:hover{
+        cursor: pointer;
+    }
+
+
+    #root nav {
+        margin-left: 25%;
+    }
+
+    #root nav ul li {
+        display: inline-block;
+        list-style: none;
+        color:goldenrod;
+        padding: 25px;
+        font-size: x-large;
+        background-color: black;
+    }
+    #root nav ul li a {
+        color: goldenrod;
+        text-decoration: none;
+    }
+    #root nav ul li a:hover {
+        color:black;
+        background-color: goldenrod;
+    }
+    #root nav ul li:hover {
+        color:black;
+        background-color: goldenrod;
+    }
+    .title{
+        padding:75px;
+        font-weight: bold;
+
+    }
+
+
+
+
+}
