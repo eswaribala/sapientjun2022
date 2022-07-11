@@ -1,5 +1,9 @@
 window.addEventListener('load',function (){
 
+  let data=  prompt("Enter h4 text");
+  if(data!=null){
+      $('#title').append(data);
+  }
     var COLORS = [];
     while(COLORS.length < 100){
         COLORS.push(`rgb(${rand(0,255)},${rand(0,255)},${rand(0,255)})`);
