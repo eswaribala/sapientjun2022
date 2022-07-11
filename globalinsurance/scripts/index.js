@@ -47,6 +47,10 @@ window.addEventListener('load',function (){
             if(this.innerText == 'View Claim'){
                 this.childNodes[0].setAttribute("href","viewclaim.html");
             }
+
+            if(this.innerText == 'Gallery'){
+                this.childNodes[0].setAttribute("href","Carousel.html");
+            }
         })
     }
 
