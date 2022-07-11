@@ -91,7 +91,28 @@ function success(position) {
 
 
 
-    
+    googleloc = new google.maps.LatLng
+    (position.coords.latitude,position.coords.longitude);
+
+    //alert(googleloc);
+    var mapoptions={
+        center:googleloc,
+        zoom:12,
+        mapTypeId:google.maps.MapTypeId.ROADMAP,
+        mapTypeControl:true,
+        mapTypeControlOptions:google.maps.MapTypeControlStyle.DEFAULT
+
+    };
+
+    var gmaparea=document.getElementById("maparea");
+    gmap = new google.maps.Map(gmaparea,mapoptions);
+    marker = new google.maps.Marker
+    ({
+        position:googleloc,
+        map:gmap,
+        title:"I am Here"
+
+    });
     // alert("done");
 
 }
