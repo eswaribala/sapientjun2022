@@ -51,7 +51,17 @@
 
     }
 
-
+    .item{
+        background: #333;
+        text-align: center;
+        height: 300px !important;
+    }
+    .carousel{
+        margin-top: 20px;
+    }
+    .bs-example{
+        margin: 20px;
+    }
 
 
 }

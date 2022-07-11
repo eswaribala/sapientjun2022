@@ -45,27 +45,60 @@
     </aside>
 
 <form onsubmit="return false" autocomplete="on" novalidate >
+
+    <!--
     <div class="row">
         <div class="col-xs-4">
             <div class="input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                <input type="number" class="form-control" name="claimId" type="number" required   placeholder="Claim Id">
+                <input type="number" class="form-control" name="claimId"
+                       type="number" required   placeholder="Claim Id">
             </div>
         </div>
         <div class="col-xs-4">
             <div class="input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                <input type="text" class="form-control" placeholder="Username">
+                <input ame="policyNo" type="number" required placeholder="Policy No"
+                       class="form-control" >
             </div>
         </div>
         <div class="col-xs-4">
             <div class="input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                <input type="text" class="form-control" placeholder="Username">
+                <input name="claimDate" type="date" required placeholder="Application Date"
+                       class="form-control" >
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                <input name="mobileNo"
+                       autofocus type="text"
+                       required pattern="^[0-9]{10}$"
+                       placeholder="Phone" class="form-control" >
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                <input id="doc" type="file" multiple required class="form-control" >
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                <input name="driverType" list="type" required class="form-control" >
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                <input name="driverType" list="type" required class="form-control" >
             </div>
         </div>
     </div>
-    <!--
+    -->
+
     <fieldset>
         <legend>Apply Claim</legend>
         <input name="claimId" type="number" required   placeholder="Claim Id">
@@ -89,12 +122,13 @@
         <input id="claimBtn" type="submit">
 
     </fieldset>
+
+
     <datalist id="type">
         <option>---Select Driver Type---</option>
         <option>Driver</option>
         <option>Owner</option>
     </datalist>
-  -->
 </form>
     </article>
     <section class="progress">
