@@ -1,9 +1,11 @@
 .article{
     width:100%;
+    margin-top: 5%;
 }
 aside{
     width:25%;
     height: 400px;
+    margin-left: 2%;
   border: 4px dotted green;
 
     float: left;
@@ -11,6 +13,16 @@ aside{
 
 .article aside marquee{
  text-align: justify;
+}
+
+.para:first-letter{
+    font-size: xxx-large;
+    color: red;
+}
+
+.para:first-line{
+    font-size: large;
+    color: cornflowerblue;
 }
 
 .article form{
