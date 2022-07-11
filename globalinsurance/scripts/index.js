@@ -1,10 +1,10 @@
 window.addEventListener('load',function (){
-
+clock();
   //let data=  prompt("Enter h4 text");
-  let confirm = window.confirm("Do you want to append text");
-    if(confirm){
-      $('#title').append("Hi");
-  }
+  //let confirm = window.confirm("Do you want to append text");
+  //  if(confirm){
+  //    $('#title').append("Hi");
+ // }
     var COLORS = [];
     while(COLORS.length < 100){
         COLORS.push(`rgb(${rand(0,255)},${rand(0,255)},${rand(0,255)})`);
@@ -66,4 +66,14 @@ window.addEventListener('load',function (){
 
 function rand(from,to){
     return ~~((Math.random()*(to-from))+from);
+}
+//recursive function
+function clock(){
+    var today=new Date();
+    var hour=today.getHours();
+    var min=today.getMinutes();
+    var sec=today.getSeconds()
+    var result=hour+":"+min+":"+sec;
+document.querySelector("#timer").innerText=result;
+setTimeout(clock,1000);
 }

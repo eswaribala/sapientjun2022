@@ -7,6 +7,20 @@ var netSalary="247567"
 bonus=parseInt(netSalary)*.15;
 console.log(bonus);
 
+//eval
+var bonusPerc=0.20
+let expression="netSalary * bonusPerc";
+let result=eval(expression);
+console.log(result);
+//string object
+let topic="ECMA 6";
+console.log(new String(topic).substring(2,4));
+
+let bonusWrapper=new Number(bonus);
+let activeWrapper=new Boolean(false);
+
+
+
 //object
 
 var bank=new Object;
