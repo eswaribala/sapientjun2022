@@ -1,7 +1,8 @@
 import './App.css';
 import {Component} from "react";
 import Logo from './Logo/logo'
-import Banner from './Banner/banner'
+import Banner from './Banner/banner';
+import MenuBar from './Menu/menu';
 
 //stateful component
 export class App extends Component{
@@ -14,11 +15,16 @@ export class App extends Component{
     render() {
         console.log("Rendering.....")
         return(
-            <div className="header">
+            <section>
+            <header className="header">
             <Logo></Logo>
             <h1 className="multicolortext">Global Insurance</h1>
             <Banner></Banner>
-            </div>
+            </header>
+                <article>
+                    <MenuBar></MenuBar>
+                </article>
+            </section>
         )
     }
 
