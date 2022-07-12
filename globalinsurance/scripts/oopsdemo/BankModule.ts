@@ -1,6 +1,7 @@
 export module BankModule{
    export class Bank{
 
+
     }
 
   export class Customer{
