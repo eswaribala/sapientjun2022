@@ -3,7 +3,7 @@ class Currency{
     private _currencyName:string;
     private _currencyValue:number;
     private _active:boolean;
-    static objects:number;
+    static objects:number=0;
 
     constructor(currencyCode: string, currencyName: string, currencyValue: number, active: boolean) {
         this._currencyCode = currencyCode;
