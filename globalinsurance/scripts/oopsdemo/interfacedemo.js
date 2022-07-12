@@ -27,3 +27,16 @@ var fir = {
 };
 console.log(fir);
 console.log(fir.computeDistance());
+var ClaimImpl = /** @class */ (function () {
+    function ClaimImpl() {
+    }
+    ClaimImpl.prototype.policyNo = function (policyCode) {
+        this.policyId = policyCode;
+    };
+    ClaimImpl.prototype.isLate = function (date) {
+        return undefined;
+    };
+    return ClaimImpl;
+}());
+var claimImplObj = new ClaimImpl();
+claimImplObj.policyNo(436578346863);

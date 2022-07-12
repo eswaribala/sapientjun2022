@@ -48,3 +48,30 @@ let fir:FIR={
 }
 console.log(fir)
 console.log(fir.computeDistance());
+
+interface Claim{
+    claimId: number;
+    claimAmount: number;
+    policyNo?: Function;
+    isLate?(date: Date): Function;
+}
+
+class ClaimImpl implements Claim{
+    claimAmount: number;
+    claimId: number;
+    policyId:number
+    policyNo(policyCode) {
+        this.policyId=policyCode;
+    }
+
+    isLate(date: Date): Function {
+        return undefined;
+    }
+
+
+
+}
+
+
+let claimImplObj=new ClaimImpl();
+claimImplObj.policyNo(436578346863);
