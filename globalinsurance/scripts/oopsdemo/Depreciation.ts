@@ -5,9 +5,20 @@ function depreciation(onRoadPrice:number, usedYears:number,drivenKms):number{
 
 console.log(depreciation(5000000,3,200000));
 
-//functions with varying number of parameters
 
-function joinSkillSets(name:string,...skillSet:string[]):string{
+//default parameter
+function employeeInfo(name:string,country:string="India"):string{
+    return name+"=>"+country;
+}
+
+console.log(employeeInfo("Sanjay",));
+console.log(employeeInfo("Anil","Singapore"));
+console.log(employeeInfo("Ruchi","USA"));
+console.log(employeeInfo("Deepa","KSA"));
+
+
+//functions with varying number of parameters
+function joinSkillSets(name:string,country:string="India",...skillSet:string[]):string{
    let skill:string='';
    if (skillSet.length==0)
        skill="Fresher";
@@ -17,10 +28,10 @@ function joinSkillSets(name:string,...skillSet:string[]):string{
         else
             skill=skillSet;
     })
-    return name+"=>"+skill
+    return name+"=>"+country+"=>"+skill
 }
 
-console.log(joinSkillSets("Sanjay","java"));
-console.log(joinSkillSets("Anil","java","C++"));
-console.log(joinSkillSets("Ruchi","java","C++","Python"));
-console.log(joinSkillSets("Deepa",));
+console.log(joinSkillSets("Sanjay","","java"));
+console.log(joinSkillSets("Anil","Singapore","java","C++"));
+console.log(joinSkillSets("Ruchi","USA","java","C++","Python"));
+console.log(joinSkillSets("Deepa","KSA"));

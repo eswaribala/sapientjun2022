@@ -3,13 +3,14 @@ class Currency{
     private _currencyName:string;
     private _currencyValue:number;
     private _active:boolean;
-
+    static objects:number;
 
     constructor(currencyCode: string, currencyName: string, currencyValue: number, active: boolean) {
         this._currencyCode = currencyCode;
         this._currencyName = currencyName;
         this._currencyValue = currencyValue;
         this._active = active;
+        Currency.numberOfObjectsCreated();
     }
 
     get currencyCode(): string {
@@ -43,6 +44,10 @@ class Currency{
     set active(value: boolean) {
         this._active = value;
     }
+//static method
+   static numberOfObjectsCreated():number{
+         return this.objects++;
+   }
 }
 
 var currency=new Currency("INR","Rupees",
@@ -133,3 +138,5 @@ class Customer extends Person{
 var customer=new Customer("A3467934","Parameswari",
     "Bala",346934,"user1","test@123",Gender.FEMALE);
 console.log(customer.adharCardNo,customer.userName);
+//static member
+console.log(Currency.objects);
