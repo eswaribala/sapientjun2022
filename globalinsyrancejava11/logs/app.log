@@ -16,3 +16,7 @@
   Position: 54
 2022-06-29 11:34:21,529 INFO com.sapient.dao.ClaimPostgresImplTest [main] The column name 1 was not found in this ResultSet.
 2022-06-29 11:35:55,557 INFO com.sapient.dao.ClaimPostgresImplTest [main] The column name 4 was not found in this ResultSet.
+2022-07-11 18:51:24,890 INFO com.sapient.dao.ClaimPostgresImplTest [main] ERROR: duplicate key value violates unique constraint "Claim_pkey"
+  Detail: Key ("Claim_Id")=(485687) already exists.
+2022-07-11 18:58:53,382 INFO com.sapient.dao.ClaimPostgresImplTest [main] ERROR: duplicate key value violates unique constraint "Claim_pkey"
+  Detail: Key ("Claim_Id")=(485687) already exists.
