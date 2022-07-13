@@ -30,11 +30,14 @@ export default function Create(props){
     const [isAddDisabled, setIsAddDisabled] = React.useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
+    //useEffect checks render commit
     useEffect(() => {
         if (Object.keys(errors).length === 0 && isSubmitting) {
             validate(inputs);
         }
     }, [errors]);
+
+
   /* const handleOnBlur=(event)=>{
        const name=event.target.name;
        const value=event.target.value;
@@ -52,19 +55,23 @@ export default function Create(props){
 
     const handleSubmit=(event)=> {
         if (event) event.preventDefault();
+
         console.log(inputs)
      //console.log(validate(inputs));
        setErrors(validate(inputs));
         console.log(errors);
-        setIsSubmitting(true);
-       setIsAddDisabled(true);
-      
-       axios.post(RestAPIUrl+"/addpolicy",inputs).then(res => {
-           console.log(res);
 
-       }).catch(error => {
+       setIsAddDisabled(true);
+        setIsSubmitting(true);
+
+
+           axios.post(RestAPIUrl + "/addpolicy", inputs).then(res => {
+               console.log(res);
+
+           }).catch(error => {
                throw(error);
            });
+     
 
     }
 
@@ -75,8 +82,8 @@ export default function Create(props){
                 <legend>Add Policy</legend>
                 <span className="mt-5">
                     <label htmlFor="policyNo" className="form-label">Policy No</label>
-                 <InputText  name="policyNo" type="number" required value={policyNo}
-                             className=" form-control"
+                 <InputText  name="policyNo" type="number"  value={policyNo}
+                             className="form-control"
                              onChange={handleOnChange}/>
                     {errors.policyNo &&
                     <div style={{ color: "red", paddingBottom: 10 }}>
@@ -86,7 +93,7 @@ export default function Create(props){
                 </span>
                 <span className="mt-5">
                     <label htmlFor="policyHolderName" className="form-label">PolicyHolder Name</label>
-                    <InputText  name="policyHolderName" required  type="text" value={policyHolderName}
+                    <InputText  name="policyHolderName"  type="text" value={policyHolderName}
                                 className="form-control"
                                 onChange={handleOnChange}/>
                     {errors.policyHolderName &&
@@ -96,7 +103,7 @@ export default function Create(props){
                 </span>
                     <span className="mt-5">
                          <label htmlFor="fromDate" className="form-label">From Date</label>
-                         <Calendar  name="fromDate" required value={fromDate} className="w-100" onChange={handleOnChange} showIcon />
+                         <Calendar  name="fromDate" value={fromDate} className="w-100" onChange={handleOnChange} showIcon />
 
                         {errors.fromDate &&
                         <div style={{ color: "red", paddingBottom: 10 }}>
@@ -105,7 +112,7 @@ export default function Create(props){
                 </span>
                 <span className="mt-5">
                     <label htmlFor="toDate" className="form-label">To Date</label>
-                       <Calendar  name="toDate" required value={toDate} className="w-100" onChange={handleOnChange} showIcon />
+                       <Calendar  name="toDate"  value={toDate} className="w-100" onChange={handleOnChange} showIcon />
                     {errors.toDate &&
                     <div style={{ color: "red", paddingBottom: 10 }}>
                         {errors.toDate}</div>
@@ -113,7 +120,7 @@ export default function Create(props){
                 </span>
                 <span className="mt-5">
                     <label htmlFor="sumAssured" className="form-label">Sum Assured</label>
-                    <InputText type="number" required name="sumAssured"
+                    <InputText type="number"  name="sumAssured"
                                value={sumAssured} className="form-control" onChange={handleOnChange}/>
                     {errors.sumAssured &&
                     <div style={{ color: "red", paddingBottom: 10 }}>
@@ -122,7 +129,7 @@ export default function Create(props){
 
                 </span>
                 <Button label="Submit" className="mt-3 form-control" aria-label="Submit"
-                           onClick={handleSubmit}
+                       disabled={isAddDisabled}    onClick={handleSubmit}
 
                 />
                 </fieldset>
