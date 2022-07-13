@@ -16,19 +16,25 @@ export default function Create(props){
     const [sumAssured, setSumAssured] = useState( propsSumAssured,0);
     const [inputs, setInputs]= useState({});
 
-   const handleOnBlur=(event)=>{
+  /* const handleOnBlur=(event)=>{
        const name=event.target.name;
        const value=event.target.value;
        setInputs(values=>({...values,[name]:value}))
 
    };
-
+*/
 
    const handleOnChange=(event)=>{
        const name=event.target.name;
        const value=event.target.value;
+       //console.log(name,value)
        setInputs(values=>({...values,[name]:value}))
    };
+
+    const handleSubmit=(event)=> {
+        event.preventDefault();
+        console.log(inputs)
+    }
 
     return(
 
@@ -37,32 +43,35 @@ export default function Create(props){
                 <legend>Add Policy</legend>
                 <span className="mt-5">
                     <label htmlFor="policyNo" className="form-label">Policy No</label>
-                 <InputText type="number" value={policyNo} className="form-control"  onChange={handleOnChange}/>
+                 <InputText  name="policyNo" type="number" value={policyNo} className="form-control"  onChange={handleOnChange}/>
 
                 </span>
                 <span className="mt-5">
                     <label htmlFor="policyHolderName" className="form-label">PolicyHolder Name</label>
-                    <InputText type="text" value={policyHolderName} className="form-control" onBlur={handleOnBlur}/>
+                    <InputText  name="policyHolderName" type="text" value={policyHolderName} className="form-control" onBlur={handleOnChange}/>
 
                 </span>
                     <span className="mt-5">
                          <label htmlFor="fromDate" className="form-label">From Date</label>
-                         <Calendar id="icon" value={fromDate} className="w-100" onChange={handleOnChange} showIcon />
+                         <Calendar  name="fromDate" value={fromDate} className="w-100" onChange={handleOnChange} showIcon />
 
 
                 </span>
                 <span className="mt-5">
                     <label htmlFor="toDate" className="form-label">To Date</label>
-                       <Calendar id="icon" value={toDate} className="w-100" onChange={handleOnChange} showIcon />
+                       <Calendar  name="toDate" value={toDate} className="w-100" onChange={handleOnChange} showIcon />
 
                 </span>
                 <span className="mt-5">
                     <label htmlFor="sumAssured" className="form-label">Sum Assured</label>
-                    <InputText type="number"
+                    <InputText type="number"  name="sumAssured"
                                value={sumAssured} className="form-control" onChange={handleOnChange}/>
 
                 </span>
-                <Button label="Submit" className="mt-3 form-control" aria-label="Submit"  />
+                <Button label="Submit" className="mt-3 form-control" aria-label="Submit"
+                        onClick={handleSubmit}
+
+                />
                 </fieldset>
         </form>
 
