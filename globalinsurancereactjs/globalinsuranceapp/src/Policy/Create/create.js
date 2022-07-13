@@ -4,6 +4,7 @@ import { InputText } from 'primereact/inputtext';
 import { Calendar } from 'primereact/calendar';
 import { Button } from 'primereact/button';
 import './create.css'
+import validate from "./formvalidationrules";
 //react hook version 16.8
 export default function Create(props){
     const { policyNo: propsPolicyNo, policyHolderName:propsPolicyHolderName, fromDate: propsFromDate,
@@ -15,7 +16,13 @@ export default function Create(props){
     const [toDate, setToDate] = useState( propsToDate,'');
     const [sumAssured, setSumAssured] = useState( propsSumAssured,0);
     const [inputs, setInputs]= useState({});
-
+    const [errors, setErrors] = useState({
+        policyNo: 0,
+        policyHolderName: "",
+        fromDate:"",
+        toDate:"",
+        sumAssured:0
+    });
   /* const handleOnBlur=(event)=>{
        const name=event.target.name;
        const value=event.target.value;
@@ -34,6 +41,7 @@ export default function Create(props){
     const handleSubmit=(event)=> {
         event.preventDefault();
         console.log(inputs)
+        setErrors(validate(inputs));
     }
 
     return(
