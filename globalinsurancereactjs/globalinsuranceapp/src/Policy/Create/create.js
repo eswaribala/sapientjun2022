@@ -3,10 +3,14 @@ import {useState} from "react";
 import { InputText } from 'primereact/inputtext';
 import { Calendar } from 'primereact/calendar';
 import { Button } from 'primereact/button';
+import axios from "axios";
 import './create.css'
 import validate from "./formvalidationrules";
+const RestAPIUrl='http://localhost:4000';
 //react hook version 16.8
 export default function Create(props){
+
+
     const { policyNo: propsPolicyNo, policyHolderName:propsPolicyHolderName, fromDate: propsFromDate,
         toDate:propsToDate, sumAssured:propsSumAssured,dispatch } = props;
     //define fields
@@ -46,6 +50,13 @@ export default function Create(props){
       // setErrors(validate(inputs));
         console.log(errors);
        // setIsAddDisabled(true);
+       axios.post(RestAPIUrl+"/addpolicy",inputs).then(res => {
+           console.log(res);
+
+       }).catch(error => {
+               throw(error);
+           });
+
     }
 
     return(
