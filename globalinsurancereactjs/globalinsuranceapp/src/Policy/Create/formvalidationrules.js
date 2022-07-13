@@ -1,10 +1,10 @@
 export default function validate(values) {
     let errors = {
-        policyNo: 0,
+        policyNo: "",
         policyHolderName: "",
         fromDate:"",
         toDate:"",
-        sumAssured:0
+        sumAssured:""
     };
     console.log(values.policyNo);
     if (values.policyNo<=0) {

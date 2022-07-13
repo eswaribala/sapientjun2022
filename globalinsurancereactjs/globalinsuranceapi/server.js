@@ -17,7 +17,7 @@ app.post('/addpolicy',function(request,response)
     response.setHeader('Access-Control-Allow-Methods', 'GET, POST');
     response.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
     response.setHeader('Access-Control-Allow-Credentials', true);
-    console.log(request.query);
+    console.log(request.body);
     //console.log(request);
 
 
