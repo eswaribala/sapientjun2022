@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {Routes} from "react-router";
 
 import './menu.css'
-import {Create} from "../Policy/Create/create";
+import Create from "../Policy/Create/create";
 import {View} from "../Policy/View/view";
 import {Delete} from "../Policy/Delete/delete";
 import {Export} from "../Policy/Export/export";
