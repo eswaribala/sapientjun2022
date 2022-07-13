@@ -17,11 +17,11 @@ export default function Create(props){
     const [sumAssured, setSumAssured] = useState( propsSumAssured,0);
     const [inputs, setInputs]= useState({});
     const [errors, setErrors] = useState({
-        policyNo: 'policy no required',
-        policyHolderName: "policy holder name required",
-        fromDate:"From Date required ",
-        toDate:"To Date required",
-        sumAssured:"Sum Assured Required"
+        policyNo: 0,
+        policyHolderName: "",
+        fromDate:"",
+        toDate:"",
+        sumAssured:0
     });
     const [isAddDisabled, setIsAddDisabled] = React.useState(false);
   /* const handleOnBlur=(event)=>{
@@ -41,12 +41,11 @@ export default function Create(props){
 
     const handleSubmit=(event)=> {
       //  if (event) event.preventDefault();
-        console.log(inputs.policyNo)
+        console.log(inputs)
      //console.log(validate(inputs));
-       let errorData=validate(inputs);
-        setErrors(errorData);
+      // setErrors(validate(inputs));
         console.log(errors);
-        setIsAddDisabled(true);
+       // setIsAddDisabled(true);
     }
 
     return(
@@ -56,8 +55,7 @@ export default function Create(props){
                 <legend>Add Policy</legend>
                 <span className="mt-5">
                     <label htmlFor="policyNo" className="form-label">Policy No</label>
-                 <InputText  name="policyNo" type="number" required value={policyNo} className="form-control
-                 {errors.policyNo ? ' showError' : ''}"
+                 <InputText  name="policyNo" type="number" required value={policyNo} className="form-control"
                              onChange={handleOnChange}/>
                     {errors.policyNo &&
                     <div style={{ color: "red", paddingBottom: 10 }}>
