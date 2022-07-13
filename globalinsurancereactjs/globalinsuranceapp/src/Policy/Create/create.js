@@ -23,6 +23,7 @@ export default function Create(props){
         toDate:"",
         sumAssured:0
     });
+    const [isAddDisabled, setIsAddDisabled] = React.useState(false);
   /* const handleOnBlur=(event)=>{
        const name=event.target.name;
        const value=event.target.value;
@@ -39,9 +40,11 @@ export default function Create(props){
    };
 
     const handleSubmit=(event)=> {
-        event.preventDefault();
-        console.log(inputs)
-        setErrors(validate(inputs));
+      //  if (event) event.preventDefault();
+        console.log(inputs.policyNo)
+     console.log(validate(inputs));
+
+        setIsAddDisabled(true);
     }
 
     return(
@@ -51,12 +54,14 @@ export default function Create(props){
                 <legend>Add Policy</legend>
                 <span className="mt-5">
                     <label htmlFor="policyNo" className="form-label">Policy No</label>
-                 <InputText  name="policyNo" type="number" value={policyNo} className="form-control"  onChange={handleOnChange}/>
+                 <InputText  name="policyNo" type="number" value={policyNo} className="form-control"
+                             onChange={handleOnChange}/>
 
                 </span>
                 <span className="mt-5">
                     <label htmlFor="policyHolderName" className="form-label">PolicyHolder Name</label>
-                    <InputText  name="policyHolderName" type="text" value={policyHolderName} className="form-control" onBlur={handleOnChange}/>
+                    <InputText  name="policyHolderName" type="text" value={policyHolderName} className="form-control"
+                                onChange={handleOnChange}/>
 
                 </span>
                     <span className="mt-5">
@@ -77,7 +82,7 @@ export default function Create(props){
 
                 </span>
                 <Button label="Submit" className="mt-3 form-control" aria-label="Submit"
-                        onClick={handleSubmit}
+                        disabled={isAddDisabled}   onClick={handleSubmit}
 
                 />
                 </fieldset>

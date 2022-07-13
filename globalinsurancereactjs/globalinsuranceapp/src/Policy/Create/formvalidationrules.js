@@ -7,6 +7,7 @@ export default function validate(values) {
         sumAssured:0
     };
     if (values.policyNo<=0) {
+
         errors.policyNo = 'PolicyNo is required';
     } else if (!/\d{5}/.test(values.policyNo)) {
         errors.policyNo = 'PolicyNo is invalid';
