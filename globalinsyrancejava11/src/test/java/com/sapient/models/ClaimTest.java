@@ -104,13 +104,13 @@ public class ClaimTest {
             throw new RuntimeException(e);
         }
     }
-/*
+
     @Test
     @EnabledOnOs(OS.MAC)
     void testOnMacOs() {
         assertTrue(true);
     }
-
+/*
     @Test
     @DisabledOnOs(OS.WINDOWS)
     void doNotTestOnWindows() {

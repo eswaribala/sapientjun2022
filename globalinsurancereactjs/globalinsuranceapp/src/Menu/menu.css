@@ -3,4 +3,23 @@
     margin-left: 25%;
     background-color: blueviolet;
     margin-top: 2%;
+
+}
+.p-menubar{
+    background-color: orangered;
+    color: #77170a;
+}
+.p-menuitem {
+    font-size: x-large;
+    width:100%;
+}
+.p-menuitem-active a {
+    background: blueviolet !important;
+
+}
+
+.ui-menubar  {
+    border: 1px solid #aed0ea !important;
+    color: #ffffff !important;
+    font-weight: bolder !important;
 }

@@ -1,6 +1,6 @@
 export const items = [
     {
-        label:'File',
+        label:'Policy',
         icon:'pi pi-fw pi-file',
         items:[
             {
@@ -8,48 +8,57 @@ export const items = [
                 icon:'pi pi-fw pi-plus',
                 items:[
                     {
-                        label:'Bookmark',
-                        icon:'pi pi-fw pi-bookmark'
+                        label:'Policy-Create',
+                        icon:'pi pi-fw pi-bookmark',
+                        command: () => { window.location = "/Policy-Create" }
+
                     },
                     {
-                        label:'Video',
-                        icon:'pi pi-fw pi-video'
+                        label:'Policy-View',
+                        icon:'pi pi-fw pi-video',
+                        command: () => { window.location = "/Policy-View" }
                     },
 
                 ]
             },
             {
-                label:'Delete',
-                icon:'pi pi-fw pi-trash'
+                label:'Policy-Delete',
+                icon:'pi pi-fw pi-trash',
+                command: () => { window.location = "/Policy-Delete" }
             },
             {
                 separator:true
             },
             {
-                label:'Export',
-                icon:'pi pi-fw pi-external-link'
+                label:'Policy-Export',
+                icon:'pi pi-fw pi-external-link',
+                command: () => { window.location = "/Policy-Export" }
             }
         ]
     },
     {
-        label:'Edit',
+        label:'Claim',
         icon:'pi pi-fw pi-pencil',
         items:[
             {
-                label:'Left',
-                icon:'pi pi-fw pi-align-left'
+                label:'Claim-Create',
+                icon:'pi pi-fw pi-align-left',
+                command: () => { window.location = "/Claim-Create" }
             },
             {
-                label:'Right',
-                icon:'pi pi-fw pi-align-right'
+                label:'Claim-Edit',
+                icon:'pi pi-fw pi-align-right',
+                command: () => { window.location = "/Claim-Edit" }
             },
             {
-                label:'Center',
-                icon:'pi pi-fw pi-align-center'
+                label:'Claim-View',
+                icon:'pi pi-fw pi-align-center',
+                command: () => { window.location = "/Claim-View" }
             },
             {
-                label:'Justify',
-                icon:'pi pi-fw pi-align-justify'
+                label:'Claim-Delete',
+                icon:'pi pi-fw pi-align-justify',
+                command: () => { window.location = "/Claim-Delete" }
             },
 
         ]
@@ -59,13 +68,15 @@ export const items = [
         icon:'pi pi-fw pi-user',
         items:[
             {
-                label:'New',
+                label:'Users-New',
                 icon:'pi pi-fw pi-user-plus',
+                command: () => { window.location = "/Users-New" }
 
             },
             {
-                label:'Delete',
+                label:'Users-Delete',
                 icon:'pi pi-fw pi-user-minus',
+                command: () => { window.location = "/Users-Delete" }
 
             },
             {
@@ -77,45 +88,50 @@ export const items = [
                         icon:'pi pi-fw pi-filter',
                         items:[
                             {
-                                label:'Print',
-                                icon:'pi pi-fw pi-print'
+                                label:'Search-Print',
+                                icon:'pi pi-fw pi-print',
+                                command: () => { window.location = "/Search-Print" }
                             }
                         ]
                     },
                     {
                         icon:'pi pi-fw pi-bars',
-                        label:'List'
+                        label:'Search-List',
+                        command: () => { window.location = "/Search-List" }
                     }
                 ]
             }
         ]
     },
     {
-        label:'Events',
+        label:'Refund',
         icon:'pi pi-fw pi-calendar',
         items:[
             {
-                label:'Edit',
+                label:'Add',
                 icon:'pi pi-fw pi-pencil',
                 items:[
                     {
-                        label:'Save',
-                        icon:'pi pi-fw pi-calendar-plus'
+                        label:'Refund-Save',
+                        icon:'pi pi-fw pi-calendar-plus',
+                        command: () => { window.location = "/Refund-Save" }
                     },
                     {
-                        label:'Delete',
-                        icon:'pi pi-fw pi-calendar-minus'
+                        label:'Refund-Delete',
+                        icon:'pi pi-fw pi-calendar-minus',
+                        command: () => { window.location = "/Refund-Delete"}
                     },
 
                 ]
             },
             {
-                label:'Archieve',
+                label:'Archive',
                 icon:'pi pi-fw pi-calendar-times',
                 items:[
                     {
-                        label:'Remove',
-                        icon:'pi pi-fw pi-calendar-minus'
+                        label:'Archive-Remove',
+                        icon:'pi pi-fw pi-calendar-minus',
+                        command: () => { window.location = "/Archive-Remove"}
                     }
                 ]
             }
@@ -123,6 +139,7 @@ export const items = [
     },
     {
         label:'Quit',
-        icon:'pi pi-fw pi-power-off'
+        icon:'pi pi-fw pi-power-off',
+        command: () => { window.location = "/Quit"}
     }
 ];
