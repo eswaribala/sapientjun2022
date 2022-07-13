@@ -9,7 +9,20 @@ export class App extends Component{
 
     constructor(props, context) {
         super(props, context);
-        console.log("Component Constructor.....")
+        console.log("Component Constructor.....");
+        //create state
+        this.state={
+            currentTime:new Date()
+        }
+    }
+
+    timerEvent=()=>{
+        //updating the state
+        this.setState({
+            currentTime:new Date()
+        })
+
+
     }
 
     render() {
@@ -19,7 +32,9 @@ export class App extends Component{
             <header className="header">
             <Logo></Logo>
             <h1 className="multicolortext">Global Insurance</h1>
+
             <Banner></Banner>
+                <h4 className="multicolortext">{this.state.currentTime.toLocaleTimeString()}</h4>
             </header>
                 <article>
                     <MenuBar></MenuBar>
@@ -30,7 +45,7 @@ export class App extends Component{
 
     componentDidMount() {
         console.log("Component Mounted....");
-
+       setInterval(this.timerEvent,1000);
     }
 
     componentWillMount() {
