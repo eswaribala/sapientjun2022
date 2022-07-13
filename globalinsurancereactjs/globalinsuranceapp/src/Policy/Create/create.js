@@ -17,11 +17,11 @@ export default function Create(props){
     const [sumAssured, setSumAssured] = useState( propsSumAssured,0);
     const [inputs, setInputs]= useState({});
     const [errors, setErrors] = useState({
-        policyNo: 0,
-        policyHolderName: "",
-        fromDate:"",
-        toDate:"",
-        sumAssured:0
+        policyNo: 'policy no required',
+        policyHolderName: "policy holder name required",
+        fromDate:"From Date required ",
+        toDate:"To Date required",
+        sumAssured:"Sum Assured Required"
     });
     const [isAddDisabled, setIsAddDisabled] = React.useState(false);
   /* const handleOnBlur=(event)=>{
@@ -42,8 +42,10 @@ export default function Create(props){
     const handleSubmit=(event)=> {
       //  if (event) event.preventDefault();
         console.log(inputs.policyNo)
-     console.log(validate(inputs));
-
+     //console.log(validate(inputs));
+       let errorData=validate(inputs);
+        setErrors(errorData);
+        console.log(errors);
         setIsAddDisabled(true);
     }
 
@@ -54,30 +56,35 @@ export default function Create(props){
                 <legend>Add Policy</legend>
                 <span className="mt-5">
                     <label htmlFor="policyNo" className="form-label">Policy No</label>
-                 <InputText  name="policyNo" type="number" value={policyNo} className="form-control"
+                 <InputText  name="policyNo" type="number" required value={policyNo} className="form-control
+                 {errors.policyNo ? ' showError' : ''}"
                              onChange={handleOnChange}/>
+                    {errors.policyNo &&
+                    <div style={{ color: "red", paddingBottom: 10 }}>
+                        {errors.policyNo}</div>
+                    }
 
                 </span>
                 <span className="mt-5">
                     <label htmlFor="policyHolderName" className="form-label">PolicyHolder Name</label>
-                    <InputText  name="policyHolderName" type="text" value={policyHolderName} className="form-control"
+                    <InputText  name="policyHolderName" required  type="text" value={policyHolderName} className="form-control"
                                 onChange={handleOnChange}/>
 
                 </span>
                     <span className="mt-5">
                          <label htmlFor="fromDate" className="form-label">From Date</label>
-                         <Calendar  name="fromDate" value={fromDate} className="w-100" onChange={handleOnChange} showIcon />
+                         <Calendar  name="fromDate" required value={fromDate} className="w-100" onChange={handleOnChange} showIcon />
 
 
                 </span>
                 <span className="mt-5">
                     <label htmlFor="toDate" className="form-label">To Date</label>
-                       <Calendar  name="toDate" value={toDate} className="w-100" onChange={handleOnChange} showIcon />
+                       <Calendar  name="toDate" required value={toDate} className="w-100" onChange={handleOnChange} showIcon />
 
                 </span>
                 <span className="mt-5">
                     <label htmlFor="sumAssured" className="form-label">Sum Assured</label>
-                    <InputText type="number"  name="sumAssured"
+                    <InputText type="number" required name="sumAssured"
                                value={sumAssured} className="form-control" onChange={handleOnChange}/>
 
                 </span>

@@ -6,10 +6,10 @@ export default function validate(values) {
         toDate:"",
         sumAssured:0
     };
+    console.log(values.policyNo);
     if (values.policyNo<=0) {
-
         errors.policyNo = 'PolicyNo is required';
-    } else if (!/\d{5}/.test(values.policyNo)) {
+    } else if (!/\d{5,8}/.test(values.policyNo)) {
         errors.policyNo = 'PolicyNo is invalid';
     }
     if (!values.policyHolderName) {
