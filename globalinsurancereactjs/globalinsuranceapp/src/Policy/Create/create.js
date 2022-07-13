@@ -1,6 +1,9 @@
 import React from "react";
 import {useState} from "react";
 import { InputText } from 'primereact/inputtext';
+import { Calendar } from 'primereact/calendar';
+import { Button } from 'primereact/button';
+import './create.css'
 //react hook version 16.8
 export default function Create(props){
     const { policyNo: propsPolicyNo, policyHolderName:propsPolicyHolderName, fromDate: propsFromDate,
@@ -28,16 +31,41 @@ export default function Create(props){
    };
 
     return(
-        <form className="">
+
+        <form className="form border border-primary shadow-none p-3 rounded">
             <fieldset>
                 <legend>Add Policy</legend>
-            <InputText type="number" value={policyNo} onChange={handleOnChange}/>
-            <InputText type="text" value={policyHolderName} onBlur={handleOnBlur}/>
-            <InputText type="date" value={fromDate} onChange={handleOnChange}/>
-            <InputText type="date" value={toDate} onChange={handleOnChange}/>
-            <InputText type="number" value={sumAssured} onChange={handleOnChange}/>
-            </fieldset>
+                <span className="mt-5">
+                    <label htmlFor="policyNo" className="form-label">Policy No</label>
+                 <InputText type="number" value={policyNo} className="form-control"  onChange={handleOnChange}/>
+
+                </span>
+                <span className="mt-5">
+                    <label htmlFor="policyHolderName" className="form-label">PolicyHolder Name</label>
+                    <InputText type="text" value={policyHolderName} className="form-control" onBlur={handleOnBlur}/>
+
+                </span>
+                    <span className="mt-5">
+                         <label htmlFor="fromDate" className="form-label">From Date</label>
+                         <Calendar id="icon" value={fromDate} className="w-100" onChange={handleOnChange} showIcon />
+
+
+                </span>
+                <span className="mt-5">
+                    <label htmlFor="toDate" className="form-label">To Date</label>
+                       <Calendar id="icon" value={toDate} className="w-100" onChange={handleOnChange} showIcon />
+
+                </span>
+                <span className="mt-5">
+                    <label htmlFor="sumAssured" className="form-label">Sum Assured</label>
+                    <InputText type="number"
+                               value={sumAssured} className="form-control" onChange={handleOnChange}/>
+
+                </span>
+                <Button label="Submit" className="mt-3 form-control" aria-label="Submit"  />
+                </fieldset>
         </form>
+
     )
 
 

@@ -4,6 +4,8 @@ import './index.css';
 import "primereact/resources/themes/luna-green/theme.css";  //theme
 import "primereact/resources/primereact.min.css";                  //core css
 import "primeicons/primeicons.css";                                //icons
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/js/bootstrap'
 
 import {App} from './App';
 import reportWebVitals from './reportWebVitals';
