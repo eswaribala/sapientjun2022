@@ -58,20 +58,21 @@ export default function Create(props){
 
         console.log(inputs)
      //console.log(validate(inputs));
-       setErrors(validate(inputs));
+      let response= validate(inputs)
+       setErrors(response.errorsValue);
         console.log(errors);
-
+       let isValid=response.status
        setIsAddDisabled(true);
         setIsSubmitting(true);
 
-
+       if(isValid) {
            axios.post(RestAPIUrl + "/addpolicy", inputs).then(res => {
                console.log(res);
 
            }).catch(error => {
                throw(error);
            });
-     
+       }
 
     }
 
