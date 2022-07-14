@@ -7,7 +7,7 @@ app.use(cors());
 //app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
 
-app.get("/", function(request, response) {
+app.get("/policies", function(request, response) {
     response.send("Testing Express ....!");
 });
 app.post('/policy',function(request,response)
