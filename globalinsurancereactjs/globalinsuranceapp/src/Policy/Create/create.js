@@ -7,6 +7,7 @@ import axios from "axios";
 import './create.css'
 import validate from "./formvalidationrules";
 import {useDispatch} from "react-redux";
+import {createPolicy} from "../../redux/products/productsActions";
 const RestAPIUrl='http://localhost:4000';
 //react hook version 16.8
 export default function Create(props){
@@ -84,6 +85,21 @@ export default function Create(props){
                throw(error);
            });
            */
+
+           //Step6
+           dispatch(createPolicy(inputs))
+               .then(data => {
+                   console.log(data);
+                   setPolicyNo("")
+                   setPolicyHolderName("")
+                   setFromDate("")
+                   setToDate("")
+                   setSumAssured("")
+               })
+               .catch(e => {
+                   console.log(e);
+               });
+
 
        }
 
