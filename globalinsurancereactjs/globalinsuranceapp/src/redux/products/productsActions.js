@@ -4,7 +4,7 @@ export const fetchProducts = () => {
   return (dispatch) => {
     dispatch(fetchProductsRequest())
     axios
-      .get('http://localhost:3004/products')
+      .get('http://localhost:3004/insuranceProducts')
       .then(response => {
         const products = response.data
         setTimeout(() => {  // to emulate some network delay
@@ -23,10 +23,10 @@ export const fetchProductsRequest = () => {
   }
 }
 
-export const fetchProductsSuccess = products => {
+export const fetchProductsSuccess = insProducts => {
   return {
     type: 'FETCH_PRODUCTS_SUCCESS',
-    payload: products
+    payload: insProducts
   }
 }
 
@@ -36,3 +36,20 @@ export const fetchProductsFailure = error => {
     payload: error
   }
 }
+
+import PolicyDataService from "../services/PolicyService";
+import {CREATE_POLICY} from "./types";
+export const createPolicy = (values) => async (dispatch) => {
+  try {
+    const res = await PolicyDataService.create(values);
+
+    dispatch({
+      type: CREATE_POLICY,
+      payload: res.data,
+    });
+
+    return Promise.resolve(res.data);
+  } catch (err) {
+    return Promise.reject(err);
+  }
+};

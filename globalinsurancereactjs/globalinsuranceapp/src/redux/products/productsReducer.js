@@ -1,6 +1,6 @@
 const initialState = {
   loading: false,
-  products: [],
+  insuranceProducts: [],
   error: ''
 }
 
@@ -12,15 +12,16 @@ const reducer = (state = initialState, action) => {
         loading: true
       }
     case 'FETCH_PRODUCTS_SUCCESS':
+      console.log(action.payload);
       return {
         loading: false,
-        products: action.payload,
+        insuranceProducts: action.payload,
         error: ''
       }
     case 'FETCH_PRODUCTS_FAILURE':
       return {
         loading: false,
-        products: [],
+        insuranceProducts: [],
         error: action.payload
       }
     default: return state

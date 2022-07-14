@@ -32,7 +32,7 @@ export default function validate(values) {
     if (!values.toDate) {
         errors.toDate = 'To Date is required';
         isValid=false;
-    } else if (values.toDate < values.toDate) {
+    } else if (values.toDate < values.fromDate) {
         errors.toDate = 'To Date cannot be before the from Date';
         isValid=false;
     }

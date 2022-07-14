@@ -6,9 +6,9 @@ import { Column } from 'primereact/column';
 
 
 export const ProductsContainer = () => {
-  const loading = useSelector(state => state.products.loading)
-  const error = useSelector(state => state.products.error)
-  const products = useSelector(state => state.products.products)
+  const loading = useSelector(state => state.insuranceProducts.loading)
+  const error = useSelector(state => state.insuranceProducts.error)
+  const products = useSelector(state => state.insuranceProducts.insuranceProducts)
   const dispatch = useDispatch()
     const columns = [
         {field: 'id', header: 'Id'},
@@ -27,6 +27,8 @@ export const ProductsContainer = () => {
 
   useEffect(() => {
     dispatch(fetchProducts())
+
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
     const dynamicColumns = columns.map((col,i) => {

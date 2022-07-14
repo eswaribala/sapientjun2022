@@ -6,13 +6,14 @@ import { Button } from 'primereact/button';
 import axios from "axios";
 import './create.css'
 import validate from "./formvalidationrules";
+import {useDispatch} from "react-redux";
 const RestAPIUrl='http://localhost:4000';
 //react hook version 16.8
 export default function Create(props){
 
 
     const { policyNo: propsPolicyNo, policyHolderName:propsPolicyHolderName, fromDate: propsFromDate,
-        toDate:propsToDate, sumAssured:propsSumAssured,dispatch } = props;
+        toDate:propsToDate, sumAssured:propsSumAssured } = props;
     //define fields
     const [policyNo, setPolicyNo] = useState( propsPolicyNo,0);
     const [policyHolderName, setPolicyHolderName] = useState( propsPolicyHolderName,'');
@@ -31,6 +32,8 @@ export default function Create(props){
     const [isAddDisabled, setIsAddDisabled] = React.useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
+    //STEP1
+    const dispatch = useDispatch();
     //useEffect checks render commit
     /*useEffect(() => {
         if (Object.keys(errors).length === 0 && isSubmitting) {
@@ -69,6 +72,7 @@ export default function Create(props){
 
        if(isValid) {
            setIsAddDisabled(false);
+           /*
            axios.post(RestAPIUrl + "/addpolicy", inputs).then(res => {
                console.log(res);
                setPolicyNo("")
@@ -79,6 +83,8 @@ export default function Create(props){
            }).catch(error => {
                throw(error);
            });
+           */
+
        }
 
     }
