@@ -1,10 +1,13 @@
 import React from "react";
+import {ProductsContainer} from "../../components/ProductsContainer";
 
 
 export class View extends React.Component{
     render(){
         return(
-            <h1>Policy View</h1>
+            <div>
+                <ProductsContainer></ProductsContainer>
+            </div>
         )
     }
 }

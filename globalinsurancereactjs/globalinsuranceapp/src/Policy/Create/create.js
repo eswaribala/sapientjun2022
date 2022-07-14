@@ -27,16 +27,17 @@ export default function Create(props){
         toDate:"",
         sumAssured:""
     });
+
     const [isAddDisabled, setIsAddDisabled] = React.useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     //useEffect checks render commit
-    useEffect(() => {
+    /*useEffect(() => {
         if (Object.keys(errors).length === 0 && isSubmitting) {
             validate(inputs);
         }
     }, [errors]);
-
+*/
 
   /* const handleOnBlur=(event)=>{
        const name=event.target.name;
@@ -51,24 +52,30 @@ export default function Create(props){
        const value=event.target.value;
        //console.log(name,value)
        setInputs(values=>({...values,[name]:value}))
+         if((inputs.policyNo>0)&&(inputs.policyHolderName.length>5)&&(inputs.sumAssured>0))
+             setIsAddDisabled(true);
    };
 
     const handleSubmit=(event)=> {
-        if (event) event.preventDefault();
+      event.preventDefault();
 
         console.log(inputs)
      //console.log(validate(inputs));
       let response= validate(inputs)
        setErrors(response.errorsValue);
         console.log(errors);
-       let isValid=response.status
-       setIsAddDisabled(true);
-        setIsSubmitting(true);
+      let isValid=response.status;
+
 
        if(isValid) {
+           setIsAddDisabled(false);
            axios.post(RestAPIUrl + "/addpolicy", inputs).then(res => {
                console.log(res);
-
+               setPolicyNo("")
+               setPolicyHolderName("")
+               setFromDate("")
+               setToDate("")
+               setSumAssured("")
            }).catch(error => {
                throw(error);
            });
@@ -78,7 +85,7 @@ export default function Create(props){
 
     return(
 
-        <form className="form border border-primary shadow-none p-3 rounded">
+        <form onSubmit={handleSubmit}  className="form border border-primary shadow-none p-3 rounded">
             <fieldset>
                 <legend>Add Policy</legend>
                 <span className="mt-5">
@@ -130,9 +137,7 @@ export default function Create(props){
 
                 </span>
                 <Button label="Submit" className="mt-3 form-control" aria-label="Submit"
-                       disabled={isAddDisabled}    onClick={handleSubmit}
-
-                />
+                        type="submit" disabled={!isAddDisabled} />
                 </fieldset>
         </form>
 

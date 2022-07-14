@@ -3,13 +3,14 @@ import {Component} from "react";
 import Logo from './Logo/logo'
 import Banner from './Banner/banner';
 import MenuBar from './Menu/menu';
-
+import { Provider } from 'react-redux'
+import store from './redux/store'
 //stateful component
 export class App extends Component{
 
     constructor(props, context) {
         super(props, context);
-        console.log("Component Constructor.....");
+      //  console.log("Component Constructor.....");
         //create state
         this.state={
             currentTime:new Date()
@@ -26,8 +27,9 @@ export class App extends Component{
     }
 
     render() {
-        console.log("Rendering.....")
+       // console.log("Rendering.....")
         return(
+            <Provider store={store}>
             <section>
             <header className="header">
             <Logo></Logo>
@@ -40,6 +42,7 @@ export class App extends Component{
                     <MenuBar></MenuBar>
                 </article>
             </section>
+            </Provider>
         )
     }
 
