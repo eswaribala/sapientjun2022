@@ -1,5 +1,8 @@
 import axios from 'axios'
 
+import PolicyDataService from "../services/PolicyService";
+import {CREATE_POLICY} from "./types";
+
 export const fetchProducts = () => {
   return (dispatch) => {
     dispatch(fetchProductsRequest())
@@ -36,9 +39,8 @@ export const fetchProductsFailure = error => {
     payload: error
   }
 }
+//Step3
 
-import PolicyDataService from "../services/PolicyService";
-import {CREATE_POLICY} from "./types";
 export const createPolicy = (values) => async (dispatch) => {
   try {
     const res = await PolicyDataService.create(values);
