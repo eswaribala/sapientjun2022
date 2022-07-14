@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 app.get("/", function(request, response) {
     response.send("Testing Express ....!");
 });
-app.post('/addpolicy',function(request,response)
+app.post('/policy',function(request,response)
 {
     console.log("Testing...")
     response.setHeader('Access-Control-Allow-Origin', '*');

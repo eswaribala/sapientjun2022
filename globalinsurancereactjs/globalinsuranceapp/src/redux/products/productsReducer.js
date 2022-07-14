@@ -1,3 +1,5 @@
+import {CREATE_POLICY} from "./types";
+
 const initialState = {
   loading: false,
   insuranceProducts: [],
@@ -11,6 +13,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: true
       }
+    case CREATE_POLICY:
+      return {
+        loading: false,
+        insuranceProducts: action.payload,
+        error: ''
+      }
+
     case 'FETCH_PRODUCTS_SUCCESS':
       console.log(action.payload);
       return {

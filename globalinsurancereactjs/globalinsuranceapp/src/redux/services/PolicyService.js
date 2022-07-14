@@ -1,7 +1,7 @@
 import http from './http-common'
 //step4
 const create = data => {
-    return http.post("/addpolicy", data);
+    return http.post("/policy", data);
 };
 
 const PolicyService = {
