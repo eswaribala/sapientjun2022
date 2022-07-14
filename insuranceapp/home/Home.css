@@ -1,0 +1,9 @@
+.home{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-around;
+    font-size: calc(10px + 2vmin);
+    color: dodgerblue;
+
+}

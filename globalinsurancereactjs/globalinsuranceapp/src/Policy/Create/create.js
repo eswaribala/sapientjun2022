@@ -13,6 +13,8 @@ const RestAPIUrl='http://localhost:4000';
 export default function Create(props){
 
 
+
+
     const { policyNo: propsPolicyNo, policyHolderName:propsPolicyHolderName, fromDate: propsFromDate,
         toDate:propsToDate, sumAssured:propsSumAssured } = props;
     //define fields
@@ -46,6 +48,7 @@ export default function Create(props){
   /* const handleOnBlur=(event)=>{
        const name=event.target.name;
        const value=event.target.value;
+       //spread attributes
        setInputs(values=>({...values,[name]:value}))
 
    };

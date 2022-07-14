@@ -1,0 +1,25 @@
+.vertical-style{
+    float: left;
+    background-color: white;
+    margin-top: 1%;
+    width: 10%;
+    height: 300px;
+    margin-right: 15%;
+}
+.btn-style{
+    background-color: black;
+    color: goldenrod;
+    font-size: medium;
+    margin-bottom: 5%;
+    font-weight: bold;
+
+    border-radius: 5px 5px 5px 5px;
+    width:150px;
+    text-align: start;
+}
+
+.btn-style:hover{
+ background-color: goldenrod;
+    color:black;
+}
+
