@@ -13,6 +13,14 @@
         <element id="directory" name="classes">
           <element id="module-output" name="globalinsurancejee" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.2.11" />
+          <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.2.11" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.36" />
+          <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.22" />
+          <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.4.0" />
+          <element id="library" level="project" name="Maven: org.checkerframework:checker-qual:3.5.0" />
+        </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/globalinsurancejee-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
