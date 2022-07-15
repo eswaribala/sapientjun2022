@@ -21,14 +21,14 @@ public class PolicyImpl implements PolicyFacade {
     private String query;
 
     public PolicyImpl() throws SQLException, ClassNotFoundException {
-        System.out.println("Entering constructor......");
+
         this.resourceBundle = ResourceBundle.getBundle("db");
         this.connection= PostgresHelper.getConnection();
     }
 
     @Override
-    public boolean addPolicy(Policy policy)  {
-        System.out.println("Entering policy......");
+    public boolean addPolicy(Policy policy) throws SQLException {
+
         query=resourceBundle.getString("policyInsertQuery");
         logger.info("Policy Details"+policy.getPolicyNo());
         logger.info("Policy Details"+policy.getPolicyName());
@@ -36,10 +36,10 @@ public class PolicyImpl implements PolicyFacade {
         logger.info("Policy Details"+policy.getToDate());
         logger.info("Policy Details"+policy.getSumInsured());
 
-        try {
-            System.out.println("Entering try block......");
+
+
             preparedStatement=connection.prepareStatement(query);
-            System.out.println("Query"+query);
+
             preparedStatement.setLong(1,policy.getPolicyNo());
             preparedStatement.setDate(2,Date.valueOf(policy.getFromDate()));
             preparedStatement.setString(3,policy.getPolicyName());
@@ -49,9 +49,7 @@ public class PolicyImpl implements PolicyFacade {
             logger.info("rows",rows);
             if (rows>0)
                 status=true;
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
+
 
         return status;
     }

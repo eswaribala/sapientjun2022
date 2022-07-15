@@ -7,5 +7,5 @@ import java.sql.SQLException;
 
 public interface PolicyFacade {
 
-    boolean addPolicy(Policy policy) ;
+    boolean addPolicy(Policy policy) throws SQLException;
 }
