@@ -21,11 +21,40 @@ function ajaxFunction(){
         }
     }
     //checking the response
-    var selectList=document.querySelector("#viewPolicy");
+    var div=document.querySelector("#viewPolicy");
+    var table=document.createElement('table');
+
     ajaxRequest.onreadystatechange = function(){
         if(ajaxRequest.readyState == 4 && ajaxRequest.status == 200){
             var data=ajaxRequest.responseText;
-            console.log(data);
+            var parsedData=JSON.parse(data);
+            parsedData.forEach(policy=>{
+                var tr=document.createElement('tr');
+                td=document.createElement("td");
+                text=document.createTextNode(policy.policyNo);
+                td.appendChild(text);
+                tr.appendChild(td);
+                td=document.createElement("td");
+                text=document.createTextNode(policy.policyName);
+                td.appendChild(text);
+                tr.appendChild(td);
+                td=document.createElement("td");
+                text=document.createTextNode(policy.fromDate);
+                td.appendChild(text);
+                tr.appendChild(td);
+                td=document.createElement("td");
+                text=document.createTextNode(policy.toDate);
+                td.appendChild(text);
+                tr.appendChild(td);
+                td=document.createElement("td");
+                text=document.createTextNode(policy.sumInsured);
+                td.appendChild(text);
+                tr.appendChild(td);
+                table.appendChild(tr);
+                console.log(policy);
+            })
+
+           div.appendChild(table);
 
         }
     }
