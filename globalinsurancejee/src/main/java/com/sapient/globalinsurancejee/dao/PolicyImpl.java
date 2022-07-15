@@ -8,6 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class PolicyImpl implements PolicyFacade {
@@ -52,6 +55,25 @@ public class PolicyImpl implements PolicyFacade {
 
 
         return status;
+    }
+
+    @Override
+    public List<Policy> getAllPolicies() throws SQLException {
+        query=resourceBundle.getString("selectAllPolicies");
+        statement=connection.createStatement();
+        resultSet=statement.executeQuery(query);
+        Policy policy=null;
+        List<Policy> policies=new ArrayList<>();
+        while(resultSet.next()){
+            policy=new Policy();
+            policy.setPolicyNo( resultSet.getLong(1));
+            policy.setFromDate(LocalDate.parse(resultSet.getDate(2).toString()));
+            policy.setPolicyName(resultSet.getString(3));
+            policy.setToDate(LocalDate.parse(resultSet.getDate(4).toString()));
+            policy.setSumInsured(resultSet.getLong(5));
+            policies.add(policy);
+        }
+        return policies;
     }
 
 
