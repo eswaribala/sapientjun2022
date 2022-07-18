@@ -22,45 +22,60 @@ import java.util.List;
 public class AddPolicyServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(AddPolicyServlet.class);
     private boolean status;
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<String> values=new ArrayList<String>();
-        Enumeration<String> names=request.getParameterNames();
-        while(names.hasMoreElements()){
 
-            values.add(request.getParameter(names.nextElement()));
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+            IOException {
+        HttpSession session = request.getSession();
+        String userName = null;
+        String password = null;
+        if (!session.isNew()) {
+            userName = session.getAttribute("userName").toString();
+            password = session.getAttribute("password").toString();
         }
 
-         for(String value:values){
-             logger.info(value);
-         }
+        if ((userName != null) && (password != null)) {
+            List<String> values = new ArrayList<String>();
+            Enumeration<String> names = request.getParameterNames();
+            while (names.hasMoreElements()) {
 
-         Policy policy=new Policy();
-         policy.setPolicyNo(Long.parseLong(values.get(0)));
-         policy.setPolicyName(values.get(1));
-         policy.setFromDate(LocalDate.parse(values.get(2)));
-         policy.setToDate(LocalDate.parse(values.get(3)));
-         policy.setSumInsured(Long.parseLong(values.get(4)));
+                values.add(request.getParameter(names.nextElement()));
+            }
 
-         if(policy.getPolicyNo()<1000) {
-             PrintWriter out=response.getWriter();
-             response.setContentType("text/html");
-             request.getRequestDispatcher("ErrorServlet").include(request, response);
-             request.getRequestDispatcher("insurance.html").include(request,response);
-         }
-         else {
+            for (String value : values) {
+                logger.info(value);
+            }
 
-             PolicyFacade policyFacade = null;
-             try {
-                 policyFacade = new PolicyImpl();
-                 policyFacade.addPolicy(policy);
+            Policy policy = new Policy();
+            policy.setPolicyNo(Long.parseLong(values.get(0)));
+            policy.setPolicyName(values.get(1));
+            policy.setFromDate(LocalDate.parse(values.get(2)));
+            policy.setToDate(LocalDate.parse(values.get(3)));
+            policy.setSumInsured(Long.parseLong(values.get(4)));
 
-                 request.getRequestDispatcher("SuccessServlet").forward(request, response);
+            if (policy.getPolicyNo() < 1000) {
+                PrintWriter out = response.getWriter();
+                response.setContentType("text/html");
+                request.getRequestDispatcher("ErrorServlet").include(request, response);
+                request.getRequestDispatcher("insurance.html").include(request, response);
+            } else {
 
-             } catch (SQLException | ClassNotFoundException e) {
-                // System.out.println(e.getMessage());
-             }
-         }
+                PolicyFacade policyFacade = null;
+                try {
+                    policyFacade = new PolicyImpl();
+                    policyFacade.addPolicy(policy);
+
+                    request.getRequestDispatcher("SuccessServlet").forward(request, response);
+
+                } catch (SQLException | ClassNotFoundException e) {
+                    // System.out.println(e.getMessage());
+                }
+            }
+
+
+        }
+        else
+            request.getRequestDispatcher("index.html").forward(request,response);
 
 
     }

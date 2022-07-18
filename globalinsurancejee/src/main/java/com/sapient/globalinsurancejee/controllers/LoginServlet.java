@@ -16,8 +16,11 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html");
         String userName=request.getParameter("userName");
         String password=request.getParameter("password");
+        HttpSession session=request.getSession();
         if((userName!=null) && (password!=null)){
-            out.println("Login Success");
+            session.setAttribute("userName",userName);
+            session.setAttribute("password",password);
+            request.getRequestDispatcher("insurance.html").forward(request,response);
         }
 
 
