@@ -1,0 +1,5 @@
+com\sapient\dao\ClaimImplTest.class
+com\sapient\dao\ClaimPostgresImplTest.class
+com\sapient\suites\GlobalInsTestSuite.class
+com\sapient\dao\ClaimMongoImplTest.class
+com\sapient\models\ClaimTest.class

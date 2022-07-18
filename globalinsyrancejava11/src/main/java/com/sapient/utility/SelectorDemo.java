@@ -1,7 +1,5 @@
 package com.sapient.utility;
 
-import com.mongodb.connection.Server;
-import com.sapient.Main;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

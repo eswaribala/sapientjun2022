@@ -6,7 +6,6 @@ import com.sapient.facades.PaymentFacade;
 import com.sapient.facades.PaymentImpl;
 import com.sapient.facades.TriFunction;
 import com.sapient.models.Claim;
-import com.sapient.models.Vehicle;
 
 import java.io.IOException;
 import java.time.LocalDate;

@@ -2,7 +2,6 @@ package com.sapient.models;
 
 import com.sapient.exceptions.PasswordException;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

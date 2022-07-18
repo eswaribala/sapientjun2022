@@ -1,10 +1,8 @@
 package com.sapient.models;
 
 import org.junit.jupiter.api.*;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.condition.*;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -13,6 +11,8 @@ import java.io.*;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ClaimTest {
 

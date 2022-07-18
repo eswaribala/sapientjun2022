@@ -1,6 +1,5 @@
 package com.sapient.dao;
 
-import com.sapient.Main;
 import com.sapient.facades.ClaimFacade;
 import com.sapient.models.Claim;
 import org.junit.jupiter.api.AfterEach;

@@ -1,0 +1,19 @@
+# Created at 2022-07-16T19:40:37.957
+Boot Manifest-JAR contains absolute paths in classpath 'F:\sapientws2022\globalinsyrancejava11\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+
+# Created at 2022-07-16T19:40:46.409
+WARNING: An illegal reflective access operation has occurred
+
+# Created at 2022-07-16T19:40:46.409
+WARNING: Illegal reflective access by com.google.gson.internal.reflect.ReflectionHelper (file:/C:/Users/Balasubramaniam/.m2/repository/com/google/code/gson/gson/2.9.0/gson-2.9.0.jar) to field java.time.LocalDate.year
+
+# Created at 2022-07-16T19:40:46.410
+WARNING: Please consider reporting this to the maintainers of com.google.gson.internal.reflect.ReflectionHelper
+
+# Created at 2022-07-16T19:40:46.411
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+
+# Created at 2022-07-16T19:40:46.411
+WARNING: All illegal access operations will be denied in a future release
+

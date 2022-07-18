@@ -2,21 +2,15 @@ package com.sapient.dao;
 
 
 import com.google.gson.Gson;
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBCursor;
-import com.mongodb.DocumentToDBRefTransformer;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
-import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Indexes;
 import com.sapient.facades.ClaimFacade;
 import com.sapient.helpers.MongoDBHelper;
 import com.sapient.models.Claim;
-import com.sapient.models.Vehicle;
 import org.bson.Document;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;

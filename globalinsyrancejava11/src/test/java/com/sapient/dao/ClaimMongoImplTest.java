@@ -1,17 +1,13 @@
 package com.sapient.dao;
 
-import com.google.gson.Gson;
 import com.sapient.facades.ClaimFacade;
 import com.sapient.models.Claim;
-import com.sapient.models.Vehicle;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.time.LocalDate;
-
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;

@@ -1,7 +1,5 @@
 package com.sapient.helpers;
 
-import com.mongodb.MongoClient;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

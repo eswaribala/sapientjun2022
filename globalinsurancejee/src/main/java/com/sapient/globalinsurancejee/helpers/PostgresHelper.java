@@ -1,5 +1,7 @@
 package com.sapient.globalinsurancejee.helpers;
 
+import com.sapient.globalinsurancejee.models.DbConfiguration;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -14,13 +16,18 @@ public class PostgresHelper {
 
     private static String driverName;
 
-    public static Connection getConnection() throws ClassNotFoundException,SQLException {
-        resourceBundle=ResourceBundle.getBundle("db");
-        url=resourceBundle.getString("postgresUrl");
-        userName=resourceBundle.getString("postgresUserName");
-        password=resourceBundle.getString("postgresPassword");
-        driverName=resourceBundle.getString("postgresDriver");
+    public PostgresHelper(DbConfiguration dbConfiguration) throws ClassNotFoundException {
+        url=dbConfiguration.getUrl();
+        userName=dbConfiguration.getUserName();
+
+        password=dbConfiguration.getPassword();
+        driverName=dbConfiguration.getDriverClassName();
         Class.forName(driverName);
+    }
+
+    public static Connection getConnection() throws ClassNotFoundException,SQLException {
+
+
         return DriverManager.getConnection(url,userName,password);
     }
 }

@@ -20,3 +20,5 @@
   Detail: Key ("Claim_Id")=(485687) already exists.
 2022-07-11 18:58:53,382 INFO com.sapient.dao.ClaimPostgresImplTest [main] ERROR: duplicate key value violates unique constraint "Claim_pkey"
   Detail: Key ("Claim_Id")=(485687) already exists.
+2022-07-16 19:40:48,306 INFO com.sapient.dao.ClaimPostgresImplTest [main] ERROR: duplicate key value violates unique constraint "Claim_pkey"
+  Detail: Key ("Claim_Id")=(485687) already exists.

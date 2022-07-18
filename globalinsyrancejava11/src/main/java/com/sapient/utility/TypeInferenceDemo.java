@@ -1,6 +1,5 @@
 package com.sapient.utility;
 
-import com.sapient.Main;
 import com.sapient.models.Claim;
 import lombok.NonNull;
 import org.slf4j.Logger;

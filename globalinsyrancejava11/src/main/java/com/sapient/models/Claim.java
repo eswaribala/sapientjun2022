@@ -1,7 +1,8 @@
 package com.sapient.models;
 
-import lombok.*;
-import org.bson.codecs.pojo.annotations.BsonId;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 

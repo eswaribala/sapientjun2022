@@ -17,7 +17,8 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
-@WebServlet(name = "AddPolicyServlet", value = "/AddPolicyServlet")
+@WebServlet(name = "AddPolicyServlet", value = "/AddPolicyServlet", initParams = {@WebInitParam(name = "driverName",
+        value = "org.postgresql.Driver")})
 public class AddPolicyServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(AddPolicyServlet.class);
     private boolean status;
@@ -25,7 +26,11 @@ public class AddPolicyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out=response.getWriter();
         response.setContentType("text/html");
+        String driverName=getServletConfig().getInitParameter("driverName");
         out.println("<h1>Data Received......</h1>");
+        out.println("<h4>We used the driver as"+driverName+"</h4>");
+
+
         List<String> values=new ArrayList<String>();
         Enumeration<String> names=request.getParameterNames();
         while(names.hasMoreElements()){

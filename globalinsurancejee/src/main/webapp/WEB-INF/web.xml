@@ -3,4 +3,21 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+
+    <context-param>
+        <param-name>url</param-name>
+        <param-value>jdbc:postgresql://localhost:5432/globalinsdb</param-value>
+    </context-param>
+    <context-param>
+        <param-name>driverClassName</param-name>
+        <param-value>org.postgresql.Driver</param-value>
+    </context-param>
+    <context-param>
+        <param-name>userName</param-name>
+        <param-value>postgres</param-value>
+    </context-param>
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>vignesh</param-value>
+    </context-param>
 </web-app>

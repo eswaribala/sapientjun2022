@@ -1,7 +1,5 @@
 package com.sapient.threads;
 
-import com.sapient.models.Owner;
-
 public class OwnerThread implements Runnable{
     @Override
     public void run() {
