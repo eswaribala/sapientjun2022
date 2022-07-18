@@ -42,18 +42,25 @@ public class AddPolicyServlet extends HttpServlet {
          policy.setToDate(LocalDate.parse(values.get(3)));
          policy.setSumInsured(Long.parseLong(values.get(4)));
 
+         if(policy.getPolicyNo()<1000) {
+             PrintWriter out=response.getWriter();
+             response.setContentType("text/html");
+             request.getRequestDispatcher("ErrorServlet").include(request, response);
+             request.getRequestDispatcher("index.html").include(request,response);
+         }
+         else {
 
-        PolicyFacade policyFacade= null;
-        try {
-            policyFacade = new PolicyImpl();
-            policyFacade.addPolicy(policy);
+             PolicyFacade policyFacade = null;
+             try {
+                 policyFacade = new PolicyImpl();
+                 policyFacade.addPolicy(policy);
 
-            request.getRequestDispatcher("SuccessServlet").forward(request,response);
+                 request.getRequestDispatcher("SuccessServlet").forward(request, response);
 
-        } catch (SQLException | ClassNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
-
+             } catch (SQLException | ClassNotFoundException e) {
+                // System.out.println(e.getMessage());
+             }
+         }
 
 
     }
