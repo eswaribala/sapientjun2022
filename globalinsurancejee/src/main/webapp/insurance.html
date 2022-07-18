@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="styles/policy.css">
+    <script type="application/javascript" src="scripts/index.js"></script>
+ </head>
+<body>
+<section>
+<header class="header">
+    <figure>
+        <img src="./images/logo.jpg" class="logo">
+    </figure>
+    <h4 class="multicolortext">Global Insurance</h4>
+    <figure>
+        <img src="./images/banner.jpg" class="banner">
+    </figure>
+
+</header>
+<a href="RefundServlet">Refund</a>
+<form method="post" action="AddPolicyServlet">
+    <fieldset>
+        <legend class="multicolortext">
+            Add Policy
+        </legend>
+        <input type="number" name="policyNo" placeholder="Policy No" required>
+        <input type="text" name="policyName" placeholder="Policy Name" required>
+        <input type="date" name="fromDate" placeholder="From Date" required>
+        <input type="date" name="toDate" placeholder="To Date" required>
+        <input type="number" name="sumInsured" placeholder="SumInsured" required>
+        <input type="submit" value="Submit">
+    </fieldset>
+
+</form>
+
+<div id="viewPolicy">
+
+</div>
+
+
+</section>
+</body>
+</html>

@@ -46,7 +46,7 @@ public class AddPolicyServlet extends HttpServlet {
              PrintWriter out=response.getWriter();
              response.setContentType("text/html");
              request.getRequestDispatcher("ErrorServlet").include(request, response);
-             request.getRequestDispatcher("index.html").include(request,response);
+             request.getRequestDispatcher("insurance.html").include(request,response);
          }
          else {
 
