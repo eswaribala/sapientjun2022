@@ -15,6 +15,7 @@ public class SuccessServlet extends HttpServlet {
             IOException {
 
         HttpSession session=request.getSession();
+        Cookie[] cookies=request.getCookies();
       //  session.invalidate();
         String userName=null;
         String password=null;
@@ -27,6 +28,11 @@ public class SuccessServlet extends HttpServlet {
             PrintWriter out = response.getWriter();
             response.setContentType("text/html");
             String driverName = getServletConfig().getInitParameter("driverName");
+            for(Cookie cookie : cookies){
+                if(cookie.getName().equals("UserName")){
+                    out.println("<h4>"+cookie.getValue().toString()+"</h4>");
+                }
+            }
             out.println("<h1>Data Added Successfully......</h1>");
             out.println("<h4>We used the driver as" + driverName + "</h4>");
         }

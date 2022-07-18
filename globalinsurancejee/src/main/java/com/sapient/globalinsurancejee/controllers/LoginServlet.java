@@ -17,6 +17,9 @@ public class LoginServlet extends HttpServlet {
         String userName=request.getParameter("userName");
         String password=request.getParameter("password");
         HttpSession session=request.getSession();
+        Cookie cookie=new Cookie("UserName",userName);
+        cookie.setMaxAge(60);
+        response.addCookie(cookie);
         if((userName!=null) && (password!=null)){
             session.setAttribute("userName",userName);
             session.setAttribute("password",password);

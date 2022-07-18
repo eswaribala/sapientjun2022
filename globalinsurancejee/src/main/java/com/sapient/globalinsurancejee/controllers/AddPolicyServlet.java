@@ -27,6 +27,7 @@ public class AddPolicyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,
             IOException {
         HttpSession session = request.getSession();
+
         String userName = null;
         String password = null;
         if (!session.isNew()) {
@@ -46,12 +47,17 @@ public class AddPolicyServlet extends HttpServlet {
                 logger.info(value);
             }
 
+
+
             Policy policy = new Policy();
             policy.setPolicyNo(Long.parseLong(values.get(0)));
             policy.setPolicyName(values.get(1));
             policy.setFromDate(LocalDate.parse(values.get(2)));
             policy.setToDate(LocalDate.parse(values.get(3)));
             policy.setSumInsured(Long.parseLong(values.get(4)));
+
+
+
 
             if (policy.getPolicyNo() < 1000) {
                 PrintWriter out = response.getWriter();
