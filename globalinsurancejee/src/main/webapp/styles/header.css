@@ -1,0 +1,18 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: black;
+    font-size: xx-large;
+
+}
+.header h4{
+    margin-left:5%
+}
+
+.multicolortext {
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-family: "Lucida Calligraphy"
+}

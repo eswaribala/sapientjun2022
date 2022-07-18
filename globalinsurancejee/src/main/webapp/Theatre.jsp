@@ -5,18 +5,21 @@
   Time: 14:21
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"
+         import="com.sapient.globalinsurancejee.models.Policy" errorPage="error.jsp" %>
 <html>
 <head>
     <title>Title</title>
     <link type="text/css" rel="stylesheet" href="styles/theatre.css"/>
 </head>
 <body>
+<%@ include file="header.jsp"%>
 <%--Learning JSP..... --%>
 <h1 >Welcome to Express Escape</h1>
 <!--Declaring variables -->
 <%!
  int count=0;
+ Policy policy=new Policy();
 
 %>
 
@@ -26,7 +29,10 @@
     <% out.println("</h4>");%>
     <img src="images/screen1.jpg" left="50"/>
 </div>
-
+<%
+policy.setPolicyNo(4856784L);
+int result= (int) (policy.getPolicyNo()/count);
+%>
 
 <form  name="f1"   method="post" action="">
     <table>
