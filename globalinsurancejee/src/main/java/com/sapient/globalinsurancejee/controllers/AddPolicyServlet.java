@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
-import javax.swing.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -28,10 +27,9 @@ public class AddPolicyServlet extends HttpServlet {
         PrintWriter out=response.getWriter();
         response.setContentType("text/html");
         String driverName=getServletConfig().getInitParameter("driverName");
+        out.println("<h1>Data Received......</h1>");
+        out.println("<h4>We used the driver as"+driverName+"</h4>");
 
-
-        if(request.getParameter("sumInsured").length()<=0)
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST,"Sum Insured must have value....");
 
         List<String> values=new ArrayList<String>();
         Enumeration<String> names=request.getParameterNames();
@@ -49,8 +47,6 @@ public class AddPolicyServlet extends HttpServlet {
          policy.setPolicyName(values.get(1));
          policy.setFromDate(LocalDate.parse(values.get(2)));
          policy.setToDate(LocalDate.parse(values.get(3)));
-         if((values.get(4)==null)||(values.get(4).length()<=0))
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST,"Sum Insured must have value....");
          policy.setSumInsured(Long.parseLong(values.get(4)));
 
 
@@ -58,8 +54,7 @@ public class AddPolicyServlet extends HttpServlet {
         try {
             policyFacade = new PolicyImpl();
             policyFacade.addPolicy(policy);
-            out.println("<h1>Data Received......</h1>");
-            out.println("<h4>We used the driver as"+driverName+"</h4>");
+
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
