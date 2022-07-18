@@ -11,11 +11,28 @@ public class SuccessServlet extends HttpServlet {
 
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter out=response.getWriter();
-        response.setContentType("text/html");
-        String driverName=getServletConfig().getInitParameter("driverName");
-        out.println("<h1>Data Added Successfully......</h1>");
-        out.println("<h4>We used the driver as"+driverName+"</h4>");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+            IOException {
+
+        HttpSession session=request.getSession();
+      //  session.invalidate();
+        String userName=null;
+        String password=null;
+        if (!session.isNew()) {
+            userName = session.getAttribute("userName").toString();
+            password = session.getAttribute("password").toString();
+        }
+
+        if ((userName != null) && (password != null)) {
+            PrintWriter out = response.getWriter();
+            response.setContentType("text/html");
+            String driverName = getServletConfig().getInitParameter("driverName");
+            out.println("<h1>Data Added Successfully......</h1>");
+            out.println("<h4>We used the driver as" + driverName + "</h4>");
+        }
+        else{
+            request.getRequestDispatcher("index.html").forward(request,response);
+        }
+
     }
 }
