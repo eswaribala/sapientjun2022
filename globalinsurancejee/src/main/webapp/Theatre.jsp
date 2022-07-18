@@ -9,18 +9,27 @@
 <html>
 <head>
     <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="styles/theatre.css"/>
 </head>
 <body>
+<%--Learning JSP..... --%>
 <h1 >Welcome to Express Escape</h1>
+<!--Declaring variables -->
+<%!
+ int count=0;
 
+%>
+
+<div id="screen">
+    <h1>Number of people Visited the page <%= count++%></h1>
     <img src="images/screen1.jpg" left="50"/>
-
+</div>
 
 
 <form  name="f1"   method="post" action="">
     <table>
         <%
-            int k=1000;
+            int k=1;
             for(int i=0;i<25;i++)
             {
         %>
