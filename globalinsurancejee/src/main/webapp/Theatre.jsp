@@ -21,7 +21,9 @@
 %>
 
 <div id="screen">
-    <h1>Number of people Visited the page <%= count++%></h1>
+    <%out.print("<h1>Number of people Visited the page");%>
+    <%= count++%>
+    <% out.println("</h4>");%>
     <img src="images/screen1.jpg" left="50"/>
 </div>
 
