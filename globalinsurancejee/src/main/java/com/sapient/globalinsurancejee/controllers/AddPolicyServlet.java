@@ -24,13 +24,6 @@ public class AddPolicyServlet extends HttpServlet {
     private boolean status;
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter out=response.getWriter();
-        response.setContentType("text/html");
-        String driverName=getServletConfig().getInitParameter("driverName");
-        out.println("<h1>Data Received......</h1>");
-        out.println("<h4>We used the driver as"+driverName+"</h4>");
-
-
         List<String> values=new ArrayList<String>();
         Enumeration<String> names=request.getParameterNames();
         while(names.hasMoreElements()){
@@ -54,6 +47,8 @@ public class AddPolicyServlet extends HttpServlet {
         try {
             policyFacade = new PolicyImpl();
             policyFacade.addPolicy(policy);
+
+            request.getRequestDispatcher("SuccessServlet").forward(request,response);
 
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
