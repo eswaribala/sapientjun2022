@@ -12,11 +12,19 @@
 </head>
 <body>
 <jsp:useBean id="policy" class="com.sapient.globalinsurancejee.models.Policy" scope="session"/>
-    <jsp:getProperty name="policy" property="policyNo"/>
+    <%--<jsp:getProperty name="policy" property="policyNo"/>
     <jsp:getProperty name="policy" property="policyName"/>
 
     <jsp:getProperty name="policy" property="sumInsured"/>
+--%>
+<!--Expression Language -->
 
+<br>
+PolicyNo:  ${policy.policyNo}
+<br>
+Policy Name: ${policy.policyName}
+<br>
+Sum Insured: ${policy.sumInsured}
 
 </body>
 </html>
