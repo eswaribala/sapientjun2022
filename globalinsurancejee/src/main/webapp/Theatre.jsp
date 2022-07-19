@@ -24,6 +24,7 @@
     <jsp:setProperty name="policy" property="sumInsured" value="4353556"></jsp:setProperty>
 </jsp:useBean>
 <a href="eldemo.jsp">Bean Access</a>
+<!--Custom Tag -->
 <t:Sapient/>
 
 <%--Learning JSP..... --%>
