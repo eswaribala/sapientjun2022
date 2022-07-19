@@ -13,7 +13,8 @@
     <link type="text/css" rel="stylesheet" href="styles/theatre.css"/>
 </head>
 <body>
-<%@ include file="header.jsp"%>
+<%--<%@ include file="header.jsp"%>--%>
+<jsp:include page="header.jsp"></jsp:include>
 <jsp:useBean id="policy" class="com.sapient.globalinsurancejee.models.Policy" scope="session">
     <jsp:setProperty name="policy" property="policyNo" value="2467286"></jsp:setProperty>
     <jsp:setProperty name="policy" property="policyName" value="Vehicle"></jsp:setProperty>
