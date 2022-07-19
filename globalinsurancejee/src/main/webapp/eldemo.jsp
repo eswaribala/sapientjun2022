@@ -33,8 +33,17 @@ Policy Name: ${policy.policyName}
 <br>
 Sum Insured: ${policy.sumInsured}
 
+
+
+
+
 <c:set var="vehicleNo" value="TN-32-5437" />
 <c:set var="color" value="blue" />
+<c:set var="engineNo" value="327476" />
+<f:parseNumber var="fmtEngineNo" type="number" value="${engineNo}" />
+<c:out value="${fmtEngineNo}"></c:out>
+
+
 <h4>Vehicle No:
 <c:out value="${vehicleNo}"></c:out>
 </h4>
