@@ -9,6 +9,7 @@
 
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/fmt' prefix='f'%>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/functions' prefix='fn'%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/sql' prefix='sql'%>
 <sql:setDataSource var="dataSource" driver="org.postgresql.Driver"
                    url="jdbc:postgresql://localhost:5432/globalinsdb" user="postgres" password="vignesh" />
@@ -40,6 +41,12 @@ Sum Insured: ${policy.sumInsured}
 <h4>Vehicle Color:
     <c:out value="${color}"></c:out>
 </h4>
+
+<c:if test="${fn:containsIgnoreCase(vehicleNo,'TN-32' )}">
+    <p>Found the Vehicle</p>
+</c:if>
+
+
 
 <sql:query var="policies" dataSource="${dataSource}">
     select* from admin."Policy";
