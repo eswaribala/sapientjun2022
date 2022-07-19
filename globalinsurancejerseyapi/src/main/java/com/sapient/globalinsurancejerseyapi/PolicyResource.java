@@ -82,7 +82,7 @@ public class PolicyResource {
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public Response getPolicyById(@PathParam("policyNo")long policyNo)
     {
-        Policy policy=null;
+
         try {
             policyFacade=new PolicyImpl();
             genericEntityPolicy = new GenericEntity<Policy>(policyFacade.getPolicyById(policyNo)) {};
@@ -104,6 +104,29 @@ public class PolicyResource {
 
     }
 
+    @GET
+    @Path("policies")
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    public Response getPolicyByIdUsingQueryParam(@QueryParam("policyNo") long policyNo) {
 
+        try {
+            policyFacade=new PolicyImpl();
+            genericEntityPolicy = new GenericEntity<Policy>(policyFacade.getPolicyById(policyNo)) {};
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        return Response
+                .status(200)
+                .header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+                .header("Access-Control-Allow-Credentials", "true")
+                .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+                .header("Access-Control-Max-Age", "1209600")
+                .entity(genericEntityPolicy)
+                .build();
+    }
 
 }
