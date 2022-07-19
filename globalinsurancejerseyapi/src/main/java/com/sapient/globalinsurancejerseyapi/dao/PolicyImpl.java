@@ -38,14 +38,14 @@ public class PolicyImpl implements PolicyFacade {
         logger.info("Policy Details"+policy.getToDate());
         logger.info("Policy Details"+policy.getSumInsured());
 
-
-
+         Date fromDate=new Date(policy.getFromDate().getYear(),policy.getFromDate().getMonth(),policy.getFromDate().getDay());
+        Date toDate=new Date(policy.getToDate().getYear(),policy.getToDate().getMonth(),policy.getToDate().getDay());
             preparedStatement=connection.prepareStatement(query);
 
             preparedStatement.setLong(1,policy.getPolicyNo());
-            preparedStatement.setDate(2, (Date) policy.getFromDate());
+            preparedStatement.setDate(2, fromDate);
             preparedStatement.setString(3,policy.getPolicyName());
-            preparedStatement.setDate(4, (Date) policy.getToDate());
+            preparedStatement.setDate(4, toDate);
             preparedStatement.setLong(5,policy.getSumInsured());
             int rows=preparedStatement.executeUpdate();
             logger.info("rows",rows);
