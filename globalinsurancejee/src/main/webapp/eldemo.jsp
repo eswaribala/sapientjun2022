@@ -41,8 +41,10 @@ Sum Insured: ${policy.sumInsured}
 <c:set var="color" value="blue" />
 <c:set var="engineNo" value="327476" />
 <f:parseNumber var="fmtEngineNo" type="number" value="${engineNo}" />
+<p>
+    Formatted Engine No
 <c:out value="${fmtEngineNo}"></c:out>
-
+</p>
 
 <h4>Vehicle No:
 <c:out value="${vehicleNo}"></c:out>
