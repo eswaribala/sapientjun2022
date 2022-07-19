@@ -14,6 +14,15 @@
 </head>
 <body>
 <%@ include file="header.jsp"%>
+<jsp:useBean id="policy" class="com.sapient.globalinsurancejee.models.Policy" scope="session">
+    <jsp:setProperty name="policy" property="policyNo" value="2467286"></jsp:setProperty>
+    <jsp:setProperty name="policy" property="policyName" value="Vehicle"></jsp:setProperty>
+
+    <jsp:setProperty name="policy" property="sumInsured" value="4353556"></jsp:setProperty>
+</jsp:useBean>
+<a href="eldemo.jsp">Bean Access</a>
+
+
 <%--Learning JSP..... --%>
 <h1 >Welcome to Express Escape</h1>
 <!--Declaring variables -->
