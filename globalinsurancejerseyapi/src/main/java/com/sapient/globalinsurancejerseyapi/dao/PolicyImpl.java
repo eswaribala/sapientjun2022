@@ -75,5 +75,27 @@ public class PolicyImpl implements PolicyFacade {
         return policies;
     }
 
+    @Override
+    public Policy getPolicyById(long policyNo) throws SQLException {
+        query=resourceBundle.getString("selectPolicyById");
+        preparedStatement=connection.prepareStatement(query);
+        preparedStatement.setLong(1,policyNo);
+        resultSet=preparedStatement.executeQuery();
+
+        Policy policy=null;
+        while(resultSet.next()){
+            policy=new Policy();
+            policy.setPolicyNo( resultSet.getLong(1));
+            policy.setFromDate(resultSet.getDate(2));
+            policy.setPolicyName(resultSet.getString(3));
+            policy.setToDate(resultSet.getDate(4));
+            policy.setSumInsured(resultSet.getLong(5));
+
+        }
+
+        logger.info("Policy"+policy.getPolicyName());
+        return policy;
+    }
+
 
 }
