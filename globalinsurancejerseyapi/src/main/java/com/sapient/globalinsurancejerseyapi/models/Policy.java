@@ -4,7 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import java.util.Date;
+
 
 @Data
 @AllArgsConstructor
@@ -13,7 +14,7 @@ public class Policy {
 
     private long policyNo;
     private String policyName;
-    private LocalDate fromDate;
-    private LocalDate toDate;
+    private Date fromDate;
+    private Date toDate;
     private long sumInsured;
 }

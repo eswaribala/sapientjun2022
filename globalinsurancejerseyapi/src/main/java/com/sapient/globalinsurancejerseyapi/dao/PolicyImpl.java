@@ -43,9 +43,9 @@ public class PolicyImpl implements PolicyFacade {
             preparedStatement=connection.prepareStatement(query);
 
             preparedStatement.setLong(1,policy.getPolicyNo());
-            preparedStatement.setDate(2,Date.valueOf(policy.getFromDate()));
+            preparedStatement.setDate(2, (Date) policy.getFromDate());
             preparedStatement.setString(3,policy.getPolicyName());
-            preparedStatement.setDate(4,Date.valueOf(policy.getToDate()));
+            preparedStatement.setDate(4, (Date) policy.getToDate());
             preparedStatement.setLong(5,policy.getSumInsured());
             int rows=preparedStatement.executeUpdate();
             logger.info("rows",rows);
@@ -66,9 +66,9 @@ public class PolicyImpl implements PolicyFacade {
         while(resultSet.next()){
             policy=new Policy();
             policy.setPolicyNo( resultSet.getLong(1));
-            policy.setFromDate(LocalDate.parse(resultSet.getDate(2).toString()));
+            policy.setFromDate(resultSet.getDate(2));
             policy.setPolicyName(resultSet.getString(3));
-            policy.setToDate(LocalDate.parse(resultSet.getDate(4).toString()));
+            policy.setToDate(resultSet.getDate(4));
             policy.setSumInsured(resultSet.getLong(5));
             policies.add(policy);
         }
