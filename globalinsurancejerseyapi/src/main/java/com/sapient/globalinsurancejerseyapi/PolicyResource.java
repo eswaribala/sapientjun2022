@@ -5,6 +5,7 @@ import com.sapient.globalinsurancejerseyapi.facades.PolicyFacade;
 import com.sapient.globalinsurancejerseyapi.models.Policy;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.CacheControl;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -118,6 +119,8 @@ public class PolicyResource {
             throw new RuntimeException(e);
         }
 
+        CacheControl cc =new CacheControl();
+        cc.setMaxAge(1000);
         return Response
                 .status(200)
                 .header("Access-Control-Allow-Origin", "*")
@@ -126,6 +129,7 @@ public class PolicyResource {
                 .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
                 .header("Access-Control-Max-Age", "1209600")
                 .entity(genericEntityPolicy)
+                .cacheControl(cc)
                 .build();
     }
 
