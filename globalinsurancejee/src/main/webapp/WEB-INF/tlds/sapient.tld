@@ -7,7 +7,8 @@
     <tag>
         <description>Sapient tag</description>
         <name>Sapient</name>
-        <tag-class>simple.SimpleTagEx</tag-class>
+        <tag-class>com.sapient.globalinsurancejee.tags.SapientTag</tag-class>
         <body-content>empty</body-content>
     </tag>
+
 </taglib>

@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"
          import="com.sapient.globalinsurancejee.models.Policy" errorPage="error.jsp" %>
+<%@ taglib prefix="t" uri="/SapientTag"%>
+
 <html>
 <head>
     <title>Title</title>
@@ -22,7 +24,7 @@
     <jsp:setProperty name="policy" property="sumInsured" value="4353556"></jsp:setProperty>
 </jsp:useBean>
 <a href="eldemo.jsp">Bean Access</a>
-
+<t:Sapient/>
 
 <%--Learning JSP..... --%>
 <h1 >Welcome to Express Escape</h1>
