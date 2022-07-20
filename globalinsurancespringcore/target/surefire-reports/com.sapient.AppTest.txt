@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: com.sapient.models.ClaimTest
+Test set: com.sapient.AppTest
 -------------------------------------------------------------------------------
-Tests run: 17, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.323 s - in com.sapient.models.ClaimTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 s - in com.sapient.AppTest
