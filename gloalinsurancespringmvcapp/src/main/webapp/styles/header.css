@@ -16,3 +16,15 @@
     color: transparent;
     font-family: "Lucida Calligraphy"
 }
+.logo{
+
+    width:100px;
+    height: 100px;
+    padding-right: 150px;
+}
+
+.banner{
+    width: 300px;
+    height: 100px;
+    padding-left: 100px;
+}

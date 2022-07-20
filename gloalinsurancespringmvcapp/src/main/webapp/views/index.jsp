@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>JSP - Global Insurance</title>
+
     <link type="text/css" rel="stylesheet" href="../gloalinsurancespringmvcapp_war_exploded/styles/index.css">
 </head>
 <body>
