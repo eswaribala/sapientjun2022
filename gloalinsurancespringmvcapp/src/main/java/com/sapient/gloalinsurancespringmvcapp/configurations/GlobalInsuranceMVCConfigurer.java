@@ -21,14 +21,14 @@ public class GlobalInsuranceMVCConfigurer implements WebMvcConfigurer{
         //WebMvcConfigurer.super.addResourceHandlers(registry);
         // Register resource handler for CSS and JS
         registry.addResourceHandler("/styles/**").addResourceLocations("/styles/")
-                .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
+                .setCacheControl(CacheControl.maxAge(2, TimeUnit.SECONDS).cachePublic());
 
         // Register resource handler for CSS and JS
         registry.addResourceHandler("/scripts/**").addResourceLocations("/scripts/")
-                .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
+                .setCacheControl(CacheControl.maxAge(2, TimeUnit.SECONDS).cachePublic());
         // Register resource handler for images
         registry.addResourceHandler("/images/**").addResourceLocations("/images/")
-                .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
+                .setCacheControl(CacheControl.maxAge(2, TimeUnit.SECONDS).cachePublic());
     }
 
     @Override

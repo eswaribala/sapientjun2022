@@ -10,5 +10,8 @@ public class PolicyController {
     public String loadHome(){
         return "index";
     }
-
+    @GetMapping("/policies")
+    public String loadAddPolicy(){
+        return "addpolicy";
+    }
 }
