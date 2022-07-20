@@ -107,3 +107,11 @@
 2022-07-20 14:08:23,382 INFO com.sapient.utility.ApplicationContextApp [main] Refund,Refund(refundAmount=0)
 2022-07-20 14:08:23,408 INFO com.sapient.utility.ApplicationContextApp [main] Transaction,Transaction(transactionId=0, policy=Policy(policyNo=437673, policyName=Jeevan Dhara, fromDate=2022-02-02, toDate=2027-02-02, sumInsured=3465934, vehicle=Vehicle(regNo=TN-02-4567, make=Mercedes, color=black, cost=200000000, dop=null)), dataStore=com.sapient.dao.MySQLDataStore@555cf22)
 2022-07-20 14:08:23,409 INFO com.sapient.dao.MySQLDataStore [main] Message MYSQL Data Store
+2022-07-20 14:21:15,951 INFO com.sapient.utility.ApplicationContextApp [main] Bean Awarevehicle
+2022-07-20 14:21:15,955 INFO com.sapient.utility.ApplicationContextApp [main] BeanClassLoaderapp
+2022-07-20 14:21:16,007 INFO com.sapient.utility.ApplicationContextApp [main] Vehicle Info,Vehicle(regNo=TN-02-4567, make=Mercedes, color=black, cost=200000000, dop=null)
+2022-07-20 14:21:16,038 INFO com.sapient.utility.ApplicationContextApp [main] Policy Info,Policy(policyNo=437673, policyName=Jeevan Dhara, fromDate=2022-02-02, toDate=2027-02-02, sumInsured=3465934, vehicle=Vehicle(regNo=TN-02-4567, make=Mercedes, color=black, cost=200000000, dop=null))
+2022-07-20 14:21:16,047 INFO com.sapient.utility.ApplicationContextApp [main] Claim Info,Claim(claimId=4356436, policy=Policy(policyNo=437673, policyName=Jeevan Dhara, fromDate=2022-02-02, toDate=2027-02-02, sumInsured=3465934, vehicle=Vehicle(regNo=TN-02-4567, make=Mercedes, color=black, cost=200000000, dop=null)))
+2022-07-20 14:21:16,055 INFO com.sapient.utility.ApplicationContextApp [main] Refund,Refund(refundAmount=0)
+2022-07-20 14:21:16,079 INFO com.sapient.utility.ApplicationContextApp [main] Transaction,Transaction(transactionId=0, policy=Policy(policyNo=437673, policyName=Jeevan Dhara, fromDate=2022-02-02, toDate=2027-02-02, sumInsured=3465934, vehicle=Vehicle(regNo=TN-02-4567, make=Mercedes, color=black, cost=200000000, dop=null)), dataStore=com.sapient.dao.MySQLDataStore@3bd418e4)
+2022-07-20 14:21:16,079 INFO com.sapient.dao.MySQLDataStore [main] Message MYSQL Data Store
