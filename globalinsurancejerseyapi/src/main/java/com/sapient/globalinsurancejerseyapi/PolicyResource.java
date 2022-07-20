@@ -3,6 +3,10 @@ package com.sapient.globalinsurancejerseyapi;
 import com.sapient.globalinsurancejerseyapi.dao.PolicyImpl;
 import com.sapient.globalinsurancejerseyapi.facades.PolicyFacade;
 import com.sapient.globalinsurancejerseyapi.models.Policy;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
+
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.CacheControl;
@@ -13,6 +17,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Path("/policies")
+@Api("Policy Service")
+@SwaggerDefinition(tags={@Tag(name="PolicyService",description = "Policy")})
 public class PolicyResource {
     private PolicyFacade policyFacade;
     private GenericEntity<List<Policy>> genentity;
