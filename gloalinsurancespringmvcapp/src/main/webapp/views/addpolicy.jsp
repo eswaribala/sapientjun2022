@@ -16,6 +16,7 @@
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
+
 <form:form action="policies" method="post"  modelAttribute="policy">
     <fieldset>
         <legend class="multicolortext">
