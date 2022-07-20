@@ -1,5 +1,7 @@
 package com.sapient.utility;
 
+import com.sapient.models.Claim;
+import com.sapient.models.Policy;
 import com.sapient.models.Vehicle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,11 +13,11 @@ public class ApplicationContextApp {
     public static void main(String[] args){
         ApplicationContext ctx=new ClassPathXmlApplicationContext(
                 "spring-annotation-config.xml");
-
         Vehicle vehicle= (Vehicle) ctx.getBean("vehicle");
-        logger.info("Vehile Info,"+vehicle);
-
-
-
+        logger.info("Vehicle Info,"+vehicle);
+        Policy policy= (Policy) ctx.getBean("policy");
+        logger.info("Policy Info,"+policy);
+        Claim claim= (Claim) ctx.getBean("claim");
+        logger.info("Claim Info,"+claim);
     }
 }
