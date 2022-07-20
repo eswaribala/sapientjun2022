@@ -1,0 +1,84 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: black;
+    font-size: xx-large;
+
+}
+.header h4{
+    margin-left:5%
+}
+
+.multicolortext {
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-family: "Lucida Calligraphy"
+}
+form{
+    width:30%;
+    margin-left: 30%;
+    background-color: aliceblue;
+}
+fieldset{
+    text-align: center;
+    border-radius: 50px 50px 50px 50px;
+}
+
+input{
+    display: block;
+    margin-bottom: 5px;
+    border-radius: 50px 50px 50px 50px;
+    width: 96%;
+}
+input[type=file]{
+    width:97%;
+    border-radius: 50px 50px 50px 50px;
+}
+input[type=date]{
+    width:97%;
+    border-radius: 50px 50px 50px 50px;
+}
+input:invalid{
+    border: 4px solid red;
+}
+input:valid{
+    border: 4px solid green;
+}
+
+input[type=submit]{
+    background-color: black;
+    color:goldenrod;
+    font-size: large;
+    font-weight: bold;
+    width:100%;
+}
+.logo{
+
+    width:100px;
+    height: 100px;
+    padding-right: 150px;
+}
+
+.banner{
+    width: 300px;
+    height: 100px;
+    padding-left: 100px;
+}
+
+
+table {
+    width:80%;
+    margin-left: 5%;
+    margin-top: 5%;
+    border: 4px solid black;
+}
+table tr{
+    background-color: blue;
+    color: white;
+}
+table tr:nth-child(2n+1){
+    background-color: white;
+    color: blue;
+}

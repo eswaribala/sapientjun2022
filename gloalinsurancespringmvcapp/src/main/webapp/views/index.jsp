@@ -2,10 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>JSP - Global Insurance</title>
+    <link type="text/css" rel="stylesheet" href="../gloalinsurancespringmvcapp_war_exploded//styles/index.css">
 </head>
 <body>
-<h1>Global Insurance </h1>
+<jsp:include page="header.jsp"></jsp:include>
 <br/>
 
 </body>
