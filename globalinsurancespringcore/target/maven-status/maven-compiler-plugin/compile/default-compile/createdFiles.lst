@@ -1,2 +1,8 @@
+com\sapient\models\Transaction.class
+com\sapient\utility\ApplicationContextApp.class
+com\sapient\models\Claim.class
+com\sapient\models\Policy.class
 com\sapient\models\Vehicle.class
-com\sapient\App.class
+com\sapient\models\Refund.class
+com\sapient\models\Owner.class
+com\sapient\utility\App.class

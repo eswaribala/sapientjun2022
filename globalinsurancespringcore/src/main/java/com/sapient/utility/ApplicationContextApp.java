@@ -1,5 +1,6 @@
 package com.sapient.utility;
 
+import com.sapient.facade.DataStore;
 import com.sapient.models.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,8 +34,12 @@ public class ApplicationContextApp {
 
         Refund refund= (Refund) ctx.getBean("refund");
         logger.info("Refund,"+refund);
+        //Transaction has data store property
         Transaction transaction= (Transaction) ctx.getBean("transaction");
         logger.info("Transaction,"+transaction);
+        transaction.getDataStore().writeData("Tracking....");
+
+
 
     }
 }
