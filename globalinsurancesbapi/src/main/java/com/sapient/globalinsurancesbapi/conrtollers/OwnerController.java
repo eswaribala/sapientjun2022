@@ -5,16 +5,17 @@ import com.sapient.globalinsurancesbapi.services.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
+@RequestMapping("/owners")
 public class OwnerController {
     @Autowired
     private OwnerService ownerService;
 
-    //@PostMapping("")
+    @PostMapping({"/v1.0"})
     public ResponseEntity<?> addOwner(@RequestBody Owner owner){
 
         Owner ownerObj=this.ownerService.addOwner(owner);
@@ -23,6 +24,11 @@ public class OwnerController {
         }
         else
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Owner Data Not Added");
+    }
+
+    @GetMapping({"/v1.0"})
+    public List<Owner> getAllOwners(){
+        return this.ownerService.getAllOwners();
     }
 
 }
