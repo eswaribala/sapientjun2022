@@ -29,9 +29,8 @@ public class Vehicle {
     @Column(name="DOR")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dor;
-
     @ManyToOne
-    @JoinColumn(name = "owner_mobile_no",foreignKey = @ForeignKey())
+    @JoinColumn(name = "owner_mobile_no",foreignKey = @ForeignKey(name = "Mobile_No"))
     private Owner owner;
 
 }
