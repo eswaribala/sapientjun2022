@@ -36,7 +36,16 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler
 		ErrorResponse error = new ErrorResponse(INCORRECT_REQUEST, details);
 		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}
-	
+	@ExceptionHandler(RecordFoundException.class)
+	@ResponseBody
+	public final ResponseEntity<ErrorResponse> handleUserFoundException
+			(RecordFoundException ex, WebRequest request)
+	{
+		List<String> details = new ArrayList<>();
+		details.add(ex.getLocalizedMessage());
+		ErrorResponse error = new ErrorResponse(INCORRECT_REQUEST, details);
+		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+	}
 	@ExceptionHandler(MissingHeaderInfoException.class)
 	@ResponseBody
 	public final ResponseEntity<ErrorResponse> handleInvalidTraceIdException
