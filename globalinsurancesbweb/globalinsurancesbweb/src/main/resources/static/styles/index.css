@@ -41,11 +41,13 @@
 }
 
 .form input{
+    width:100%;
     margin-bottom: 3px;
 
 }
 
 .form input[type=submit]{
+    width:100%;
     background-color: goldenrod;
     color:black;
 }
