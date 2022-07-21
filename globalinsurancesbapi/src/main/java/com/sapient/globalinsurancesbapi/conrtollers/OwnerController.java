@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -16,7 +17,8 @@ public class OwnerController {
     private OwnerService ownerService;
 
     @PostMapping({"/v1.0"})
-    public ResponseEntity<?> addOwner(@RequestBody Owner owner){
+    @CrossOrigin("*")
+    public ResponseEntity<?> addOwner(@Valid @RequestBody Owner owner){
 
         Owner ownerObj=this.ownerService.addOwner(owner);
         if(ownerObj!=null){
@@ -27,11 +29,13 @@ public class OwnerController {
     }
 
     @GetMapping({"/v1.0"})
+    @CrossOrigin("*")
     public List<Owner> getAllOwners(){
         return this.ownerService.getAllOwners();
     }
 
     @GetMapping({"/v1.0/{mobileNo}"})
+    @CrossOrigin("*")
     public ResponseEntity<?> getOwnerByMobileNo(@PathVariable("mobileNo") long mobileNo){
         Owner ownerObj=this.ownerService.getOwnerById(mobileNo);
         if(ownerObj!=null){
@@ -42,6 +46,7 @@ public class OwnerController {
     }
 
     @DeleteMapping({"/v1.0/{mobileNo}"})
+    @CrossOrigin("*")
     public ResponseEntity<?> deleteOwnerByMobileNo(@PathVariable("mobileNo") long mobileNo){
 
         if(this.ownerService.deleteOwnerById(mobileNo)){
@@ -53,6 +58,7 @@ public class OwnerController {
 
 
     @PutMapping({"/v1.0/{mobileNo}"})
+    @CrossOrigin("*")
     public ResponseEntity<?> updateOwnerByMobileNo(@PathVariable("mobileNo") long mobileNo,
                                                    @RequestParam(name = "email") String email){
         Owner owner=this.ownerService.updateOwnerEmail(mobileNo,email);
