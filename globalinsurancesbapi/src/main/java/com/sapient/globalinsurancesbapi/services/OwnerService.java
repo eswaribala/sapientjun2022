@@ -37,5 +37,18 @@ public class OwnerService {
         return false;
     }
 
+    //update
+
+    public Owner updateOwnerEmail(long mobileNo,String email){
+
+        Owner owner= this.getOwnerById(mobileNo);
+        if(owner!=null){
+            owner.setEmail(email);
+            this.ownerRepository.save(owner);
+            return owner;
+        }
+        return null;
+    }
+
 
 }

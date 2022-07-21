@@ -19,6 +19,7 @@ public class Owner {
     private FullName name;
     @Enumerated(EnumType.STRING)
     private Gender gender;
-
+    @Column(name="Email")
+    private String email;
 
 }

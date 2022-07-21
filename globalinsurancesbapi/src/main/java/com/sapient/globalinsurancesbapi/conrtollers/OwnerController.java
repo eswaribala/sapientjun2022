@@ -50,4 +50,17 @@ public class OwnerController {
         else
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Owner Data Not found");
     }
+
+
+    @PutMapping({"/v1.0/{mobileNo}"})
+    public ResponseEntity<?> updateOwnerByMobileNo(@PathVariable("mobileNo") long mobileNo,
+                                                   @RequestParam(name = "email") String email){
+        Owner owner=this.ownerService.updateOwnerEmail(mobileNo,email);
+
+        if(owner!=null){
+            return ResponseEntity.status(HttpStatus.OK).body(owner);
+        }
+        else
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Owner Data Not found");
+    }
 }
