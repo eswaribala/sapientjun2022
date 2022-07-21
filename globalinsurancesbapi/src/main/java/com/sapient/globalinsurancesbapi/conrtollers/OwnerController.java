@@ -31,4 +31,23 @@ public class OwnerController {
         return this.ownerService.getAllOwners();
     }
 
+    @GetMapping({"/v1.0/{mobileNo}"})
+    public ResponseEntity<?> getOwnerByMobileNo(@PathVariable("mobileNo") long mobileNo){
+        Owner ownerObj=this.ownerService.getOwnerById(mobileNo);
+        if(ownerObj!=null){
+            return ResponseEntity.status(HttpStatus.OK).body(ownerObj);
+        }
+        else
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Owner Data Not found");
+    }
+
+    @DeleteMapping({"/v1.0/{mobileNo}"})
+    public ResponseEntity<?> deleteOwnerByMobileNo(@PathVariable("mobileNo") long mobileNo){
+
+        if(this.ownerService.deleteOwnerById(mobileNo)){
+            return ResponseEntity.status(HttpStatus.OK).body("Owner removed from database....");
+        }
+        else
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Owner Data Not found");
+    }
 }
