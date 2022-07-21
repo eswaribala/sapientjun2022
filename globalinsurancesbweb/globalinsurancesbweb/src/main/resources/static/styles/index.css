@@ -1,0 +1,51 @@
+.header{
+
+    background-color:black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-around;
+    font-size: calc(10px + 2vmin);
+
+
+}
+.logo{
+    width:100px;
+    height:100px;
+
+}
+
+.banner
+{
+    width: 400px;
+    height: 100px;
+}
+
+.multicolortext {
+    background-image: linear-gradient(to left, white,yellow,goldenrod);
+    -webkit-background-clip: text;
+    font-size: larger;
+    font-weight: bold;
+    color: transparent;
+    font-family: "Lucida Calligraphy"
+}
+
+.form{
+    width:20%;
+    margin-left: 55%;
+    background-color: lightgoldenrodyellow;
+
+}
+.form legend{
+    text-align: center;
+}
+
+.form input{
+    margin-bottom: 3px;
+
+}
+
+.form input[type=submit]{
+    background-color: goldenrod;
+    color:black;
+}
