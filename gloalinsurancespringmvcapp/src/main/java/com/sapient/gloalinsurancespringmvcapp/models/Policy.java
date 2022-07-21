@@ -13,7 +13,7 @@ public class Policy {
 
     private long policyNo;
     private String policyName;
-    private LocalDate fromDate;
-    private LocalDate toDate;
+    private String fromDate;
+    private String toDate;
     private long sumInsured;
 }

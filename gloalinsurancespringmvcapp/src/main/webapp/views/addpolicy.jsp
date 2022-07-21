@@ -24,8 +24,8 @@
         </legend>
         <form:input type="number" path="policyNo" placeholder="Policy No" required="true"></form:input>
         <form:input type="text" path="policyName" placeholder="Policy Name" required="true"></form:input>
-        <form:input type="date" path="fromDate" placeholder="From Date" required="true"></form:input>
-        <form:input type="date" path="toDate" placeholder="To Date" required="true"></form:input>
+        <form:input type="text" path="fromDate" placeholder="From Date" required="true"></form:input>
+        <form:input type="text" path="toDate" placeholder="To Date" required="true"></form:input>
         <form:input type="number" path="sumInsured" placeholder="SumInsured" required="true"></form:input>
         <input type="submit" value="Submit">
     </fieldset>
