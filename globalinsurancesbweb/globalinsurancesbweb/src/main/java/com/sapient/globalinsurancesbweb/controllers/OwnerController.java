@@ -1,6 +1,7 @@
 package com.sapient.globalinsurancesbweb.controllers;
 
 
+import com.google.gson.Gson;
 import com.sapient.globalinsurancesbweb.models.Owner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,8 +30,8 @@ public class OwnerController {
 
 
     @PostMapping("/owners")
-    public String addOwner(@ModelAttribute("owner") Owner owner) {
-
+    public String addOwner(@ModelAttribute("owner") Owner owner, Model model) {
+        Gson   gson=new Gson();
 
         if(owner.getMobileNo()>0) {
 
@@ -42,8 +43,9 @@ public class OwnerController {
             ResponseEntity<?> authResponse=restTemplate.
                     postForEntity(url+"/owners/v1.0",request, String.class);
 
-               System.out.println(authResponse.getBody());
-                return  "success";
+            Owner owner1 = gson.fromJson(authResponse.getBody().toString(), Owner.class);
+            model.addAttribute("owner", owner1);
+                return "success";
 
 
         }
