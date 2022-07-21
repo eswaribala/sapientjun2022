@@ -43,8 +43,8 @@ public class OwnerController {
             ResponseEntity<?> authResponse=restTemplate.
                     postForEntity(url+"/owners/v1.0",request, String.class);
 
-            Owner owner1 = gson.fromJson(authResponse.getBody().toString(), Owner.class);
-            model.addAttribute("owner", owner1);
+            Owner ownerResponse = gson.fromJson(authResponse.getBody().toString(), Owner.class);
+            model.addAttribute("response", ownerResponse);
                 return "success";
 
 
