@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OwnerService {
@@ -30,6 +31,7 @@ public class OwnerService {
 
     //select by id
     public Owner getOwnerById(long mobileNo){
+
         return this.ownerRepository.findById(mobileNo).orElse(null);
     }
 
