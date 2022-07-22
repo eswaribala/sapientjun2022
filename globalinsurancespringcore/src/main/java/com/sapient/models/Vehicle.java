@@ -10,6 +10,9 @@ import org.springframework.beans.factory.BeanClassLoaderAware;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.stereotype.Component;
 
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.Date;
 
 @Data
@@ -34,4 +37,14 @@ public class Vehicle implements BeanNameAware, BeanClassLoaderAware {
     public void setBeanClassLoader(ClassLoader classLoader) {
         logger.info("BeanClassLoader"+ classLoader.getName());
     }
+    @PostConstruct
+    public void customInit(){
+        logger.info("invoking custom init......");
+    }
+
+    @PreDestroy
+    public void beforeDestroy(){
+        logger.info("before destroy......");
+    }
+
 }

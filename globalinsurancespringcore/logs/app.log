@@ -115,3 +115,22 @@
 2022-07-20 14:21:16,055 INFO com.sapient.utility.ApplicationContextApp [main] Refund,Refund(refundAmount=0)
 2022-07-20 14:21:16,079 INFO com.sapient.utility.ApplicationContextApp [main] Transaction,Transaction(transactionId=0, policy=Policy(policyNo=437673, policyName=Jeevan Dhara, fromDate=2022-02-02, toDate=2027-02-02, sumInsured=3465934, vehicle=Vehicle(regNo=TN-02-4567, make=Mercedes, color=black, cost=200000000, dop=null)), dataStore=com.sapient.dao.MySQLDataStore@3bd418e4)
 2022-07-20 14:21:16,079 INFO com.sapient.dao.MySQLDataStore [main] Message MYSQL Data Store
+2022-07-22 10:58:00,184 INFO com.sapient.utility.ApplicationContextApp [main] Bean Awarevehicle
+2022-07-22 10:58:00,187 INFO com.sapient.utility.ApplicationContextApp [main] BeanClassLoaderapp
+2022-07-22 10:58:00,187 INFO com.sapient.utility.ApplicationContextApp [main] invoking custom init......
+2022-07-22 10:58:00,262 INFO com.sapient.utility.ApplicationContextApp [main] Vehicle Info,Vehicle(regNo=TN-02-4567, make=Mercedes, color=black, cost=200000000, dop=null)
+2022-07-22 10:58:00,334 INFO com.sapient.utility.ApplicationContextApp [main] Policy Info,Policy(policyNo=437673, policyName=Jeevan Dhara, fromDate=2022-02-02, toDate=2027-02-02, sumInsured=3465934, vehicle=Vehicle(regNo=TN-02-4567, make=Mercedes, color=black, cost=200000000, dop=null))
+2022-07-22 10:58:00,353 INFO com.sapient.utility.ApplicationContextApp [main] Claim Info,Claim(claimId=4356436, policy=Policy(policyNo=437673, policyName=Jeevan Dhara, fromDate=2022-02-02, toDate=2027-02-02, sumInsured=3465934, vehicle=Vehicle(regNo=TN-02-4567, make=Mercedes, color=black, cost=200000000, dop=null)))
+2022-07-22 10:58:00,368 INFO com.sapient.utility.ApplicationContextApp [main] Refund,Refund(refundAmount=0)
+2022-07-22 10:58:00,420 INFO com.sapient.utility.ApplicationContextApp [main] Transaction,Transaction(transactionId=0, policy=Policy(policyNo=437673, policyName=Jeevan Dhara, fromDate=2022-02-02, toDate=2027-02-02, sumInsured=3465934, vehicle=Vehicle(regNo=TN-02-4567, make=Mercedes, color=black, cost=200000000, dop=null)), dataStore=com.sapient.dao.MySQLDataStore@3a0d172f)
+2022-07-22 10:58:00,421 INFO com.sapient.dao.MySQLDataStore [main] Message MYSQL Data Store
+2022-07-22 11:01:35,168 INFO com.sapient.utility.ApplicationContextApp [main] Bean Awarevehicle
+2022-07-22 11:01:35,170 INFO com.sapient.utility.ApplicationContextApp [main] BeanClassLoaderapp
+2022-07-22 11:01:35,170 INFO com.sapient.utility.ApplicationContextApp [main] invoking custom init......
+2022-07-22 11:01:35,215 INFO com.sapient.utility.ApplicationContextApp [main] Vehicle Info,Vehicle(regNo=TN-02-4567, make=Mercedes, color=black, cost=200000000, dop=null)
+2022-07-22 11:01:35,249 INFO com.sapient.utility.ApplicationContextApp [main] Policy Info,Policy(policyNo=437673, policyName=Jeevan Dhara, fromDate=2022-02-02, toDate=2027-02-02, sumInsured=3465934, vehicle=Vehicle(regNo=TN-02-4567, make=Mercedes, color=black, cost=200000000, dop=null))
+2022-07-22 11:01:35,256 INFO com.sapient.utility.ApplicationContextApp [main] Claim Info,Claim(claimId=4356436, policy=Policy(policyNo=437673, policyName=Jeevan Dhara, fromDate=2022-02-02, toDate=2027-02-02, sumInsured=3465934, vehicle=Vehicle(regNo=TN-02-4567, make=Mercedes, color=black, cost=200000000, dop=null)))
+2022-07-22 11:01:35,261 INFO com.sapient.utility.ApplicationContextApp [main] Refund,Refund(refundAmount=0)
+2022-07-22 11:01:35,280 INFO com.sapient.utility.ApplicationContextApp [main] Transaction,Transaction(transactionId=0, policy=Policy(policyNo=437673, policyName=Jeevan Dhara, fromDate=2022-02-02, toDate=2027-02-02, sumInsured=3465934, vehicle=Vehicle(regNo=TN-02-4567, make=Mercedes, color=black, cost=200000000, dop=null)), dataStore=com.sapient.dao.MySQLDataStore@3a0d172f)
+2022-07-22 11:01:35,280 INFO com.sapient.dao.MySQLDataStore [main] Message MYSQL Data Store
+2022-07-22 11:01:35,283 INFO com.sapient.utility.ApplicationContextApp [SpringContextShutdownHook] before destroy......
