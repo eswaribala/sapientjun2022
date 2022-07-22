@@ -1,0 +1,8 @@
+Step1: vault server --config=vault.conf
+
+Only for first time
+Step 2: set VAULT_ADDR=http://localhost:8200
+Step 3: set VAULT_TOKEN=s.ENnNBQXDuDwzKOwQiREbW3PK
+Step 4: vault secrets enable -path=secret/ kv
+
+
