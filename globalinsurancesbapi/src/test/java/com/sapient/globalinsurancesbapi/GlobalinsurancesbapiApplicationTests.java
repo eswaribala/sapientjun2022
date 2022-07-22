@@ -14,9 +14,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Optional;
+import java.util.Properties;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -90,4 +90,16 @@ class GlobalinsurancesbapiApplicationTests {
        assertEquals(102, ownerList.size());
    }
 
+
+    //mockito throw test
+    @Test
+    void testMockitoThrows() {
+        Properties properties = Mockito.mock(Properties.class);
+
+        when(properties.get(Mockito.anyString())).thenThrow(new IllegalArgumentException("dbparams error"));
+
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> properties.get("url"));
+
+        assertEquals("dbparams error", exception.getMessage());
+    }
 }
