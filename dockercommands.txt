@@ -1,0 +1,7 @@
+docker run --name nec-mysql -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=necdevdb -e MYSQL_USER=demo_user -e MYSQL_PASSWORD=demo_pass -d mysql
+mysql client
+docker exec -it nec-mysql mysql -u root -p
+docker build -f dockerfile -t customerapp .
+docker run -p 7070:7070 --name customerapp-c1 --link nec-mysql:mysql -d customerapp:latest
+docker tag traderapp:latest eswaribala/vusmsjan2022:traderappv1
+docker push eswaribala/vusmsjan2022:traderappv1
