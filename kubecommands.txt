@@ -1,0 +1,29 @@
+kubectl version
+kubectl cluster-info
+kubectl cluster-info dump
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+kubectl apply -f dashboard-adminuser.yaml
+kubectl apply -f admin-role-binding.yml
+kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | sls admin-user | ForEach-Object { $_ -Split '\s+' } | Select -First 1)
+kubectl proxy
+
+http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+kubectl apply -f mysql-pv.yaml
+kubectl get pv
+kubectl get pvc
+kubectl apply -f mysql-deployment.yaml
+kubectl get pods
+kubectl get svc
+kubectl get deploy
+kubectl run -it --rm --image=mysql --restart=Never mysql-client -- mysql -h mysql -ppassword
+kubectl exec -it mongo-app-7559754fbf-n7mx4 /bin/bash
+kubectl apply -f deployment-v7.yml
+kubectl expose deployment --port 7070 customerapp --type=LoadBalancer --name=customerservicev1
+kubectl port-forward svc/customerservicev1 8060:7070
+kubectl scale --replicas=1 deployment customerapp
+
+az network public-ip create --resource-group  mc_vebgroup_vebcluster_southindia  --name Pixel-AKS-PIP --allocation-method static
+
+
+kubectl autoscale deployment customerapp --min=1 --max=4 --cpu-percent=20
