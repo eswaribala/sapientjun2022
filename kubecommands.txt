@@ -17,6 +17,7 @@ kubectl get pods
 kubectl get svc
 kubectl get deploy
 kubectl run -it --rm --image=mysql --restart=Never mysql-client -- mysql -h mysql -ppassword
+kubectl exec -it postgres-556d7f8d95-rgd72 -- psql --u postgres
 kubectl exec -it mongo-app-7559754fbf-n7mx4 /bin/bash
 kubectl apply -f deployment-v7.yml
 kubectl expose deployment --port 7070 customerapp --type=LoadBalancer --name=customerservicev1
