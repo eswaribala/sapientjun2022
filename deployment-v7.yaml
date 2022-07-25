@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: insapp
+  name: insapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: insapp
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: insapp
+    spec:
+      containers:
+      - image: eswaribala/psrepo2022:v1
+        name: v1
+        resources: {}
+        env:
+            - name: POSTGRES_URL
+              value: jdbc:postgresql://postgres:5432/globalinsdb
+               
+
+status: {}
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: insapp
+  name: insservice
+spec:
+  ports:
+  - name: 6060-6060
+    port: 6060
+    protocol: TCP
+    targetPort: 6060
+  selector:
+    app: insapp
+  type: ClusterIP
+status:
+  loadBalancer: {}
