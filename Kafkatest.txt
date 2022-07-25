@@ -1,0 +1,8 @@
+List the Topics
+docker exec -it 077a784e521c kafka-topics.sh --list --zookeeper zk:2181
+Create the topic
+docker exec -it  3c9e60ccac88   kafka-topics.sh --create --zookeeper zk:2181 --replication-factor 1 --partitions 1 --topic amexqueue
+Create the producer
+docker exec -it 3c9e60ccac88  kafka-console-producer.sh --broker-list localhost:9092 --topic boaqueue
+Create the Consumer
+docker exec -it 3c9e60ccac88  kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic  boaqueue --from-beginning
