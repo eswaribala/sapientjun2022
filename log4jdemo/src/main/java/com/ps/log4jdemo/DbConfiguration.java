@@ -14,9 +14,10 @@ public class DbConfiguration implements CommandLineRunner {
     @Value("${dburl}")
     private String dburl;
 
+
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("Message property: " + message);
+      System.out.println("Message property: " + message);
         System.out.println("DB Url property: " + dburl);
     }
 }
