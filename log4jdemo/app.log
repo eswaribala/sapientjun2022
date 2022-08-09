@@ -8121,3 +8121,38 @@ Caused by: com.amazonaws.services.kinesis.model.ResourceNotFoundException: Strea
 2022-08-08 12:19:38.101  INFO DESKTOP-55AGI0I --- [1)-192.168.1.33] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-08-08 12:19:38.101  INFO DESKTOP-55AGI0I --- [1)-192.168.1.33] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
 2022-08-08 12:19:38.139  INFO DESKTOP-55AGI0I --- [1)-192.168.1.33] o.s.w.s.DispatcherServlet                : Completed initialization in 37 ms
+2022-08-08 12:24:21.113  INFO DESKTOP-55AGI0I --- [extShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-08-08 12:24:21.117  INFO DESKTOP-55AGI0I --- [extShutdownHook] o.s.s.c.ThreadPoolTaskExecutor           : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-08-08 12:24:43.036  INFO DESKTOP-55AGI0I --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-08 12:24:44.317  INFO DESKTOP-55AGI0I --- [  restartedMain] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-/config/log4jdemo/'}, BootstrapPropertySource {name='bootstrapProperties-/config/application/'}]
+2022-08-08 12:24:44.326  INFO DESKTOP-55AGI0I --- [  restartedMain] c.p.l.Log4jdemoApplication               : No active profile set, falling back to default profiles: default
+2022-08-08 12:24:46.137  INFO DESKTOP-55AGI0I --- [  restartedMain] o.s.c.c.s.GenericScope                   : BeanFactory id=5278c03f-0807-3a05-a6de-4e14ceb5dfc1
+2022-08-08 12:24:46.153  INFO DESKTOP-55AGI0I --- [  restartedMain] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#1b45d4e5' of type [com.amazonaws.auth.EC2ContainerCredentialsProviderWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-08-08 12:24:46.159  INFO DESKTOP-55AGI0I --- [  restartedMain] trationDelegate$BeanPostProcessorChecker : Bean '(inner bean)#6bfa7c8d' of type [com.amazonaws.auth.profile.ProfileCredentialsProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-08-08 12:24:46.161  INFO DESKTOP-55AGI0I --- [  restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'credentialsProvider' of type [org.springframework.cloud.aws.core.credentials.CredentialsProviderFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-08-08 12:24:46.161  INFO DESKTOP-55AGI0I --- [  restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-08-08 12:24:46.432  INFO DESKTOP-55AGI0I --- [  restartedMain] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 7070 (http)
+2022-08-08 12:24:46.439  INFO DESKTOP-55AGI0I --- [  restartedMain] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-7070"]
+2022-08-08 12:24:46.440  INFO DESKTOP-55AGI0I --- [  restartedMain] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-08-08 12:24:46.440  INFO DESKTOP-55AGI0I --- [  restartedMain] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-08-08 12:24:46.583  INFO DESKTOP-55AGI0I --- [  restartedMain] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2022-08-08 12:24:46.584  INFO DESKTOP-55AGI0I --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2237 ms
+2022-08-08 12:24:47.518  INFO DESKTOP-55AGI0I --- [  restartedMain] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2022-08-08 12:24:48.074  INFO DESKTOP-55AGI0I --- [  restartedMain] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-08-08 12:24:48.104  INFO DESKTOP-55AGI0I --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-08 12:24:48.229  INFO DESKTOP-55AGI0I --- [  restartedMain] o.s.b.a.e.w.EndpointLinksResolver        : Exposing 2 endpoint(s) beneath base path '/actuator'
+2022-08-08 12:24:48.342  INFO DESKTOP-55AGI0I --- [  restartedMain] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-7070"]
+2022-08-08 12:24:48.360  INFO DESKTOP-55AGI0I --- [  restartedMain] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 7070 (http) with context path ''
+2022-08-08 12:24:48.375  INFO DESKTOP-55AGI0I --- [  restartedMain] c.p.l.Log4jdemoApplication               : Started Log4jdemoApplication in 5.65 seconds (JVM running for 8.085)
+2022-08-08 12:24:48.387  INFO DESKTOP-55AGI0I --- [  restartedMain] c.p.l.Log4jdemoApplication               : Message to Data Stream: {"booleanKey":true,"anotherString":"This should work!","test1":"We are testing Amazon Kinesis Firehose!","integerKey":38585}
+2022-08-08 12:24:48.844  INFO DESKTOP-55AGI0I --- [  restartedMain] c.p.l.Log4jdemoApplication               : Record sequence number: 49632039438871936368221608268399778963352724635618639874
+2022-08-08 12:24:48.844  INFO DESKTOP-55AGI0I --- [  restartedMain] c.p.l.Log4jdemoApplication               : Shard Id: shardId-000000000000
+2022-08-08 12:24:48.845  INFO DESKTOP-55AGI0I --- [  restartedMain] c.p.l.Log4jdemoApplication               : Record Data: {ShardId: shardId-000000000000,SequenceNumber: 49632039438871936368221608268399778963352724635618639874,}
+2022-08-08 12:24:48.846  INFO DESKTOP-55AGI0I --- [  restartedMain] c.p.l.Log4jdemoApplication               : Info level log message
+2022-08-08 12:24:48.847 DEBUG DESKTOP-55AGI0I --- [  restartedMain] c.p.l.Log4jdemoApplication               : Debug level log message
+2022-08-08 12:24:48.847 ERROR DESKTOP-55AGI0I --- [  restartedMain] c.p.l.Log4jdemoApplication               : Error level log message
+2022-08-08 12:24:49.396  INFO DESKTOP-55AGI0I --- [1)-192.168.1.33] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-08 12:24:49.397  INFO DESKTOP-55AGI0I --- [1)-192.168.1.33] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2022-08-08 12:24:49.414  INFO DESKTOP-55AGI0I --- [1)-192.168.1.33] o.s.w.s.DispatcherServlet                : Completed initialization in 17 ms
+2022-08-08 12:28:28.618  INFO DESKTOP-55AGI0I --- [extShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-08-08 12:28:28.621  INFO DESKTOP-55AGI0I --- [extShutdownHook] o.s.s.c.ThreadPoolTaskExecutor           : Shutting down ExecutorService 'applicationTaskExecutor'

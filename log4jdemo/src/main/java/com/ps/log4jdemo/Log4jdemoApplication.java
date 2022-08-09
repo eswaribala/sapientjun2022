@@ -61,8 +61,8 @@ public class Log4jdemoApplication implements CommandLineRunner {
                 .build();
 
         JSONObject messageJson = new JSONObject();
-        messageJson.put("key1", "We are testing Amazon Kinesis Firehose!");
-        messageJson.put("integerKey", 123);
+        messageJson.put("test1", "We are testing Amazon Kinesis Firehose!");
+        messageJson.put("integerKey", 38585);
         messageJson.put("booleanKey", true);
         messageJson.put("anotherString", "This should work!");
 
