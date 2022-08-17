@@ -1,0 +1,41 @@
+type Address {
+	addressId: ID!
+	doorNo: String
+	streetName: String
+ 	city: String
+  state: String
+  country: String
+  customer: Customer 
+   
+}
+
+input AddressInput {
+
+	addressId: ID!
+	doorNo: String
+	streetName: String
+ 	city: String
+  state: String
+  country: String
+  customer: CustomerAddressInput
+}
+
+
+input CustomerAddressInput {
+
+    customerId: ID!
+  
+
+}
+
+
+
+extend type Query {
+	findAllAddresses: [Address]
+	findAddress(addressId: ID): Address
+}
+
+extend type Mutation {
+	createAddress(addressInput:AddressInput):Address
+        
+}

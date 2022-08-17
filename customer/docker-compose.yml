@@ -1,0 +1,58 @@
+version: '3.9'
+
+services:
+  mysql:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=boamsmay2022customerdb
+    volumes:
+      - /data/mysql
+    healthcheck:        
+        interval: 30s
+        timeout: 10s
+        retries: 5
+  
+  customer-app:
+    image: customerapp
+    build:
+      context: ./
+      dockerfile: dockerfile
+    depends_on:
+      - mysql
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 15
+        window: 50s
+    ports:
+       #- 8060-8070:7070
+        - 7074:7070
+    volumes:
+      - /data/compose-app
+
+  prometheus:
+    image: prom/prometheus
+    restart: always
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    networks:
+      - dotnetcorepromgrafana
+
+  grafana: 
+    image: grafana/grafana
+    #command:
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=P@ssw0rd
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - dotnetcorepromgrafana
+      
+### put all the networks here
+networks:
+  dotnetcorepromgrafana:
