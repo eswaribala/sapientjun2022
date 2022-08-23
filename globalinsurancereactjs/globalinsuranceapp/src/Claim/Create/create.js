@@ -1,16 +1,41 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import axios from "axios";
 
 
-export class ClaimCreate extends React.Component{
-    render(){
-        console.log(unescape('%E4%F6%FC'));
-        console.log(unescape('%u0107'));
-        return(
+export const url = "https://jsonplaceholder.typicode.com/users";
+export function ClaimCreate(){
+    const [users, setUsers] = useState([]);
 
-          <React.Fragment>
-            <h1>Claim Create</h1>
-            <h4>Auto Insurance Claim</h4>
-          </React.Fragment>
-        )
+    // Load the data from the server
+    useEffect(() => {
+        let mounted = true;
+
+        const getUsers = async () => {
+            const response = await axios.get(url);
+            if (mounted) {
+                setUsers(response.data);
+            }
+        }
+    })
+    function formatUserName(username) {
+        return username.startsWith('@') ? username : '@' + username;
     }
+     return(
+         <div className="App">
+             <div>Users:</div>
+             {users.length ? (
+                 <ul data-testid="user-list">
+                     {users.map((user) => (
+                         <li key={user.id} className="user" data-testid="user-item">
+                             <span>{user.name}</span> (
+                             <span>{formatUserName(user.username)}</span>)
+                         </li>
+                     ))}
+                 </ul>
+             ) : (
+                 <div>Loading users...</div>
+             )}
+         </div>
+     )
+
 }

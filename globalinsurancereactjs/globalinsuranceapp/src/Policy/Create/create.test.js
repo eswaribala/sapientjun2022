@@ -1,4 +1,4 @@
-import {act, render, renderHook, screen} from '@testing-library/react';
+import {act, render, renderHook, screen, waitFor} from '@testing-library/react';
 import Create from "./create";
 import { Provider } from 'react-redux';
 import mockAxios from "axios";
@@ -10,6 +10,9 @@ import {InputText} from "primereact/inputtext";
 import {create} from "json-server";
 const initialState = { output: 10 };
 const mockStore = configureMockStore([thunk]);
+import axios from 'axios';
+
+
 let store;
 beforeEach(() => {
     store = mockStore({
@@ -26,8 +29,4 @@ test('renders learn react link', () => {
 
 });
 
-test('should assign value', () => {
-   // const { result } = renderHook(() => Create())
 
-     //expect(result.current.policyNo).toBe(0)
-})

@@ -14,7 +14,6 @@ export default function Create(props){
 
 
 
-
     const { policyNo: propsPolicyNo, policyHolderName:propsPolicyHolderName, fromDate: propsFromDate,
         toDate:propsToDate, sumAssured:propsSumAssured } = props;
     //define fields
@@ -108,8 +107,9 @@ export default function Create(props){
 
     }
 
-    return(
 
+    return(
+        <div>
         <form onSubmit={handleSubmit}  className="form border border-primary shadow-none p-3 rounded">
             <fieldset>
                 <legend>Add Policy</legend>
@@ -166,6 +166,7 @@ export default function Create(props){
                 </fieldset>
         </form>
 
+        </div>
     )
 
 
