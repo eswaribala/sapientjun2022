@@ -1,5 +1,5 @@
 package com.sapient.globalinsurancesbapi;
-/*
+
 import com.sapient.globalinsurancesbapi.models.FullName;
 import com.sapient.globalinsurancesbapi.models.Gender;
 import com.sapient.globalinsurancesbapi.models.Owner;
@@ -103,4 +103,3 @@ class GlobalinsurancesbapiApplicationTests {
         assertEquals("dbparams error", exception.getMessage());
     }
 }
-*/
