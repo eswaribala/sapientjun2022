@@ -8,8 +8,9 @@ import com.amazonaws.services.kinesis.AmazonKinesisClientBuilder;
 import com.amazonaws.services.kinesis.model.PutRecordRequest;
 import com.amazonaws.services.kinesis.model.PutRecordResult;
 import net.minidev.json.JSONObject;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -17,13 +18,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
-
+import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.web.client.RestTemplate;
 
 import java.nio.ByteBuffer;
 import java.util.UUID;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @EnableScheduling
 
@@ -36,8 +40,8 @@ public class Log4jdemoApplication implements CommandLineRunner {
     @Value("${cloud.aws.credentials.secret-key}")
     private String awsSecretKey;
 
-    @Value("${aws.kinesis.dataStream.name}")
-    private String kinesisDataStreamName;
+   // @Value("${aws.kinesis.dataStream.name}")
+   // private String kinesisDataStreamName;
 
 
 
@@ -50,9 +54,14 @@ public class Log4jdemoApplication implements CommandLineRunner {
 
     }
 
+    @Bean
+    public RestTemplate getRestTemplate(){
+        return new RestTemplate();
+    }
+
     @Override
     public void run(String... args) throws Exception {
-
+/*
         BasicAWSCredentials awsCredentials = new BasicAWSCredentials(awsAccessKey, awsSecretKey);
 
         AmazonKinesis amazonKinesis = AmazonKinesisClientBuilder
@@ -78,6 +87,7 @@ public class Log4jdemoApplication implements CommandLineRunner {
         LOGGER.info("Record sequence number: " + putRecordResult.getSequenceNumber());
         LOGGER.info("Shard Id: " + putRecordResult.getShardId());
         LOGGER.info("Record Data: " + putRecordResult.toString());
+   */
     }
 
 

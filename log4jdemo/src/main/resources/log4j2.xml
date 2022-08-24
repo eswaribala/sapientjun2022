@@ -16,16 +16,27 @@
                 <Pattern>${LOG_PATTERN}</Pattern>
             </PatternLayout>
         </File>
+        <Elasticsearch name="elasticsearchAsyncBatch">
+            <IndexName indexName="pslogindex" />
+            <JacksonJsonLayout />
+            <AsyncBatchDelivery>
+                <IndexTemplate name="log4j2" path="classpath:indexTemplate.json" />
+                <JestHttp serverUris="http://34.239.172.1:9200/" />
+            </AsyncBatchDelivery>
+        </Elasticsearch>
     </Appenders>
     <Loggers>
         <Logger name="com.ps.log4jdemo" level="debug" additivity="false">
             <AppenderRef ref="ConsoleAppender" />
             <AppenderRef ref="FileAppender" />
+            <AppenderRef ref="elasticsearchAsyncBatch" />
         </Logger>
 
         <Root level="info">
             <AppenderRef ref="ConsoleAppender" />
             <AppenderRef ref="FileAppender" />
+            <AppenderRef ref="elasticsearchAsyncBatch" />
         </Root>
     </Loggers>
+
 </Configuration>

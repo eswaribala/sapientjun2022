@@ -85,7 +85,27 @@
                <artifactId>amazon-kinesis-client</artifactId>
                <version>1.11.2</version>
            </dependency>
-    </dependencies>
+
+           <dependency>
+               <groupId>org.appenders.log4j</groupId>
+               <artifactId>log4j2-elasticsearch-jest</artifactId>
+               <version>1.5.2</version>
+           </dependency>
+           <!-- https://mvnrepository.com/artifact/org.springframework/spring-webflux -->
+           <dependency>
+               <groupId>org.springframework</groupId>
+               <artifactId>spring-webflux</artifactId>
+
+           </dependency>
+           <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+           <dependency>
+               <groupId>com.fasterxml.jackson.core</groupId>
+               <artifactId>jackson-core</artifactId>
+               <version>2.13.3</version>
+           </dependency>
+
+
+       </dependencies>
     <dependencyManagement>
         <dependencies>
             <dependency>
