@@ -9,7 +9,7 @@ import Create from "../Policy/Create/create";
 import {View} from "../Policy/View/view";
 import {Delete} from "../Policy/Delete/delete";
 import {Export} from "../Policy/Export/export";
-import {ClaimCreate} from "../Claim/Create/create";
+import ClaimCreate from "../Claim/Create/create";
 import {ClaimDelete} from "../Claim/Delete/delete";
 import {ClaimEdit} from "../Claim/Edit/edit";
 import {ClaimView} from "../Claim/View/view";

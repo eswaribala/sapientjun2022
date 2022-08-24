@@ -7,7 +7,9 @@ exports[`App component it renders a correct snapshot 1`] = `
   <div>
     Users:
   </div>
-  <div>
+  <div
+    data-testid="loading"
+  >
     Loading users...
   </div>
 </div>
