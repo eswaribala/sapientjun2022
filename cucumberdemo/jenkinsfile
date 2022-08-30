@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    tools {
+        maven 'MAVEN_3.6.3'
+        jdk 'JDK_1.8.0_251'
+    }
+    stages {
+        stage('Build') {
+            environment {
+                PROJECT_DIR = "D:/git/repository/amexseleniumrepo/cucumberdemo"
+            }
+            steps {
+                echo 'maven clean'
+                bat ' mvn -f %PROJECT_DIR%\\pom.xml clean install'  
+            }
+        }
+    }
+    post {
+            success {
+                        echo 'Now Archiving'
+                        junit allowEmptyResults: true, testResults: '**/surefire-reports/*.xml'
+                }
+        }
+}
