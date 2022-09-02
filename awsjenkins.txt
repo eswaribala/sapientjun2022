@@ -28,3 +28,5 @@ s
 sudo apt update
 
 sudo apt install maven
+
+sudo usermod -aG docker jenkins
