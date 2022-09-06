@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 import store from './redux/store'
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
+import axios from "axios";
 //stateful component
 export class App extends Component{
 
@@ -62,7 +63,18 @@ export class App extends Component{
             </div>
         );
     }
+    logSomething = () => {
+        console.log("Button was clicked.")
+       let obj={
+            "data":"Button was clicked."
+       }
+        axios.post("http://localhost:4000/writetolog", obj).then(res => {
+            console.log(res);
 
+        }).catch(error => {
+            throw(error);
+        });
+    }
 
 
     render() {
@@ -88,6 +100,9 @@ export class App extends Component{
                     </Dialog>
 
                 </article>
+                <div>
+                    <button onClick={this.logSomething}>Log Something!</button>
+                </div>
             </section>
             </Provider>
         )
