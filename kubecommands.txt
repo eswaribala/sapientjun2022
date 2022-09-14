@@ -28,4 +28,5 @@ az network public-ip create --resource-group  mc_vebgroup_vebcluster_southindia 
 
 
 kubectl autoscale deployment customerapp --min=1 --max=4 --cpu-percent=20
+kubectl autoscale deployment customerapp --min=5 --max=10 --cpu-percent=5
 https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html
